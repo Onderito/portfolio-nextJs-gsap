@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #1a1a1a;
+  --foreground: #fff;
 }
 
 @theme inline {
@@ -10,6 +10,59 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-inter: var(--font-inter);
+  --font-gloria: var(--font-gloria);
+}
+
+@layer components {
+  .heading-1 {
+    @apply font-bold text-[32px] leading-10 tracking-[-2px]
+           lg:text-[64px] lg:leading-18  md:text-[48px] md:leading-12
+           xl:text-[80px] xl:leading-none xl:tracking-[-0.05em];
+  }
+
+  .heading-2 {
+    @apply font-bold text-[28px] tracking-[-2px]
+           md:text-[48px]
+           xl:text-[56px] xl:tracking-[-0.03em] leading-tight;
+  }
+
+  .heading-3 {
+    @apply font-bold text-[18px] tracking-[-0.5px]
+           md:text-[20px] xl:text-[22px] leading-snug;
+  }
+
+  .body-text {
+    @apply text-[14px] text-white md:text-[16px] xl:text-[18px]
+           tracking-[-0.01em] leading-relaxed;
+  }
+  .card-text {
+    @apply text-[14px] md:text-[15px] xl:text-[16px]
+            leading-relaxed;
+  }
+  .container {
+    @apply container mx-auto px-4 py-10 xl:py-24 sm:px-8 md:px-12 lg:px-16 xl:px-16 2xl:px-24;
+  }
+}
+
+@layer utilities {
+  .btn-shadow {
+    box-shadow: inset 1px -1px 0px 0px rgba(132, 132, 132, 0.25),
+      inset -1px 1px 0px 0px rgba(132, 132, 132, 0.25),
+      0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+
+  .shadow-white-blur {
+    box-shadow: 0 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+
+  .font-inter {
+    font-family: var(--font-inter), sans-serif;
+  }
+
+  .font-gloria {
+    font-family: var(--font-gloria), cursive;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +75,5 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), sans-serif;
 }
