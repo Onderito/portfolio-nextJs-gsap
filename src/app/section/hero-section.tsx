@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function HeroSection() {
   return (
-    <>
+    <div className="xl:h-screen">
       <Image
         src="/background-particle.svg"
         alt="Background Particle"
@@ -42,6 +42,6 @@ export default function HeroSection() {
           className="absolute top-0 blur-2xl -z-10 opacity-20 hidden lg:block"
         />
       </div>
-    </>
+    </div>
   );
 }
