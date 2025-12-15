@@ -8,7 +8,7 @@ const Button = ({ children, onClick, className }: ButtonProps) => {
   return (
     <button
       onClick={onClick}
-      className={`relative inline-flex items-center justify-center overflow-hidden rounded-[10px] bg-[#1A1A1A] text-white tracking-tight py-3 btn-shadow px-10 text-[16px] font-bold cursor-pointer ${
+      className={`relative inline-flex items-center justify-center overflow-hidden rounded-[10px] bg-[#1A1A1A] text-white tracking-tight py-3 shadow-white-blur px-10 text-[16px] font-bold cursor-pointer ${
         className || ""
       }`}
     >
