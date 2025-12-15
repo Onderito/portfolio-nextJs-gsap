@@ -1,14 +1,18 @@
 import HeroSection from "./section/hero-section";
+import MyProject from "./section/my-project";
 import WhoIAm from "./section/who-i-am";
 
 export default function Home() {
   return (
     <div>
-      <div className="container">
+      <div className="container-hero">
         <HeroSection />
       </div>
       <div className="container">
         <WhoIAm />
+      </div>
+      <div className="container">
+        <MyProject />
       </div>
     </div>
   );

@@ -16,12 +16,13 @@ export default function WhoIAm() {
 
       <section className="mt-10 flex flex-col items-center justify-center">
         <div className="w-full xl:grid xl:grid-cols-[2fr_3fr] xl:gap-6 xl:items-stretch">
-          <div className="relative overflow-hidden rounded-2xl xl:rounded-3xl shadow-white-blur aspect-3/4 xl:aspect-auto xl:h-[659px]">
+          <div className="relative overflow-hidden rounded-2xl xl:rounded-3xl shadow-white-blur aspect-3/4 xl:aspect-auto ">
             <Image
-              src="/ulas-profile.png"
+              src="/blur-profile.webp"
               alt="Ulas Profile"
               fill
-              className="object-cover"
+              quality={100}
+              className="object-cover scale-animation"
             />
           </div>
 
@@ -31,7 +32,7 @@ export default function WhoIAm() {
               className="relative overflow-hidden rounded-2xl xl:rounded-3xl bg-[#212121] p-6 shadow-white-blur xl:col-span-3 "
             >
               <h4 className="text-2xl font-bold">Ulas Önder</h4>
-              <p className="mt-3 text-[#C4C4C4] leading-relaxed xl:w-[90%]">
+              <p className="mt-3 text-neutral-400 leading-relaxed xl:w-[90%]">
                 Front-end Developer and Designer. My specialty is building high-
                 converting Landing Pages that load in under one second. I focus
                 on strategic design and clean code to maximize your revenue.
@@ -46,7 +47,7 @@ export default function WhoIAm() {
             >
               <h4 className="text-xl font-bold text-center">
                 High-Performance{" "}
-                <span className="font-gloria text-[#C4C4C4]">Toolkit</span>
+                <span className="font-gloria text-neutral-400">Toolkit</span>
               </h4>
 
               <div className="mt-6 flex flex-wrap justify-center gap-4 xl:flex-nowrap md:h-[120px]">
