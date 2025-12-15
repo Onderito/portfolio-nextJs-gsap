@@ -16,7 +16,10 @@ export default function WhoIAm() {
 
       <section className="mt-10 flex flex-col items-center justify-center">
         <div className="w-full xl:grid xl:grid-cols-[2fr_3fr] xl:gap-6 xl:items-stretch">
-          <div className="relative overflow-hidden rounded-2xl xl:rounded-3xl shadow-white-blur aspect-3/4 xl:aspect-auto ">
+          <div
+            style={{ cornerShape: "squircle" }}
+            className="relative overflow-hidden rounded-2xl xl:rounded-3xl shadow-white-blur aspect-3/4 xl:aspect-auto "
+          >
             <Image
               src="/blur-profile.webp"
               alt="Ulas Profile"
@@ -100,7 +103,7 @@ export default function WhoIAm() {
             >
               <div
                 style={{ cornerShape: "squircle" }}
-                className="relative overflow-hidden rounded-2xl xl:rounded-3xl bg-[#212121] p-6 shadow-white-blur flex items-center justify-center xl:col-span-1 h-[200px] xl:h-full cursor-pointer"
+                className="relative overflow-hidden rounded-2xl xl:rounded-3xl bg-[#212121] p-6 shadow-white-blur flex items-center justify-center xl:col-span-1 h-[200px] xl:h-full cursor-pointer scale-animation"
               >
                 <Image
                   src="/linkedin.svg"
@@ -121,7 +124,7 @@ export default function WhoIAm() {
             <a href="https://x.com/UnderDev0" target="_blank" rel="noreferrer">
               <div
                 style={{ cornerShape: "squircle" }}
-                className="relative overflow-hidden rounded-2xl xl:rounded-3xl bg-[#212121] p-6 shadow-white-blur flex items-center justify-center xl:col-span-1 h-[200px] xl:h-full cursor-pointer"
+                className="relative overflow-hidden rounded-2xl xl:rounded-3xl bg-[#212121] p-6 shadow-white-blur flex items-center justify-center xl:col-span-1 h-[200px] xl:h-full cursor-pointer scale-animation"
               >
                 <Image
                   src="/x.svg"
