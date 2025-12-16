@@ -24,7 +24,7 @@
   .heading-2 {
     @apply font-bold text-[28px] tracking-[-2px]
            md:text-[48px]
-           xl:text-[56px] xl:tracking-[-0.03em] leading-tight;
+           xl:text-[56px] xl:tracking-[-0.02em] leading-tight;
   }
 
   .heading-3 {
