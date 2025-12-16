@@ -14,7 +14,7 @@ export default function WhoIAm() {
     <>
       <h2 className="heading-2 text-center">Who I Am</h2>
 
-      <section className="mt-10 flex flex-col items-center justify-center">
+      <section className="mt-10 xl:mt-14 flex flex-col items-center justify-center">
         <div className="w-full xl:grid xl:grid-cols-[2fr_3fr] xl:gap-6 xl:items-stretch">
           <div
             style={{ cornerShape: "squircle" }}

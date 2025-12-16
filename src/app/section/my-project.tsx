@@ -38,7 +38,7 @@ export default function MyProject() {
       <h2 className="heading-2 text-center">
         Projects <span className="text-neutral-400 ">I’ve worked on</span>
       </h2>
-      <div className="mt-10 flex flex-col gap-8">
+      <div className="mt-10 xl:mt-14 flex flex-col gap-8">
         {projects.map((p, index) => (
           <div
             style={{ cornerShape: "squircle" }}
@@ -103,9 +103,13 @@ export default function MyProject() {
                   </div>
                 </div>
                 {/* Tech Stack */}
-
-                <a target="_blank" rel="noopener noreferrer" href={p.url}>
-                  <Button className="mt-6 lg:mt-10 xl:mt-14 w-full lg:w-fit">
+                <a
+                  className="w-fit  mt-6 lg:mt-10 xl:mt-14"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={p.url}
+                >
+                  <Button className=" w-full lg:w-fit">
                     See the Experience
                   </Button>
                 </a>
