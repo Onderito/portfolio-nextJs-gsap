@@ -32,6 +32,11 @@
            md:text-[20px] xl:text-[32px] leading-snug;
   }
 
+  .heading-4 {
+    @apply font-bold text-[16px] tracking-[-0.5px]
+           md:text-[18px] xl:text-[24px] leading-snug;
+  }
+
   .body-text {
     @apply text-[14px] text-white md:text-[16px] xl:text-[18px]
            tracking-[-0.01em] leading-relaxed;
