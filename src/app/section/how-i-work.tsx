@@ -1,4 +1,8 @@
 import Image from "next/image";
+import FirstIllustration from "../ui/first-illustration";
+import SecondIllustration from "../ui/second-illustration";
+import ThirdIllustration from "../ui/third-illustration";
+import FourthIllustration from "../ui/fourth-illustration";
 
 export default function HowIWork() {
   const cards = [
@@ -30,7 +34,7 @@ export default function HowIWork() {
         A streamlined process to deliver polished, high-performance web
         experiences.{" "}
       </p>
-      <div className="flex flex-col gap-8 mt-10 xl:mt-14">
+      <div className="flex flex-col gap-8 mt-10 xl:mt-14 md:grid md:grid-cols-2 xl:grid-cols-4 xl:w-full">
         {cards.map((c, i) => (
           <div
             style={{ cornerShape: "squircle" }}
@@ -39,12 +43,22 @@ export default function HowIWork() {
           >
             <div
               style={{ cornerShape: "squircle" }}
-              className=" bg-[#080808] h-[165px] rounded-2xl shadow-sm relative overflow-hidden "
+              className=" bg-[#080808] h-[165px] rounded-2xl shadow-sm relative overflow-hidden flex justify-center items-center"
             >
-              {/* illustration ici */}
+              {i === 0 ? (
+                <FirstIllustration />
+              ) : i === 1 ? (
+                <SecondIllustration />
+              ) : i === 2 ? (
+                <ThirdIllustration />
+              ) : i === 3 ? (
+                <FourthIllustration />
+              ) : null}
               <Image
-                className={`absolute opacity-40 blur-2xl ${
-                  i === 0 || i === 3 ? "-top-20" : "-bottom-20"
+                className={`absolute opacity-40 blur-2xl z-1 ${
+                  i === 0 || i === 3
+                    ? "-top-20 lg:-top-30 xl:-top-15"
+                    : "-bottom-20 lg:-bottom-30 xl:-bottom-15"
                 } `}
                 src="/color-gradient.svg"
                 alt=""

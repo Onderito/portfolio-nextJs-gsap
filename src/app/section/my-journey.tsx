@@ -45,7 +45,7 @@ export default function MyJourney() {
           />
         </span>
       </p>
-      <div className="flex flex-col xl:flex-row mt-10 xl:mt-14 gap-8">
+      <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 mt-10 xl:mt-14 gap-8">
         {myJourney.map((j, i) => (
           <div
             style={{ cornerShape: "squircle" }}
