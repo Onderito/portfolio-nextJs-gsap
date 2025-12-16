@@ -45,7 +45,7 @@ export default function MyJourney() {
           />
         </span>
       </p>
-      <div className="flex flex-col xl:flex-row mt-10 xl:mt-14 gap-8">
+      <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 mt-10 xl:mt-14 gap-8">
         {myJourney.map((j, i) => (
           <div
             style={{ cornerShape: "squircle" }}
@@ -53,7 +53,7 @@ export default function MyJourney() {
             key={i}
           >
             <div className="relative z-10">
-              <div className="flex flex-row justify-between">
+              <div className="flex flex-row justify-between items-center">
                 <h4 className="heading-4">{j.title}</h4>
                 <div className=" rounded-full w-10 h-10 flex items-center justify-center shrink-0 bg-white/5 text-zinc-300 ring-1 ring-inset ring-white/10">
                   {i === 0 ? (
