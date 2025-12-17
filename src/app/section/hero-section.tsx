@@ -22,6 +22,7 @@ export default function HeroSection() {
           quality={100}
           className="object-cover w-30 h-30 rounded-2xl rotate-2 border-2 border-white border-glass "
         />
+        <p className="mt-4 font-gloria">Hi I’m Ulas</p>
         <h1 className="heading-1 text-center mt-6 md:mt-10 xl:mt-12">
           I design & build modern <br />
           <span className="text-neutral-400">web experiences</span>
