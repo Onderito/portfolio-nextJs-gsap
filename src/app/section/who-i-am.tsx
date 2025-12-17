@@ -1,7 +1,44 @@
+"use client";
+
 import Image from "next/image";
 import Button from "../ui/button";
+import gsap from "gsap";
+import { useLayoutEffect, useRef } from "react";
+import { createWhoIAmAnimation } from "../animations/who-i-am";
 
 export default function WhoIAm() {
+  const refs = {
+    container: useRef<HTMLDivElement>(null),
+    title: useRef<HTMLHeadingElement>(null),
+    picture: useRef<HTMLDivElement>(null),
+    presentationCard: useRef<HTMLDivElement>(null),
+    toolkitCard: useRef<HTMLDivElement>(null),
+    hireMeCard: useRef<HTMLDivElement>(null),
+    linkedinCard: useRef<HTMLAnchorElement>(null),
+    xCard: useRef<HTMLAnchorElement>(null),
+    devCard: useRef<HTMLDivElement>(null),
+  };
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const elements = {
+        container: refs.container.current!,
+        title: refs.title.current!,
+        picture: refs.picture.current!,
+        presentationCard: refs.presentationCard.current!,
+        toolkitCard: refs.toolkitCard.current!,
+        hireMeCard: refs.hireMeCard.current!,
+        linkedinCard: refs.linkedinCard.current!,
+        xCard: refs.xCard.current!,
+        devCard: refs.devCard.current!,
+      };
+      createWhoIAmAnimation(elements);
+    });
+
+    return () => ctx.revert();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const tools = [
     { icon: "/webflow.svg", alt: "Webflow", bg: "bg-[#AAC6FA]" },
     { icon: "/nextJs.svg", alt: "NextJs", bg: "bg-[#1A1A1A]" },
@@ -11,12 +48,14 @@ export default function WhoIAm() {
   ];
 
   return (
-    <>
-      <h2 className="heading-2 text-center">Who I Am</h2>
-
-      <section className="mt-10 xl:mt-14 flex flex-col items-center justify-center">
+    <div ref={refs.container}>
+      <h2 ref={refs.title} className="heading-2 text-center">
+        Who I Am
+      </h2>
+      <div className="mt-10 xl:mt-14 flex flex-col items-center justify-center">
         <div className="w-full xl:grid xl:grid-cols-[2fr_3fr] xl:gap-6 xl:items-stretch">
           <div
+            ref={refs.picture}
             style={{ cornerShape: "squircle" }}
             className="relative overflow-hidden rounded-2xl xl:rounded-3xl shadow-white-blur aspect-3/4 xl:aspect-auto "
           >
@@ -31,6 +70,7 @@ export default function WhoIAm() {
 
           <div className="mt-4 flex flex-col gap-4 xl:mt-0 xl:grid xl:grid-cols-3 xl:gap-4 xl:h-[659px] xl:auto-rows-fr">
             <div
+              ref={refs.presentationCard}
               style={{ cornerShape: "squircle" }}
               className="relative overflow-hidden rounded-2xl xl:rounded-3xl bg-[#212121] p-6 shadow-white-blur xl:col-span-3 "
             >
@@ -46,6 +86,7 @@ export default function WhoIAm() {
             </div>
 
             <div
+              ref={refs.toolkitCard}
               style={{ cornerShape: "squircle" }}
               className="relative overflow-hidden rounded-2xl xl:rounded-3xl bg-[#212121] p-6 shadow-white-blur xl:col-span-2"
             >
@@ -80,11 +121,14 @@ export default function WhoIAm() {
             </div>
 
             <div
+              ref={refs.hireMeCard}
               style={{ cornerShape: "squircle" }}
               className="relative overflow-hidden rounded-2xl xl:rounded-3xl bg-[#212121] p-6 shadow-white-blur xl:col-span-1 flex items-center justify-center h-[200px] xl:h-full"
             >
               <div className="relative z-10">
-                <Button className="px-10">Hire Me</Button>
+                <Button ref={null} className="px-10">
+                  Hire Me
+                </Button>
               </div>
 
               <Image
@@ -98,6 +142,7 @@ export default function WhoIAm() {
 
             {/* BOTTOM 3 CARDS */}
             <a
+              ref={refs.linkedinCard}
               href="https://www.linkedin.com/in/ulasonder/"
               target="_blank"
               rel="noreferrer"
@@ -122,7 +167,12 @@ export default function WhoIAm() {
               </div>
             </a>
 
-            <a href="https://x.com/UnderDev0" target="_blank" rel="noreferrer">
+            <a
+              ref={refs.xCard}
+              href="https://x.com/UnderDev0"
+              target="_blank"
+              rel="noreferrer"
+            >
               <div
                 style={{ cornerShape: "squircle" }}
                 className="relative overflow-hidden rounded-2xl xl:rounded-3xl bg-[#212121] p-6 shadow-white-blur flex items-center justify-center xl:col-span-1 h-[200px] xl:h-full cursor-pointer scale-animation"
@@ -145,8 +195,9 @@ export default function WhoIAm() {
             </a>
 
             <div
+              ref={refs.devCard}
               style={{ cornerShape: "squircle" }}
-              className="relative overflow-hidden text-neutral-400 hover:text-white transform hover:scale-105 duration-700 rounded-2xl xl:rounded-3xl bg-[#212121] p-6 shadow-white-blur flex items-center justify-center xl:col-span-1 h-[200px] xl:h-full"
+              className="relative overflow-hidden text-neutral-400 rounded-2xl xl:rounded-3xl bg-[#212121] p-6 shadow-white-blur flex items-center justify-center xl:col-span-1 h-[200px] xl:h-full"
             >
               <h5 className="relative z-10  font-gloria text-3xl font-bold">
                 ÖnderDev
@@ -161,7 +212,7 @@ export default function WhoIAm() {
             </div>
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </div>
   );
 }
