@@ -36,7 +36,7 @@ export default function WhoIAm() {
             >
               <h4 className="text-2xl font-bold">Ulas Önder</h4>
               <p className="mt-3 text-neutral-400 leading-relaxed xl:w-[90%]">
-                Front-end Developer and Designer. My specialty is building highh
+                Front-end Developer and Designer. My specialty is building high
                 converting <span className="text-white">Landing Pages</span>{" "}
                 that load in under one second. I focus on strategic design and
                 clean code to maximize your revenue.
