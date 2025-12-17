@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Gloria_Hallelujah } from "next/font/google";
 import "./globals.css";
+import ClientWrapper from "./ui/client-wrapper";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,7 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${gloria.variable}`}>
-      <body>{children}</body>
+      <body>
+        <ClientWrapper>{children}</ClientWrapper>
+      </body>
     </html>
   );
 }

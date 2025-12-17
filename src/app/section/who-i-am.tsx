@@ -36,9 +36,10 @@ export default function WhoIAm() {
             >
               <h4 className="text-2xl font-bold">Ulas Önder</h4>
               <p className="mt-3 text-neutral-400 leading-relaxed xl:w-[90%]">
-                Front-end Developer and Designer. My specialty is building high-
-                converting Landing Pages that load in under one second. I focus
-                on strategic design and clean code to maximize your revenue.
+                Front-end Developer and Designer. My specialty is building high
+                converting <span className="text-white">Landing Pages</span>{" "}
+                that load in under one second. I focus on strategic design and
+                clean code to maximize your revenue.
               </p>
 
               <div className="pointer-events-none absolute right-[-80px] top-[-80px] h-[220px] w-[220px] rounded-full bg-white/10 blur-[70px]" />
@@ -145,9 +146,9 @@ export default function WhoIAm() {
 
             <div
               style={{ cornerShape: "squircle" }}
-              className="relative overflow-hidden rounded-2xl xl:rounded-3xl bg-[#212121] p-6 shadow-white-blur flex items-center justify-center xl:col-span-1 h-[200px] xl:h-full"
+              className="relative overflow-hidden text-neutral-400 hover:text-white transform hover:scale-105 duration-700 rounded-2xl xl:rounded-3xl bg-[#212121] p-6 shadow-white-blur flex items-center justify-center xl:col-span-1 h-[200px] xl:h-full"
             >
-              <h5 className="relative z-10 font-gloria text-3xl font-bold">
+              <h5 className="relative z-10  font-gloria text-3xl font-bold">
                 ÖnderDev
               </h5>
               <Image

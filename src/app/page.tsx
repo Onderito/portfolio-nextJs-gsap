@@ -3,6 +3,7 @@ import HowIWork from "./section/how-i-work";
 import MyJourney from "./section/my-journey";
 import MyProject from "./section/my-project";
 import WhoIAm from "./section/who-i-am";
+import Footer from "./section/footer";
 
 export default function Home() {
   return (
@@ -21,6 +22,9 @@ export default function Home() {
       </div>
       <div className="container">
         <HowIWork />
+      </div>
+      <div className="container">
+        <Footer />
       </div>
     </div>
   );
