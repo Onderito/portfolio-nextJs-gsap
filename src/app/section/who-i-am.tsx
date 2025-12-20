@@ -72,7 +72,7 @@ export default function WhoIAm() {
             <div
               ref={refs.presentationCard}
               style={{ cornerShape: "squircle" }}
-              className="relative overflow-hidden rounded-2xl xl:rounded-3xl bg-[#212121] p-6 shadow-white-blur xl:col-span-3 "
+              className="relative overflow-hidden rounded-2xl xl:rounded-3xl bg-[#212121] lg:h-[200px] p-6 shadow-white-blur xl:col-span-3 "
             >
               <h4 className="text-2xl font-bold">Ulas Önder</h4>
               <p className="mt-3 text-neutral-400 leading-relaxed xl:w-[90%]">
@@ -82,7 +82,7 @@ export default function WhoIAm() {
                 clean code to maximize your revenue.
               </p>
 
-              <div className="pointer-events-none absolute right-[-80px] top-[-80px] h-[220px] w-[220px] rounded-full bg-white/10 blur-[70px]" />
+              <div className="pointer-events-none absolute -right-20 -top-20 h-[220px] w-[220px] rounded-full bg-white/10 blur-[70px]" />
             </div>
 
             <div
@@ -136,7 +136,7 @@ export default function WhoIAm() {
                 alt="Color Gradient"
                 width={800}
                 height={800}
-                className="absolute top-[-80px] md:top-[-200px] xl:top-0 blur-2xl"
+                className="absolute -top-20 md:top-[-200px] xl:top-0 blur-2xl"
               />
             </div>
 
@@ -158,7 +158,7 @@ export default function WhoIAm() {
                   height={70}
                 />
                 <Image
-                  className="absolute w-full bottom-[-150px] md:bottom-[-350px] right-20 xl:bottom-[-80px] "
+                  className="absolute w-full bottom-[-150px] md:bottom-[-350px] lg:bottom-[-500px] right-20 xl:-top-20 "
                   src="/double-circle.svg"
                   alt="double circle"
                   width={70}
@@ -185,7 +185,7 @@ export default function WhoIAm() {
                   className=""
                 />
                 <Image
-                  className="absolute w-full top-[-150px] md:top-[-350px] left-20 xl:top-[-80px]"
+                  className="absolute w-full top-[-150px] md:top-[-350px] lg:top-[-500px] left-20 xl:-top-20"
                   src="/double-circle.svg"
                   alt="double circle"
                   width={70}
@@ -207,7 +207,7 @@ export default function WhoIAm() {
                 alt="Color Gradient"
                 width={800}
                 height={800}
-                className="absolute bottom-[-80px] md:bottom-[-200px] xl:bottom-0 blur-2xl"
+                className="absolute -bottom-20 md:bottom-[-200px] xl:bottom-0 blur-2xl"
               />
             </div>
           </div>

@@ -1,5 +1,6 @@
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import SplitText from "gsap/SplitText";
 
 export const createWhoIAmAnimation = (refs: {
   container: HTMLElement;
@@ -14,71 +15,63 @@ export const createWhoIAmAnimation = (refs: {
 }) => {
   gsap.registerPlugin(ScrollTrigger);
 
-  // Important: les cards doivent déjà être en "bento" via ton CSS.
-  // L'anim va partir d'un état "déstructuré" (x/y/scale/rotation)
-  // pour revenir à x:0 y:0 (donc pile sur la mise en page).
+  const split = SplitText.create(refs.title, { type: "words, chars" });
+
+  gsap.from(split.chars, {
+    autoAlpha: 0,
+    y: 10,
+    stagger: 0.04,
+    scrollTrigger: {
+      trigger: refs.container,
+      start: "top bottom-=200",
+      end: "top center",
+      scrub: 1,
+    },
+  });
+
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: refs.container,
-      start: "top top",
-      end: "+=900", // distance de scroll dédiée à l'animation
-      scrub: 1, // fluide (inertie)
-      pin: true, // sensation "comme un pin"
+      start: "top 10%",
+      end: "+=900",
+      scrub: 1,
+      pin: true,
       anticipatePin: 1,
-      // markers: true,
+      invalidateOnRefresh: true,
     },
-    defaults: { ease: "none" }, // avec scrub, "none" donne un rendu hyper clean
   });
 
-  // Optionnel: on cache au départ (évite le flash)
-  tl.set(
-    [
-      refs.title,
-      refs.picture,
-      refs.presentationCard,
-      refs.toolkitCard,
-      refs.hireMeCard,
-      refs.linkedinCard,
-      refs.xCard,
-      refs.devCard,
-    ],
-    { willChange: "transform" }
-  );
+  const allElements = [
+    refs.picture,
+    refs.presentationCard,
+    refs.toolkitCard,
+    refs.hireMeCard,
+    refs.linkedinCard,
+    refs.xCard,
+    refs.devCard,
+  ];
 
-  // 1) Title arrive
-  tl.from(refs.title, { autoAlpha: 0, y: 60, scale: 0.95 }, 0);
+  tl.set(allElements, { willChange: "transform" });
 
-  // 2) Tout est "déstructuré" au début, puis se met en place (bento) en scrollant
-  tl.from(refs.picture, { x: -220, y: -140, rotate: -6, scale: 0.92 }, 0.05);
+  tl.from(refs.picture, { x: -520, y: -140, rotate: -6, scale: 0.92 }, 0.05);
 
   tl.from(
     refs.presentationCard,
-    { x: -160, y: 140, rotate: 4, scale: 0.92 },
-    0.1
+    { x: 660, y: -140, rotate: 4, scale: 0.92 },
+    0.1,
   );
 
-  tl.from(refs.toolkitCard, { x: 220, y: -120, rotate: -4, scale: 0.92 }, 0.12);
+  tl.from(refs.toolkitCard, { x: 520, y: -220, rotate: -4, scale: 0.92 }, 0.12);
 
   tl.from(refs.hireMeCard, { x: 260, y: 120, rotate: 6, scale: 0.92 }, 0.14);
 
-  tl.from(refs.linkedinCard, { x: -260, y: 40, scale: 0.9 }, 0.16);
-  tl.from(refs.xCard, { x: 260, y: 40, scale: 0.9 }, 0.18);
-  tl.from(refs.devCard, { y: 220, scale: 0.9, clearProps: "transform" }, 0.2);
+  tl.from(refs.linkedinCard, { x: -480, y: 40, scale: 0.9 }, 0.16);
+  tl.from(refs.xCard, { x: -480, y: 40, scale: 0.9 }, 0.18);
+  tl.from(refs.devCard, { x: 120, y: 260, scale: 0.9 }, 0.2);
 
-  // 3) Petit "settle" final (micro scale) pour l'effet “ça se clippe”
-  tl.to(
-    [
-      refs.picture,
-      refs.presentationCard,
-      refs.toolkitCard,
-      refs.hireMeCard,
-      refs.linkedinCard,
-      refs.xCard,
-      refs.devCard,
-    ],
-    { scale: 1, rotate: 0 },
-    0.55
-  );
+  tl.to(allElements, { scale: 1, rotate: 0, ease: "power2.inOut" }, 0.55);
+
+  tl.set(allElements, { willChange: "auto" });
 
   return tl;
 };

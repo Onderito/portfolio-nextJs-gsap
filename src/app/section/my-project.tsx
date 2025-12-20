@@ -1,8 +1,34 @@
+"use client";
+
 import Image from "next/image";
 import Button from "../ui/button";
 import { Blocks, Sparkles, Pen } from "lucide-react";
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+import { createMyProjectAnimation } from "../animations/my-project-animation";
 
 export default function MyProject() {
+  const refs = {
+    container: useRef<HTMLDivElement>(null),
+    title: useRef<HTMLHeadingElement>(null),
+    wrappers: useRef<HTMLDivElement[]>([]),
+    cards: useRef<HTMLDivElement[]>([]),
+  };
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      createMyProjectAnimation({
+        container: refs.container.current!,
+        title: refs.title.current!,
+        wrappers: refs.wrappers.current,
+        cards: refs.cards.current,
+      });
+    }, refs.container);
+
+    return () => ctx.revert();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const projects = [
     {
       image: "/private-driver.webp",
@@ -34,16 +60,24 @@ export default function MyProject() {
     },
   ];
   return (
-    <div>
-      <h2 className="heading-2 text-center">
+    <div ref={refs.container}>
+      <h2 ref={refs.title} className="heading-2 text-center">
         Projects <span className="text-neutral-400 ">I’ve worked on</span>
       </h2>
-      <div className="mt-10 xl:mt-14 flex flex-col gap-8">
-        {projects.map((p, index) => (
+      {projects.map((p, index) => (
+        <div
+          key={index}
+          ref={(el) => {
+            if (el) refs.wrappers.current[index] = el;
+          }}
+          className="mt-10 xl:mt-14 flex flex-col gap-8 relative"
+        >
           <div
+            ref={(el) => {
+              refs.cards.current[index] = el as HTMLDivElement;
+            }}
             style={{ cornerShape: "squircle" }}
             className="bg-[#212121] p-2.5 rounded-3xl shadow-white-blur"
-            key={index}
           >
             <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-8 h-full">
               <div className="relative group w-full">
@@ -109,15 +143,15 @@ export default function MyProject() {
                   rel="noopener noreferrer"
                   href={p.url}
                 >
-                  <Button className=" w-full lg:w-fit">
+                  <Button ref={null} className=" w-full lg:w-fit">
                     See the Experience
                   </Button>
                 </a>
               </div>
             </div>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   );
 }

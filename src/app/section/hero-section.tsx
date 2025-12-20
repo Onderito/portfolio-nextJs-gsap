@@ -42,7 +42,7 @@ export default function HeroSection() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <div className="xl:h-screen xl:flex xl:justify-center xl:items-center">
+    <div className="h-screen flex justify-center items-center">
       <div className="flex flex-col items-center justify-center relative z-50">
         <Image
           ref={refs.picture}
@@ -79,7 +79,7 @@ export default function HeroSection() {
           alt="Circle Gradient"
           width={800}
           height={800}
-          className="absolute  blur-2xl -z-10 opacity-20 hidden lg:block animate-pulse"
+          className="absolute blur-2xl -z-10 opacity-20 animate-pulse"
         />
       </div>
     </div>

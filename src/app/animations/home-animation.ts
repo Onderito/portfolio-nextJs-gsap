@@ -15,54 +15,61 @@ export const createHomeAnimation = (refs: {
 
   tl.from(refs.gradientImage, {
     autoAlpha: 0,
-    duration: 1.2,
+    duration: 0.8,
     y: 100,
     scale: 4,
   });
-  tl.from(refs.picture, {
-    autoAlpha: 0,
-    y: 50,
-    duration: 1.2,
-    scale: 2,
-  });
   tl.from(
-    split.chars,
+    refs.picture,
     {
       autoAlpha: 0,
-      duration: 1,
-      y: 50,
-      stagger: 0.01,
-    },
-    "-=1"
-  );
-  tl.from(
-    refs.subtitle,
-    {
-      autoAlpha: 0,
-      duration: 1,
-      y: 50,
-    },
-    "-=0.9"
-  );
-  tl.from(
-    refs.button,
-    {
-      autoAlpha: 0,
-      duration: 1.2,
       y: 100,
-      scale: 2,
+      duration: 0.8,
+      rotate: 10,
+      scale: 1.2,
     },
-    "-=0.8"
+    "0.5"
   );
   tl.from(
     refs.name,
     {
       autoAlpha: 0,
-      duration: 1.2,
+      y: 100,
+      duration: 0.8,
+      rotate: 10,
+      scale: 1.2,
+    },
+    "<"
+  );
+  tl.from(
+    split.chars,
+    {
+      autoAlpha: 0,
+      duration: 0.8,
+      y: 50,
+      stagger: 0.02,
+      filter: "blur(10px)",
+    },
+    "-=0.2"
+  );
+  tl.from(
+    refs.subtitle,
+    {
+      autoAlpha: 0,
+      duration: 0.8,
+      y: 50,
+    },
+    "-=0.5"
+  );
+  tl.from(
+    refs.button,
+    {
+      autoAlpha: 0,
+      duration: 0.8,
       y: 100,
       scale: 2,
     },
-    "<"
+    "-=0.5"
   );
 
   return tl;
@@ -88,4 +95,9 @@ export const setupPictureHover = (element: HTMLElement) => {
 
   element.addEventListener("mouseenter", handleMouseEnter);
   element.addEventListener("mouseleave", handleMouseLeave);
+
+  return () => {
+    element.removeEventListener("mouseenter", handleMouseEnter);
+    element.removeEventListener("mouseleave", handleMouseLeave);
+  };
 };

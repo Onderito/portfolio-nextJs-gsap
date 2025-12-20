@@ -8,7 +8,7 @@ import Footer from "./section/footer";
 export default function Home() {
   return (
     <div>
-      <div className="container-hero">
+      <div className="">
         <HeroSection />
       </div>
       <div className="container">
