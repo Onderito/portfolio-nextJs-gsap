@@ -1,7 +1,35 @@
+"use client";
+
 import { Pen, Zap, Rocket } from "lucide-react";
 import Image from "next/image";
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+import { createMyJourneyAnimation } from "../animations/my-journey";
 
 export default function MyJourney() {
+  const refs = {
+    container: useRef<HTMLDivElement>(null),
+    title: useRef<HTMLHeadingElement>(null),
+    subtitle: useRef<HTMLParagraphElement>(null),
+    svgElement: useRef<HTMLImageElement>(null),
+    cards: useRef<HTMLDivElement[]>([]),
+  };
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      createMyJourneyAnimation({
+        container: refs.container.current!,
+        title: refs.title.current!,
+        subtitle: refs.subtitle.current!,
+        svgElement: refs.svgElement.current!,
+        cards: refs.cards.current,
+      });
+    }, refs.container);
+
+    return () => ctx.revert();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const myJourney = [
     {
       title: "2023 – First lines of code",
@@ -30,13 +58,19 @@ export default function MyJourney() {
   const rotations = ["rotate-2", "-rotate-2", "rotate-2"];
 
   return (
-    <div>
-      <h2 className="heading-2 text-center">My Journey</h2>
-      <p className="body-text text-center mt-2 md:mt-4 xl:mt-6">
+    <div ref={refs.container}>
+      <h2 ref={refs.title} className="heading-2 text-center">
+        My Journey
+      </h2>
+      <p
+        ref={refs.subtitle}
+        className="body-text text-center mt-2 md:mt-4 xl:mt-6"
+      >
         How I became obsessed with building beautiful web{" "}
         <span className="relative">
           experiences.
           <Image
+            ref={refs.svgElement}
             src="/abstract-line.svg"
             alt=""
             width={20}
@@ -48,6 +82,9 @@ export default function MyJourney() {
       <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 mt-10 xl:mt-14 gap-8">
         {myJourney.map((j, i) => (
           <div
+            ref={(el) => {
+              refs.cards.current[i] = el as HTMLDivElement;
+            }}
             style={{ cornerShape: "squircle" }}
             className={`flex flex-col  bg-[#212121] shadow-white-blur p-6 rounded-3xl overflow-hidden relative xl:w-full ${rotations[i]} `}
             key={i}

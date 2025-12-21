@@ -19,8 +19,9 @@ export const createWhoIAmAnimation = (refs: {
 
   gsap.from(split.chars, {
     autoAlpha: 0,
-    y: 10,
+    y: 50,
     stagger: 0.04,
+    filter: "blur(10px)",
     scrollTrigger: {
       trigger: refs.container,
       start: "top bottom-=200",
@@ -32,12 +33,9 @@ export const createWhoIAmAnimation = (refs: {
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: refs.container,
-      start: "top 10%",
-      end: "+=900",
-      scrub: 1,
-      pin: true,
-      anticipatePin: 1,
-      invalidateOnRefresh: true,
+      start: "top center",
+      end: "bottom 70%",
+      scrub: 1.5,
     },
   });
 
@@ -58,10 +56,10 @@ export const createWhoIAmAnimation = (refs: {
   tl.from(
     refs.presentationCard,
     { x: 660, y: -140, rotate: 4, scale: 0.92 },
-    0.1,
+    0.1
   );
 
-  tl.from(refs.toolkitCard, { x: 520, y: -220, rotate: -4, scale: 0.92 }, 0.12);
+  tl.from(refs.toolkitCard, { x: 520, y: -220, rotate: -4 }, 0.12);
 
   tl.from(refs.hireMeCard, { x: 260, y: 120, rotate: 6, scale: 0.92 }, 0.14);
 

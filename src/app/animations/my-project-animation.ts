@@ -15,6 +15,7 @@ export const createMyProjectAnimation = (refs: {
     autoAlpha: 0,
     y: 10,
     stagger: 0.04,
+    filter: "blur(10px)",
     scrollTrigger: {
       trigger: refs.container,
       start: "top bottom-=200",
@@ -56,8 +57,6 @@ export const createMyProjectAnimation = (refs: {
           pin: wrapper,
           pinSpacing: false,
           invalidateOnRefresh: true,
-          // markers: true,
-          // id: String(i + 1),
         },
       });
     });
