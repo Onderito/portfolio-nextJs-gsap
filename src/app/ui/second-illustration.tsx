@@ -30,7 +30,7 @@ export default function SecondIllustration() {
 
       const tl = gsap.timeline({
         repeat: -1,
-        repeatDelay: 1.2,
+        repeatDelay: 2.5,
         defaults: { ease: "power1.out" },
       });
 

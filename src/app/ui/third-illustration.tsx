@@ -43,19 +43,19 @@ export default function ThirdIllustration() {
 
       const tl = gsap.timeline({
         repeat: -1,
-        repeatDelay: 1.2,
+        repeatDelay: 2.5,
         defaults: { ease: "power1.out" },
       });
 
       tl.fromTo(
         card.current,
         { autoAlpha: 0, y: 10, filter: "blur(10px)" },
-        { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.5 }
+        { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.8 }
       );
 
       tl.to(path, { strokeDashoffset: 0, duration: 1.1 }, "<");
 
-      tl.to(whiteDot, { autoAlpha: 1, scale: 1, duration: 0.25 }, "-=0.6");
+      tl.to(whiteDot, { autoAlpha: 1, scale: 1, duration: 0.8 }, "-=0.6");
 
       const obj = { t: 0 };
       tl.to(
@@ -76,7 +76,7 @@ export default function ThirdIllustration() {
       if (redDot.current) {
         tl.to(
           redDot.current,
-          { autoAlpha: 1, scale: 1, duration: 0.25, ease: "back.out(2.2)" },
+          { autoAlpha: 1, scale: 1, duration: 0.8, ease: "back.out(2.2)" },
           "-=0.9"
         );
       }
@@ -85,7 +85,7 @@ export default function ThirdIllustration() {
         whiteDot,
         {
           scale: 1.1,
-          duration: 0.5,
+          duration: 0.8,
           yoyo: true,
           repeat: 1,
           ease: "sine.inOut",
@@ -100,10 +100,10 @@ export default function ThirdIllustration() {
 
       tl.to(
         [whiteDot, redDot.current].filter(Boolean),
-        { autoAlpha: 0, duration: 0.2 },
+        { autoAlpha: 0, duration: 0.8 },
         "+=0.35"
       );
-      tl.to(card.current, { autoAlpha: 0, duration: 0.2 }, "<");
+      tl.to(card.current, { autoAlpha: 0, duration: 0.8 }, "<");
       tl.set(obj, { t: 0 });
       tl.set(path, { strokeDashoffset: length });
     }, root);

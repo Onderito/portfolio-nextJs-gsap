@@ -35,19 +35,15 @@ export default function FirstIllustration() {
 
       const tl = gsap.timeline({
         repeat: -1,
-        repeatDelay: 1.2,
+        repeatDelay: 2.5,
         defaults: { ease: "power1.out" },
       });
 
-      tl.to(topCard.current, { scaleX: 1, duration: 0.6 })
-        .to(
-          topBar.current,
-          { scaleX: 1, autoAlpha: 1, duration: 0.45 },
-          "<0.25"
-        )
+      tl.to(topCard.current, { scaleX: 1, duration: 0.8 })
+        .to(topBar.current, { scaleX: 1, autoAlpha: 1, duration: 0.8 }, "<0.25")
         .to(
           line.current,
-          { scaleY: 1, duration: 0.45, ease: "power1.out" },
+          { scaleY: 1, duration: 0.8, ease: "power1.out" },
           "<0.05"
         )
         .to([left.current, right.current], {

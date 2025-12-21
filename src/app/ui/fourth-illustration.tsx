@@ -45,19 +45,19 @@ export default function FourthIllustration() {
 
       const tl = gsap.timeline({
         repeat: -1,
-        repeatDelay: 1.2,
+        repeatDelay: 2.5,
         defaults: { ease: "power1.out" },
       });
 
       tl.fromTo(
         card.current,
         { autoAlpha: 0, y: 10, filter: "blur(10px)" },
-        { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.5 }
+        { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.8 }
       )
-        .to(dots.current, { autoAlpha: 1, y: 0, duration: 0.25 }, "-=0.2")
-        .to(arrow.current, { autoAlpha: 1, x: 0, duration: 0.25 }, "-=0.15")
-        .to(line1.current, { scaleX: 1, duration: 0.35 }, "-=0.05")
-        .to(line2.current, { scaleX: 1, duration: 0.3 }, "-=0.1")
+        .to(dots.current, { autoAlpha: 1, y: 0, duration: 0.4 }, "-=0.2")
+        .to(arrow.current, { autoAlpha: 1, x: 0, duration: 0.4 }, "-=0.15")
+        .to(line1.current, { scaleX: 1, duration: 0.5 }, "-=0.05")
+        .to(line2.current, { scaleX: 1, duration: 0.5 }, "-=0.1")
         .to(
           progressTrack.current,
           { autoAlpha: 1, y: 0, duration: 0.25 },
