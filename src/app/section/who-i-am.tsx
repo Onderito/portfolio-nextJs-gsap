@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import Image from "next/image";
@@ -104,10 +103,14 @@ export default function WhoIAm() {
                     className={`flex h-[70px] w-[70px] items-center justify-center rounded-2xl border border-[#404040] ${item.bg} bg-[#333333] text-base font-light`}
                   >
                     {item.icon ? (
-                      <img
-                        className="w-10 h-10"
+                      <Image
                         src={item.icon}
                         alt={item.alt!}
+                        width={48}
+                        height={48}
+                        quality={100}
+                        className="h-12 w-12"
+                        priority={i < 2}
                       />
                     ) : (
                       item.text
@@ -185,7 +188,13 @@ export default function WhoIAm() {
                 style={{ cornerShape: "squircle" }}
                 className="relative overflow-hidden rounded-2xl xl:rounded-3xl bg-[#212121] p-6 shadow-white-blur flex items-center justify-center xl:col-span-1 h-[200px] xl:h-full cursor-pointer scale-animation"
               >
-                <img src="/x.svg" alt="X" />
+                <Image
+                  src="/x.svg"
+                  alt="X"
+                  width={70}
+                  height={70}
+                  quality={100}
+                />
                 <Image
                   className="absolute w-full top-[-150px] md:top-[-350px] lg:top-[-500px] left-20 xl:-top-20"
                   src="/double-circle.svg"
