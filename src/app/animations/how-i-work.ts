@@ -57,7 +57,6 @@ export const createHowIWorkAnimation = (refs: {
         trigger: refs.container,
         start: "top center",
         end: "top 25%",
-        scrub: true,
       },
     });
     return () => {};

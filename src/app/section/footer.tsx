@@ -1,7 +1,45 @@
+"use client";
+
 import Image from "next/image";
 import { Github, Twitter, Linkedin } from "lucide-react";
+import gsap from "gsap";
+import { useLayoutEffect, useRef } from "react";
+import { createFooterAnimation } from "../animations/footer";
+import { useEffect, useState } from "react";
 
 export default function Footer() {
+  const [time, setTime] = useState("");
+
+  useEffect(() => {
+    const updateTime = () => {
+      const timeString = new Date().toLocaleTimeString("fr-FR", {
+        hour: "2-digit",
+        minute: "2-digit",
+        timeZone: "Europe/Paris",
+      });
+
+      setTime(`${timeString} Paris`);
+    };
+
+    updateTime();
+    const interval = setInterval(updateTime, 60000);
+
+    return () => clearInterval(interval);
+  }, []);
+  const refs = {
+    container: useRef<HTMLImageElement>(null),
+  };
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const element = {
+        container: refs.container.current!,
+      };
+      createFooterAnimation(element);
+    });
+    return () => ctx.revert();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const navs = [
     {
       name: "Home",
@@ -26,6 +64,7 @@ export default function Footer() {
   ];
   return (
     <div
+      ref={refs.container}
       style={{ cornerShape: "squircle" }}
       className="bg-[#080808] p-4 xl:p-8 rounded-3xl relative overflow-hidden"
     >
@@ -67,7 +106,7 @@ export default function Footer() {
           {navs.map((nav, i) => (
             <li
               key={i}
-              className="lg:mt-4 text-neutral-500 text-sm w-fit hover:text-white cursor-pointer"
+              className="lg:mt-4 text-neutral-500 text-sm w-fit hover:text-white "
             >
               {nav.name}
             </li>
@@ -83,19 +122,19 @@ export default function Footer() {
       <div className="flex flex-col gap-2 lg:gap-4 lg:flex-row lg:justify-between lg:items-center mt-10 border-t-[0.5px] border-[#292929] pt-10 ">
         <div className="flex flex-col justify-center items-center gap-2 lg:gap-4 lg:flex-row lg:justify-start text-neutral-600 text-sm font-light">
           <p className="cursor-pointer hover:text-white">
-            © 2024 Ulas Önder. All rights reserved.{" "}
+            © 2025 Ulas Önder. All rights reserved
           </p>
           <p className="cursor-pointer hover:text-white">Privacy Policy</p>
           <p className="cursor-pointer hover:text-white">Terms of Service</p>
         </div>
-        <div className=" mt-2 lg:mt-0 p-1.5 rounded-[10px] bg-[#151515] shadow-white-blur flex w-fit mx-auto lg:mx-0 items-center gap-2">
+        <div className=" mt-2 lg:mt-0 p-1.5 rounded-[10px] bg-[#151515] shadow-white-blur flex w-fit mx-auto lg:mx-0 items-center gap-2 px-4">
           <div className="w-2 h-2 rounded-full bg-green-500"></div>
-          <p
+          <span
             style={{ cornerShape: "squircle" }}
-            className=" font-extralight text-sm"
+            className=" font-extralight text-sm "
           >
-            03 : 50 PM Paris
-          </p>
+            {time}
+          </span>
         </div>
       </div>
       <Image

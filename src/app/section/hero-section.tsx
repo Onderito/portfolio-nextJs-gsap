@@ -70,9 +70,15 @@ export default function HeroSection() {
         >
           Focused on performance, smooth animations, and clean interfaces.
         </p>
-        <Button ref={refs.button} className=" mt-6 md:mt-8 xl:mt-10 ">
-          Hire Me
-        </Button>{" "}
+        <a
+          href="https://www.linkedin.com/in/ulasonder/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <Button ref={refs.button} className=" mt-6 md:mt-8 xl:mt-10 ">
+            Hire Me
+          </Button>
+        </a>
         <Image
           ref={refs.gradientImage}
           src="/circle-gradient.svg"

@@ -6,10 +6,10 @@ import Lenis from "lenis";
 const useLenis = () => {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 0.8,
+      duration: 1.2,
       easing: (t) => t * (2 - t),
       smoothWheel: true,
-      wheelMultiplier: 1,
+      wheelMultiplier: 0.7,
     });
 
     const animate = (time: number) => {

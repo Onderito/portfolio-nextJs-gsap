@@ -5,7 +5,7 @@ import SplitText from "gsap/SplitText";
 export const createMyProjectAnimation = (refs: {
   container: HTMLElement;
   title: HTMLElement;
-  wrappers: HTMLElement[]; // j'utilise "[]" car je veux un tableau d'élements
+  wrappers: HTMLElement[];
   cards: HTMLElement[];
 }) => {
   gsap.registerPlugin(ScrollTrigger);

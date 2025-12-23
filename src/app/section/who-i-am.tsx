@@ -68,11 +68,11 @@ export default function WhoIAm() {
             />
           </div>
 
-          <div className="mt-4 flex flex-col gap-4 xl:mt-0 xl:grid xl:grid-cols-3 xl:gap-4 xl:h-[659px] xl:auto-rows-fr">
+          <div className="mt-4 flex flex-col gap-4 xl:mt-0 xl:grid xl:grid-cols-3 xl:h-[659px] xl:auto-rows-fr">
             <div
               ref={refs.presentationCard}
               style={{ cornerShape: "squircle" }}
-              className="relative overflow-hidden rounded-2xl xl:rounded-3xl bg-[#212121] lg:h-[200px] p-6 shadow-white-blur xl:col-span-3 "
+              className="relative overflow-hidden rounded-2xl xl:rounded-3xl bg-[#212121] lg:h-[200px] p-6 shadow-white-blur xl:h-auto xl:col-span-3 "
             >
               <h4 className="text-2xl font-bold">Ulas Önder</h4>
               <p className="mt-3 text-neutral-400 leading-relaxed xl:w-[90%]">
@@ -126,9 +126,18 @@ export default function WhoIAm() {
               className="relative overflow-hidden rounded-2xl xl:rounded-3xl bg-[#212121] p-6 shadow-white-blur xl:col-span-1 flex items-center justify-center h-[200px] xl:h-full"
             >
               <div className="relative z-10">
-                <Button ref={null} className="px-10">
-                  Hire Me
-                </Button>
+                <a
+                  href="https://www.linkedin.com/in/ulasonder/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Button
+                    ref={null}
+                    className="px-10 transform hover:scale-105 duration-700"
+                  >
+                    Hire Me
+                  </Button>
+                </a>
               </div>
 
               <Image
@@ -197,7 +206,7 @@ export default function WhoIAm() {
             <div
               ref={refs.devCard}
               style={{ cornerShape: "squircle" }}
-              className="relative overflow-hidden text-neutral-400 rounded-2xl xl:rounded-3xl bg-[#212121] p-6 shadow-white-blur flex items-center justify-center xl:col-span-1 h-[200px] xl:h-full"
+              className="relative overflow-hidden  rounded-2xl xl:rounded-3xl bg-[#212121] p-6 shadow-white-blur flex items-center justify-center xl:col-span-1 h-[200px] xl:h-full"
             >
               <h5 className="relative z-10  font-gloria text-3xl font-bold">
                 ÖnderDev
