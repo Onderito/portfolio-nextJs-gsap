@@ -108,6 +108,7 @@ export default function WhoIAm() {
                         alt={item.alt!}
                         width={48}
                         height={48}
+                        sizes="48px"
                         quality={100}
                         className="h-12 w-12"
                         priority={i < 2}
@@ -189,12 +190,13 @@ export default function WhoIAm() {
                 className="relative overflow-hidden rounded-2xl xl:rounded-3xl bg-[#212121] p-6 shadow-white-blur flex items-center justify-center xl:col-span-1 h-[200px] xl:h-full cursor-pointer scale-animation"
               >
                 <Image
-                  src="/x.svg"
+                  src="/x.webp"
                   alt="X"
                   width={70}
                   height={70}
-                  quality={100}
+                  unoptimized
                 />
+
                 <Image
                   className="absolute w-full top-[-150px] md:top-[-350px] lg:top-[-500px] left-20 xl:-top-20"
                   src="/double-circle.svg"
