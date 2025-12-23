@@ -27,7 +27,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${gloria.variable}`}>
       <body>
-        <ClientWrapper>{children}</ClientWrapper>
+        <main>
+          <ClientWrapper>{children}</ClientWrapper>
+        </main>
       </body>
     </html>
   );

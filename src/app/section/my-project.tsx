@@ -1,8 +1,34 @@
+"use client";
+
 import Image from "next/image";
 import Button from "../ui/button";
 import { Blocks, Sparkles, Pen } from "lucide-react";
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+import { createMyProjectAnimation } from "../animations/my-project-animation";
 
 export default function MyProject() {
+  const refs = {
+    container: useRef<HTMLDivElement>(null),
+    title: useRef<HTMLHeadingElement>(null),
+    wrappers: useRef<HTMLDivElement[]>([]),
+    cards: useRef<HTMLDivElement[]>([]),
+  };
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      createMyProjectAnimation({
+        container: refs.container.current!,
+        title: refs.title.current!,
+        wrappers: refs.wrappers.current,
+        cards: refs.cards.current,
+      });
+    }, refs.container);
+
+    return () => ctx.revert();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const projects = [
     {
       image: "/private-driver.webp",
@@ -34,16 +60,24 @@ export default function MyProject() {
     },
   ];
   return (
-    <div>
-      <h2 className="heading-2 text-center">
+    <div ref={refs.container}>
+      <h2 ref={refs.title} className="heading-2 text-center">
         Projects <span className="text-neutral-400 ">I’ve worked on</span>
       </h2>
-      <div className="mt-10 xl:mt-14 flex flex-col gap-8">
-        {projects.map((p, index) => (
+      {projects.map((p, index) => (
+        <div
+          key={index}
+          ref={(el) => {
+            if (el) refs.wrappers.current[index] = el;
+          }}
+          className="mt-10 xl:mt-14 flex flex-col gap-8 relative"
+        >
           <div
+            ref={(el) => {
+              refs.cards.current[index] = el as HTMLDivElement;
+            }}
             style={{ cornerShape: "squircle" }}
             className="bg-[#212121] p-2.5 rounded-3xl shadow-white-blur"
-            key={index}
           >
             <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-8 h-full">
               <div className="relative group w-full">
@@ -72,7 +106,7 @@ export default function MyProject() {
                 {/* Tech Stack */}
                 <div className="mt-6 xl:mt-10 py-5 sm:py-6 border-t border-white/5 grid grid-cols-2 sm:flex sm:flex-wrap gap-y-6 gap-x-8">
                   <div className="space-y-1.5 col-span-2 sm:col-span-1">
-                    <p className="text-[10px] sm:text-xs font-medium text-neutral-500 uppercase tracking-wider">
+                    <p className="text-[10px] sm:text-xs font-medium text-neutral-400 uppercase tracking-wider">
                       Role
                     </p>
                     <p className="text-sm sm:text-base text-neutral-200 font-medium">
@@ -80,24 +114,24 @@ export default function MyProject() {
                     </p>
                   </div>
                   <div className="space-y-1.5">
-                    <p className="text-[10px] sm:text-xs font-medium text-neutral-500 uppercase tracking-wider">
+                    <p className="text-[10px] sm:text-xs font-medium text-neutral-400 uppercase tracking-wider">
                       Framework
                     </p>
                     <div className="flex items-center gap-2 text-sm sm:text-base text-neutral-200 font-medium">
                       {index === 0 || index === 1 ? (
-                        <Blocks className="text-neutral-500 w-3.5 h-3.5" />
+                        <Blocks className="text-neutral-400 w-3.5 h-3.5" />
                       ) : (
-                        <Pen className="text-neutral-500 w-3.5 h-3.5" />
+                        <Pen className="text-neutral-400 w-3.5 h-3.5" />
                       )}
                       {p.stack}
                     </div>
                   </div>
                   <div className="space-y-1.5">
-                    <p className="text-[10px] sm:text-xs font-medium text-neutral-500 uppercase tracking-wider">
+                    <p className="text-[10px] sm:text-xs font-medium text-neutral-400 uppercase tracking-wider">
                       Animation
                     </p>
                     <div className="flex items-center gap-2 text-sm sm:text-base text-neutral-200 font-medium">
-                      <Sparkles className="text-neutral-500 w-3.5 h-3.5" />
+                      <Sparkles className="text-neutral-400 w-3.5 h-3.5" />
                       GSAP
                     </div>
                   </div>
@@ -109,15 +143,15 @@ export default function MyProject() {
                   rel="noopener noreferrer"
                   href={p.url}
                 >
-                  <Button className=" w-full lg:w-fit">
+                  <Button ref={null} className=" w-full lg:w-fit">
                     See the Experience
                   </Button>
                 </a>
               </div>
             </div>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   );
 }

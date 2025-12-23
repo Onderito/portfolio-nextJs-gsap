@@ -1,7 +1,35 @@
+"use client";
+
 import { Pen, Zap, Rocket } from "lucide-react";
 import Image from "next/image";
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+import { createMyJourneyAnimation } from "../animations/my-journey";
 
 export default function MyJourney() {
+  const refs = {
+    container: useRef<HTMLDivElement>(null),
+    title: useRef<HTMLHeadingElement>(null),
+    subtitle: useRef<HTMLParagraphElement>(null),
+    svgElement: useRef<HTMLImageElement>(null),
+    cards: useRef<HTMLDivElement[]>([]),
+  };
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      createMyJourneyAnimation({
+        container: refs.container.current!,
+        title: refs.title.current!,
+        subtitle: refs.subtitle.current!,
+        svgElement: refs.svgElement.current!,
+        cards: refs.cards.current,
+      });
+    }, refs.container);
+
+    return () => ctx.revert();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const myJourney = [
     {
       title: "2023 – First lines of code",
@@ -30,31 +58,43 @@ export default function MyJourney() {
   const rotations = ["rotate-2", "-rotate-2", "rotate-2"];
 
   return (
-    <div>
-      <h2 className="heading-2 text-center">My Journey</h2>
-      <p className="body-text text-center mt-2 md:mt-4 xl:mt-6">
+    <div ref={refs.container}>
+      <h2 ref={refs.title} className="heading-2 text-center">
+        My Journey
+      </h2>
+      <p
+        ref={refs.subtitle}
+        className="body-text text-center mt-2 md:mt-4 xl:mt-6"
+      >
         How I became obsessed with building beautiful web{" "}
-        <span className="relative">
+        <span className="relative inline-block">
           experiences.
-          <Image
-            src="/abstract-line.svg"
-            alt=""
-            width={20}
-            height={20}
-            className="absolute -bottom-8 xl:-bottom-10.5 left-2 w-full h-auto"
-          />
+          <span className="absolute -bottom-8 xl:-bottom-9.5 left-2 w-full h-auto">
+            <Image
+              ref={refs.svgElement}
+              src="/abstract-line.svg"
+              alt="Abstract Line"
+              width={200}
+              height={40}
+              className="w-full h-auto  "
+            />
+          </span>
         </span>
       </p>
+
       <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 mt-10 xl:mt-14 gap-8">
         {myJourney.map((j, i) => (
           <div
+            ref={(el) => {
+              refs.cards.current[i] = el as HTMLDivElement;
+            }}
             style={{ cornerShape: "squircle" }}
             className={`flex flex-col  bg-[#212121] shadow-white-blur p-6 rounded-3xl overflow-hidden relative xl:w-full ${rotations[i]} `}
             key={i}
           >
             <div className="relative z-10">
               <div className="flex flex-row justify-between items-center">
-                <h4 className="heading-4">{j.title}</h4>
+                <h3 className="heading-4">{j.title}</h3>
                 <div className=" rounded-full w-10 h-10 flex items-center justify-center shrink-0 bg-white/5 text-zinc-300 ring-1 ring-inset ring-white/10">
                   {i === 0 ? (
                     <Zap className="w-3.5 h-3.5 xl:w-5 xl:h-5" />

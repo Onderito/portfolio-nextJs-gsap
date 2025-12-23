@@ -1,7 +1,44 @@
+"use client";
+
 import Image from "next/image";
 import Button from "../ui/button";
+import gsap from "gsap";
+import { useLayoutEffect, useRef } from "react";
+import { createWhoIAmAnimation } from "../animations/who-i-am";
 
 export default function WhoIAm() {
+  const refs = {
+    container: useRef<HTMLDivElement>(null),
+    title: useRef<HTMLHeadingElement>(null),
+    picture: useRef<HTMLDivElement>(null),
+    presentationCard: useRef<HTMLDivElement>(null),
+    toolkitCard: useRef<HTMLDivElement>(null),
+    hireMeCard: useRef<HTMLDivElement>(null),
+    linkedinCard: useRef<HTMLAnchorElement>(null),
+    xCard: useRef<HTMLAnchorElement>(null),
+    devCard: useRef<HTMLDivElement>(null),
+  };
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const elements = {
+        container: refs.container.current!,
+        title: refs.title.current!,
+        picture: refs.picture.current!,
+        presentationCard: refs.presentationCard.current!,
+        toolkitCard: refs.toolkitCard.current!,
+        hireMeCard: refs.hireMeCard.current!,
+        linkedinCard: refs.linkedinCard.current!,
+        xCard: refs.xCard.current!,
+        devCard: refs.devCard.current!,
+      };
+      createWhoIAmAnimation(elements);
+    });
+
+    return () => ctx.revert();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const tools = [
     { icon: "/webflow.svg", alt: "Webflow", bg: "bg-[#AAC6FA]" },
     { icon: "/nextJs.svg", alt: "NextJs", bg: "bg-[#1A1A1A]" },
@@ -11,12 +48,14 @@ export default function WhoIAm() {
   ];
 
   return (
-    <>
-      <h2 className="heading-2 text-center">Who I Am</h2>
-
-      <section className="mt-10 xl:mt-14 flex flex-col items-center justify-center">
+    <div ref={refs.container}>
+      <h2 ref={refs.title} className="heading-2 text-center">
+        Who I Am
+      </h2>
+      <div className="mt-10 xl:mt-14 flex flex-col items-center justify-center">
         <div className="w-full xl:grid xl:grid-cols-[2fr_3fr] xl:gap-6 xl:items-stretch">
           <div
+            ref={refs.picture}
             style={{ cornerShape: "squircle" }}
             className="relative overflow-hidden rounded-2xl xl:rounded-3xl shadow-white-blur aspect-3/4 xl:aspect-auto "
           >
@@ -24,17 +63,18 @@ export default function WhoIAm() {
               src="/blur-profile.webp"
               alt="Ulas Profile"
               fill
-              quality={100}
+              quality={80}
               className="object-cover scale-animation"
             />
           </div>
 
-          <div className="mt-4 flex flex-col gap-4 xl:mt-0 xl:grid xl:grid-cols-3 xl:gap-4 xl:h-[659px] xl:auto-rows-fr">
+          <div className="mt-4 flex flex-col gap-4 xl:mt-0 xl:grid xl:grid-cols-3 xl:h-[659px] xl:auto-rows-fr">
             <div
+              ref={refs.presentationCard}
               style={{ cornerShape: "squircle" }}
-              className="relative overflow-hidden rounded-2xl xl:rounded-3xl bg-[#212121] p-6 shadow-white-blur xl:col-span-3 "
+              className="relative overflow-hidden rounded-2xl xl:rounded-3xl bg-[#212121] lg:h-[200px] p-6 shadow-white-blur xl:h-auto xl:col-span-3 "
             >
-              <h4 className="text-2xl font-bold">Ulas Önder</h4>
+              <h3 className="text-2xl font-bold">Ulas Önder</h3>
               <p className="mt-3 text-neutral-400 leading-relaxed xl:w-[90%]">
                 Front-end Developer and Designer. My specialty is building high
                 converting <span className="text-white">Landing Pages</span>{" "}
@@ -42,10 +82,11 @@ export default function WhoIAm() {
                 clean code to maximize your revenue.
               </p>
 
-              <div className="pointer-events-none absolute right-[-80px] top-[-80px] h-[220px] w-[220px] rounded-full bg-white/10 blur-[70px]" />
+              <div className="pointer-events-none absolute -right-20 -top-20 h-[220px] w-[220px] rounded-full bg-white/10 blur-[70px]" />
             </div>
 
             <div
+              ref={refs.toolkitCard}
               style={{ cornerShape: "squircle" }}
               className="relative overflow-hidden rounded-2xl xl:rounded-3xl bg-[#212121] p-6 shadow-white-blur xl:col-span-2"
             >
@@ -80,11 +121,23 @@ export default function WhoIAm() {
             </div>
 
             <div
+              ref={refs.hireMeCard}
               style={{ cornerShape: "squircle" }}
               className="relative overflow-hidden rounded-2xl xl:rounded-3xl bg-[#212121] p-6 shadow-white-blur xl:col-span-1 flex items-center justify-center h-[200px] xl:h-full"
             >
               <div className="relative z-10">
-                <Button className="px-10">Hire Me</Button>
+                <a
+                  href="https://www.linkedin.com/in/ulasonder/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Button
+                    ref={null}
+                    className="px-10 transform hover:scale-105 duration-700"
+                  >
+                    Hire Me
+                  </Button>
+                </a>
               </div>
 
               <Image
@@ -92,12 +145,13 @@ export default function WhoIAm() {
                 alt="Color Gradient"
                 width={800}
                 height={800}
-                className="absolute top-[-80px] md:top-[-200px] xl:top-0 blur-2xl"
+                className="absolute -top-20 md:top-[-200px] xl:top-0 blur-2xl"
               />
             </div>
 
             {/* BOTTOM 3 CARDS */}
             <a
+              ref={refs.linkedinCard}
               href="https://www.linkedin.com/in/ulasonder/"
               target="_blank"
               rel="noreferrer"
@@ -113,7 +167,7 @@ export default function WhoIAm() {
                   height={70}
                 />
                 <Image
-                  className="absolute w-full bottom-[-150px] md:bottom-[-350px] right-20 xl:bottom-[-80px] "
+                  className="absolute w-full bottom-[-150px] md:bottom-[-350px] lg:bottom-[-500px] right-20 xl:-top-20 "
                   src="/double-circle.svg"
                   alt="double circle"
                   width={70}
@@ -122,7 +176,12 @@ export default function WhoIAm() {
               </div>
             </a>
 
-            <a href="https://x.com/UnderDev0" target="_blank" rel="noreferrer">
+            <a
+              ref={refs.xCard}
+              href="https://x.com/UnderDev0"
+              target="_blank"
+              rel="noreferrer"
+            >
               <div
                 style={{ cornerShape: "squircle" }}
                 className="relative overflow-hidden rounded-2xl xl:rounded-3xl bg-[#212121] p-6 shadow-white-blur flex items-center justify-center xl:col-span-1 h-[200px] xl:h-full cursor-pointer scale-animation"
@@ -135,7 +194,7 @@ export default function WhoIAm() {
                   className=""
                 />
                 <Image
-                  className="absolute w-full top-[-150px] md:top-[-350px] left-20 xl:top-[-80px]"
+                  className="absolute w-full top-[-150px] md:top-[-350px] lg:top-[-500px] left-20 xl:-top-20"
                   src="/double-circle.svg"
                   alt="double circle"
                   width={70}
@@ -145,8 +204,9 @@ export default function WhoIAm() {
             </a>
 
             <div
+              ref={refs.devCard}
               style={{ cornerShape: "squircle" }}
-              className="relative overflow-hidden text-neutral-400 hover:text-white transform hover:scale-105 duration-700 rounded-2xl xl:rounded-3xl bg-[#212121] p-6 shadow-white-blur flex items-center justify-center xl:col-span-1 h-[200px] xl:h-full"
+              className="relative overflow-hidden  rounded-2xl xl:rounded-3xl bg-[#212121] p-6 shadow-white-blur flex items-center justify-center xl:col-span-1 h-[200px] xl:h-full"
             >
               <h5 className="relative z-10  font-gloria text-3xl font-bold">
                 ÖnderDev
@@ -156,12 +216,12 @@ export default function WhoIAm() {
                 alt="Color Gradient"
                 width={800}
                 height={800}
-                className="absolute bottom-[-80px] md:bottom-[-200px] xl:bottom-0 blur-2xl"
+                className="absolute -bottom-20 md:bottom-[-200px] xl:bottom-0 blur-2xl"
               />
             </div>
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </div>
   );
 }

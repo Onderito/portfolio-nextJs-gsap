@@ -1,10 +1,35 @@
+"use client";
+
 import Image from "next/image";
 import FirstIllustration from "../ui/first-illustration";
 import SecondIllustration from "../ui/second-illustration";
 import ThirdIllustration from "../ui/third-illustration";
 import FourthIllustration from "../ui/fourth-illustration";
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+import { createHowIWorkAnimation } from "../animations/how-i-work";
 
 export default function HowIWork() {
+  const refs = {
+    container: useRef<HTMLDivElement>(null),
+    title: useRef<HTMLHeadingElement>(null),
+    subtitle: useRef<HTMLParagraphElement>(null),
+    cards: useRef<HTMLDivElement[]>([]),
+  };
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      createHowIWorkAnimation({
+        container: refs.container.current!,
+        title: refs.title.current!,
+        subtitle: refs.subtitle.current!,
+        cards: refs.cards.current,
+      });
+    }, refs.container);
+
+    return () => ctx.revert();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const cards = [
     {
       tag: "Think, Plan, Execute",
@@ -28,15 +53,20 @@ export default function HowIWork() {
     },
   ];
   return (
-    <div>
-      <h2 className="heading-2 text-center">How I Work</h2>
-      <p className="body-text text-center mt-2 md:mt-4 xl:mt-6">
+    <div ref={refs.container}>
+      <h2 ref={refs.title} className="heading-2 text-center">
+        How I Work
+      </h2>
+      <p ref={refs.subtitle} className=" text-center mt-2 md:mt-4 xl:mt-6">
         A streamlined process to deliver polished, high-performance web
         experiences.{" "}
       </p>
       <div className="flex flex-col gap-8 mt-10 xl:mt-14 md:grid md:grid-cols-2 xl:grid-cols-4 xl:w-full">
         {cards.map((c, i) => (
           <div
+            ref={(el) => {
+              refs.cards.current[i] = el as HTMLDivElement;
+            }}
             style={{ cornerShape: "squircle" }}
             className=" bg-[#212121] p-4 shadow-white-blur rounded-3xl"
             key={i}
@@ -69,7 +99,7 @@ export default function HowIWork() {
             <p className="text-[12px] bg-[#1C1C1C] shadow-white-blur rounded-xl w-fit p-1.5 mt-4 text-neutral-400 ">
               {c.tag}
             </p>
-            <h4 className="heading-4 mt-6">{c.title}</h4>
+            <h3 className="heading-4 mt-6">{c.title}</h3>
             <p className="mt-2 text-neutral-400 card-text">{c.desc}</p>
           </div>
         ))}
