@@ -8,7 +8,7 @@ import HowIWork from "./section/how-i-work";
 export default function Home() {
   return (
     <div>
-      <div className="">
+      <div>
         <HeroSection />
       </div>
       <div className="container">
