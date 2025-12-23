@@ -57,10 +57,7 @@ export default function HowIWork() {
       <h2 ref={refs.title} className="heading-2 text-center">
         How I Work
       </h2>
-      <p
-        ref={refs.subtitle}
-        className="body-text text-center mt-2 md:mt-4 xl:mt-6"
-      >
+      <p ref={refs.subtitle} className=" text-center mt-2 md:mt-4 xl:mt-6">
         A streamlined process to deliver polished, high-performance web
         experiences.{" "}
       </p>
@@ -102,7 +99,7 @@ export default function HowIWork() {
             <p className="text-[12px] bg-[#1C1C1C] shadow-white-blur rounded-xl w-fit p-1.5 mt-4 text-neutral-400 ">
               {c.tag}
             </p>
-            <h4 className="heading-4 mt-6">{c.title}</h4>
+            <h3 className="heading-4 mt-6">{c.title}</h3>
             <p className="mt-2 text-neutral-400 card-text">{c.desc}</p>
           </div>
         ))}

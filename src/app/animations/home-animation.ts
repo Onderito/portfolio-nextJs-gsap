@@ -48,7 +48,6 @@ export const createHomeAnimation = (refs: {
       duration: 0.8,
       y: 50,
       stagger: 0.02,
-      filter: "blur(10px)",
     },
     "-=0.2"
   );

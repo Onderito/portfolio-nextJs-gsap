@@ -9,9 +9,13 @@ export const createHowIWorkAnimation = (refs: {
   cards: HTMLElement[];
 }) => {
   gsap.registerPlugin(ScrollTrigger);
-  const split = SplitText.create(refs.title, { type: "words, chars" });
+  const split = SplitText.create(refs.title, {
+    type: "words, chars",
+    aria: "none",
+  });
   const splitSubtile = SplitText.create(refs.subtitle, {
     type: "words, chars",
+    aria: "none",
   });
   const tl = gsap.timeline({
     scrollTrigger: {
@@ -51,7 +55,7 @@ export const createHowIWorkAnimation = (refs: {
       filter: "blur(0px)",
       duration: 0.8,
       scale: 1,
-      stagger: 0.12,
+      stagger: 0.1,
       ease: "power2.out",
       scrollTrigger: {
         trigger: refs.container,

@@ -106,7 +106,7 @@ export default function MyProject() {
                 {/* Tech Stack */}
                 <div className="mt-6 xl:mt-10 py-5 sm:py-6 border-t border-white/5 grid grid-cols-2 sm:flex sm:flex-wrap gap-y-6 gap-x-8">
                   <div className="space-y-1.5 col-span-2 sm:col-span-1">
-                    <p className="text-[10px] sm:text-xs font-medium text-neutral-500 uppercase tracking-wider">
+                    <p className="text-[10px] sm:text-xs font-medium text-neutral-400 uppercase tracking-wider">
                       Role
                     </p>
                     <p className="text-sm sm:text-base text-neutral-200 font-medium">
@@ -114,24 +114,24 @@ export default function MyProject() {
                     </p>
                   </div>
                   <div className="space-y-1.5">
-                    <p className="text-[10px] sm:text-xs font-medium text-neutral-500 uppercase tracking-wider">
+                    <p className="text-[10px] sm:text-xs font-medium text-neutral-400 uppercase tracking-wider">
                       Framework
                     </p>
                     <div className="flex items-center gap-2 text-sm sm:text-base text-neutral-200 font-medium">
                       {index === 0 || index === 1 ? (
-                        <Blocks className="text-neutral-500 w-3.5 h-3.5" />
+                        <Blocks className="text-neutral-400 w-3.5 h-3.5" />
                       ) : (
-                        <Pen className="text-neutral-500 w-3.5 h-3.5" />
+                        <Pen className="text-neutral-400 w-3.5 h-3.5" />
                       )}
                       {p.stack}
                     </div>
                   </div>
                   <div className="space-y-1.5">
-                    <p className="text-[10px] sm:text-xs font-medium text-neutral-500 uppercase tracking-wider">
+                    <p className="text-[10px] sm:text-xs font-medium text-neutral-400 uppercase tracking-wider">
                       Animation
                     </p>
                     <div className="flex items-center gap-2 text-sm sm:text-base text-neutral-200 font-medium">
-                      <Sparkles className="text-neutral-500 w-3.5 h-3.5" />
+                      <Sparkles className="text-neutral-400 w-3.5 h-3.5" />
                       GSAP
                     </div>
                   </div>

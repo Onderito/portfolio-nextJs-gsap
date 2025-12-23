@@ -63,7 +63,7 @@ export default function WhoIAm() {
               src="/blur-profile.webp"
               alt="Ulas Profile"
               fill
-              quality={100}
+              quality={80}
               className="object-cover scale-animation"
             />
           </div>
@@ -74,7 +74,7 @@ export default function WhoIAm() {
               style={{ cornerShape: "squircle" }}
               className="relative overflow-hidden rounded-2xl xl:rounded-3xl bg-[#212121] lg:h-[200px] p-6 shadow-white-blur xl:h-auto xl:col-span-3 "
             >
-              <h4 className="text-2xl font-bold">Ulas Önder</h4>
+              <h3 className="text-2xl font-bold">Ulas Önder</h3>
               <p className="mt-3 text-neutral-400 leading-relaxed xl:w-[90%]">
                 Front-end Developer and Designer. My specialty is building high
                 converting <span className="text-white">Landing Pages</span>{" "}

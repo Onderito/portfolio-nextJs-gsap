@@ -13,6 +13,7 @@ export const createMyJourneyAnimation = (refs: {
   const split = SplitText.create(refs.title, { type: "words, chars" });
   const splitSubtile = SplitText.create(refs.subtitle, {
     type: "words, chars",
+    aria: "none",
   });
 
   const tl = gsap.timeline({

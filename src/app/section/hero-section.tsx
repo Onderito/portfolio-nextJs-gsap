@@ -51,7 +51,7 @@ export default function HeroSection() {
           width={500}
           height={500}
           priority
-          quality={100}
+          quality={80}
           className="object-cover w-30 h-30 rounded-2xl rotate-2 border-2 border-white border-glass"
         />
         <p ref={refs.name} className="mt-4 font-gloria">
@@ -73,6 +73,7 @@ export default function HeroSection() {
         <a
           href="https://www.linkedin.com/in/ulasonder/"
           target="_blank"
+          aria-label="Visit my Linkedin"
           rel="noreferrer"
         >
           <Button ref={refs.button} className=" mt-6 md:mt-8 xl:mt-10 ">
