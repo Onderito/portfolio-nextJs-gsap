@@ -105,11 +105,9 @@ export default function WhoIAm() {
                   >
                     {item.icon ? (
                       <img
-                        className=" h-10 w-10 md:h-11 md:w-11 xl:w-[50px] xl:h-[50px]"
+                        className="w-10 h-10"
                         src={item.icon}
                         alt={item.alt!}
-                        width={50}
-                        height={50}
                       />
                     ) : (
                       item.text
@@ -187,7 +185,7 @@ export default function WhoIAm() {
                 style={{ cornerShape: "squircle" }}
                 className="relative overflow-hidden rounded-2xl xl:rounded-3xl bg-[#212121] p-6 shadow-white-blur flex items-center justify-center xl:col-span-1 h-[200px] xl:h-full cursor-pointer scale-animation"
               >
-                <img src="/x.svg" alt="X" width={70} height={70} />
+                <img src="/x.svg" alt="X" />
                 <Image
                   className="absolute w-full top-[-150px] md:top-[-350px] lg:top-[-500px] left-20 xl:-top-20"
                   src="/double-circle.svg"
