@@ -104,11 +104,11 @@ export default function WhoIAm() {
                   >
                     {item.icon ? (
                       <Image
-                        className="xl:w-[50px] xl:h-[50px]"
+                        className=" h-10 w-10 md:h-11 md:w-11 xl:w-[50px] xl:h-[50px]"
                         src={item.icon}
                         alt={item.alt!}
-                        width={34}
-                        height={34}
+                        width={50}
+                        height={50}
                       />
                     ) : (
                       item.text
@@ -191,7 +191,7 @@ export default function WhoIAm() {
                   alt="X"
                   width={70}
                   height={70}
-                  className=""
+                  className="w-20 h-20 xl:w-70 xl:h-70"
                 />
                 <Image
                   className="absolute w-full top-[-150px] md:top-[-350px] lg:top-[-500px] left-20 xl:-top-20"
