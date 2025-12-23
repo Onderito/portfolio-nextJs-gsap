@@ -41,8 +41,8 @@ export default function WhoIAm() {
   }, []);
 
   const tools = [
-    { icon: "/webflow.svg", alt: "Webflow", bg: "bg-[#AAC6FA]" },
-    { icon: "/nextJs.svg", alt: "NextJs", bg: "bg-[#1A1A1A]" },
+    { icon: "/webflow.webp", alt: "Webflow", bg: "bg-[#AAC6FA]" },
+    { icon: "/nextJs.webp", alt: "NextJs", bg: "bg-[#1A1A1A]" },
     { text: "SEO", bg: "bg-[#1A1A1A]" },
     { text: "GSAP", bg: "bg-[#1A1A1A]" },
     { text: "UI&UX", bg: "bg-[#1A1A1A]" },
@@ -104,10 +104,13 @@ export default function WhoIAm() {
                     className={`flex h-[70px] w-[70px] items-center justify-center rounded-2xl border border-[#404040] ${item.bg} bg-[#333333] text-base font-light`}
                   >
                     {item.icon ? (
-                      <img
+                      <Image
                         src={item.icon}
                         alt={item.alt!}
-                        className="w-12 h-12"
+                        width={50}
+                        height={50}
+                        quality={100}
+                        unoptimized
                       />
                     ) : (
                       item.text
@@ -183,10 +186,16 @@ export default function WhoIAm() {
             >
               <div
                 style={{ cornerShape: "squircle" }}
-                className="relative overflow-hidden rounded-2xl xl:rounded-3xl bg-[#212121] p-6 shadow-white-blur flex items-center justify-center xl:col-span-1 h-[200px] xl:h-full cursor-pointer scale-animation"
+                className="relative overflow-hidden rounded-2xl xl:rounded-3xl bg-[#212121] p-6 shadow-white-blur flex items-center justify-center xl:col-span-1 h-[200px] xl:h-full cursor-pointer scale-animation "
               >
-                <img src="/x.svg" alt="X" className=" w-20 h-20 " />
-
+                <Image
+                  src="/x-icon.webp"
+                  quality={100}
+                  unoptimized
+                  alt="X"
+                  width={70}
+                  height={70}
+                />
                 <Image
                   className="absolute w-full top-[-150px] md:top-[-350px] lg:top-[-500px] left-20 xl:-top-20"
                   src="/double-circle.svg"
