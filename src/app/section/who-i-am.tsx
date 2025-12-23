@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import Image from "next/image";
@@ -101,7 +100,7 @@ export default function WhoIAm() {
                   <span
                     key={i}
                     style={{ cornerShape: "squircle" }}
-                    className={`flex h-[70px] w-[70px] items-center justify-center rounded-2xl border border-[#404040] ${item.bg} bg-[#333333] text-base font-light`}
+                    className={`flex h-[70px] w-[70px] items-center justify-center rounded-2xl border border-[#404040] ${item.bg} bg-[#333333] text-base font-bold scale-animation hover:rotate-2 hover:border-2`}
                   >
                     {item.icon ? (
                       <Image
