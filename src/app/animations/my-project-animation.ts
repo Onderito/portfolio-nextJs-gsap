@@ -55,7 +55,7 @@ export const createMyProjectAnimation = (refs: {
           endTrigger: refs.container,
           scrub: true,
           pin: wrapper,
-          pinSpacing: false,
+          pinSpacing: i === wrappers.length - 1 ? true : false,
           invalidateOnRefresh: true,
         },
       });
