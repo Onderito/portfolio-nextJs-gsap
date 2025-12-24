@@ -42,7 +42,7 @@ export default function MyProject() {
       title: "Calmly - Find Your Inner Peace",
       desc: "Full UX/UI Design and Frontend Development. Calmy is a minimalist landing page built with Next.js, where the focus was on clarity, calm visual hierarchy, and subtle GSAP animations to reinforce the app’s zen identity. The goal was to deliver a smooth, lightweight, and immersive user experience.",
       stack: "Next.js",
-      url: "https://clarity-d63997.webflow.io/",
+      url: "https://calmly-app-zeta.vercel.app/",
     },
     {
       image: "/clarity.webp",
