@@ -11,7 +11,7 @@ export default function Home() {
       <div>
         <HeroSection />
       </div>
-      <div className="container">
+      <div>
         <WhoIAm />
       </div>
       <div className="container">
