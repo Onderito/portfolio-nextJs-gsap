@@ -6,67 +6,57 @@ export const createMyJourneyAnimation = (refs: {
   container: HTMLElement;
   title: HTMLElement;
   subtitle: HTMLElement;
-  svgElement: HTMLElement;
   cards: HTMLElement[];
 }) => {
   gsap.registerPlugin(ScrollTrigger);
   const split = SplitText.create(refs.title, { type: "words, chars" });
-  const splitSubtile = SplitText.create(refs.subtitle, {
-    type: "words, chars",
-    aria: "none",
-  });
+  
 
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: refs.container,
-      start: "top bottom-=200",
+      start: "top bottom-=100",
       end: "top center",
-      scrub: 1,
+      scrub: true,
     },
   });
   tl.from(split.chars, {
     autoAlpha: 0,
-    y: 10,
-    stagger: 0.04,
+    duration : 1.25,
+    y: 40,
+    stagger: 0.03,
+    ease: "power3.out",
     filter: "blur(10px)",
   });
-  tl.from(
-    splitSubtile.chars,
+  tl.from(refs.subtitle, 
     {
       autoAlpha: 0,
-      y: 10,
-      stagger: 0.04,
-      filter: "blur(10px)",
+      y: 40,
+      ease: "power3.out",
     },
-    "-=0.2"
+    "-=0.9"
   );
-  tl.from(refs.svgElement, {
-    autoAlpha: 0,
-    y: 100,
-    scale: 0.8,
-    filter: "blur(10px)",
-  });
 
   const mm = gsap.matchMedia();
 
   mm.add("(min-width: 1280px)", () => {
     const cards = refs.cards.filter(Boolean); // sécurité
 
-    gsap.set(cards, { autoAlpha: 0, y: 60, scale: 0.8, filter: "blur(10px)" });
+    gsap.set(cards, { autoAlpha: 0, y: 40, scale: 0.8, filter: "blur(10px)" });
 
     gsap.to(cards, {
       autoAlpha: 1,
-      y: 0,
+      y:0,
       filter: "blur(0px)",
-      duration: 0.8,
+      duration: 1.25,
       scale: 1,
-      stagger: 0.12,
-      ease: "power2.out",
+      stagger: 0.2,
+      ease: "power3.out",
       scrollTrigger: {
         trigger: refs.container,
-        start: "top center",
+        start: "top-=100 center",
         end: "top 25%",
-        scrub: true,
+        scrub: 1,
       },
     });
     return () => {};

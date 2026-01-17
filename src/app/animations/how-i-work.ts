@@ -13,10 +13,6 @@ export const createHowIWorkAnimation = (refs: {
     type: "words, chars",
     aria: "none",
   });
-  const splitSubtile = SplitText.create(refs.subtitle, {
-    type: "words, chars",
-    aria: "none",
-  });
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: refs.container,
@@ -27,41 +23,44 @@ export const createHowIWorkAnimation = (refs: {
   });
   tl.from(split.chars, {
     autoAlpha: 0,
-    y: 10,
-    stagger: 0.04,
+    duration : 1.25,
+    y: 40,
+    stagger: 0.03,
+    ease: "power3.out",
     filter: "blur(10px)",
   });
-  tl.from(
-    splitSubtile.chars,
+  tl.from(refs.subtitle, 
     {
       autoAlpha: 0,
-      y: 10,
-      stagger: 0.04,
-      filter: "blur(10px)",
+      y: 40,
+      ease: "power3.out",
     },
-    "-=0.2"
+    "-=0.9"
   );
 
   const mm = gsap.matchMedia();
 
   mm.add("(min-width: 1280px)", () => {
-    const cards = refs.cards.filter(Boolean); // sécurité
+    const cards = refs.cards.filter(Boolean);
 
-    gsap.set(cards, { autoAlpha: 0, y: 60, scale: 0.8, filter: "blur(10px)" });
-
+    gsap.set(cards, { autoAlpha: 0, y: 250,  scale: 0.9, willChange: "transform, opacity" 
+    });
     gsap.to(cards, {
       autoAlpha: 1,
       y: 0,
-      filter: "blur(0px)",
-      duration: 0.8,
       scale: 1,
-      stagger: 0.1,
-      ease: "power2.out",
+      stagger: 0.2,
+      
+      ease: "back.out(1.2)",
       scrollTrigger: {
         trigger: refs.container,
         start: "top center",
         end: "top 25%",
+        scrub: 1,
       },
+      onComplete: () => {
+        gsap.set(cards, { willChange: "auto" }); // Cleanup perf
+      }
     });
     return () => {};
   });

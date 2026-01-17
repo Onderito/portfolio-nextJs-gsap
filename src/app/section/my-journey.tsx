@@ -11,7 +11,6 @@ export default function MyJourney() {
     container: useRef<HTMLDivElement>(null),
     title: useRef<HTMLHeadingElement>(null),
     subtitle: useRef<HTMLParagraphElement>(null),
-    svgElement: useRef<HTMLImageElement>(null),
     cards: useRef<HTMLDivElement[]>([]),
   };
 
@@ -21,7 +20,6 @@ export default function MyJourney() {
         container: refs.container.current!,
         title: refs.title.current!,
         subtitle: refs.subtitle.current!,
-        svgElement: refs.svgElement.current!,
         cards: refs.cards.current,
       });
     }, refs.container);
@@ -69,16 +67,6 @@ export default function MyJourney() {
         How I became obsessed with building beautiful web{" "}
         <span className="relative inline-block">
           experiences.
-          <span className="absolute -bottom-8 xl:-bottom-9.5 left-2 w-full h-auto">
-            <Image
-              ref={refs.svgElement}
-              src="/abstract-line.svg"
-              alt="Abstract Line"
-              width={200}
-              height={40}
-              className="w-full h-auto  "
-            />
-          </span>
         </span>
       </p>
 
