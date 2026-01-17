@@ -37,7 +37,7 @@ export const createHomeAnimation = (refs: {
       y: 100,
       duration: 0.8,
       rotate: 10,
-      scale: 1.2,
+      scale: 1.2, 
     },
     "<"
   );
@@ -45,9 +45,11 @@ export const createHomeAnimation = (refs: {
     split.chars,
     {
       autoAlpha: 0,
-      duration: 0.8,
-      y: 50,
-      stagger: 0.02,
+      duration: 1.25,
+      y: 40,
+      stagger: 0.03,
+      threshold: 0.1,
+      ease: "power3.out"
     },
     "-=0.2"
   );
@@ -56,25 +58,27 @@ export const createHomeAnimation = (refs: {
     {
       autoAlpha: 0,
       duration: 0.8,
-      y: 50,
+      y: 40,
+      ease: "power3.out"
     },
-    "-=0.5"
+    "-=0.9"
   );
   tl.from(
     refs.button,
     {
       autoAlpha: 0,
       duration: 0.8,
-      y: 100,
-      scale: 2,
+      y: 40,
+      scale: 1.1,
+      ease: "power3.out"
     },
-    "-=0.5"
+    "-=0.7"
   );
 
   return tl;
 };
 
-// animations/homeAnimations.ts
+
 export const setupPictureHover = (element: HTMLElement) => {
   const handleMouseEnter = () => {
     gsap.to(element, {
@@ -87,7 +91,7 @@ export const setupPictureHover = (element: HTMLElement) => {
   const handleMouseLeave = () => {
     gsap.to(element, {
       duration: 0.8,
-      y: 0, // je suppose que tu veux revenir à 0 ?
+      y: 0,
       scale: 1,
     });
   };

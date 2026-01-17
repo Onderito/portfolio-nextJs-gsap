@@ -24,11 +24,51 @@ export const createWhoIAmAnimation = (refs: {
     filter: "blur(10px)",
     scrollTrigger: {
       trigger: refs.container,
-      start: "top bottom-=200",
+      start: "top bottom",
       end: "top center",
       scrub: 1,
     },
   });
+
+  const allElements = [
+    refs.picture,
+    refs.presentationCard,
+    refs.toolkitCard,
+    refs.hireMeCard,
+    refs.linkedinCard,
+    refs.xCard,
+    refs.devCard,
+  ];
+  const setInitialStates = () => {
+    gsap.set(allElements, { willChange: "transform" });
+    gsap.set(refs.picture, { yPercent: -180, xPercent: -50, rotate: -6, scale: 0.6 });
+    gsap.set(refs.presentationCard, { yPercent: -520, xPercent: 70, rotate: 4, scale: 0.6 });
+    gsap.set(refs.toolkitCard, { yPercent: -580, xPercent: 110, rotate: -4, scale: 0.6 });
+    gsap.set(refs.hireMeCard, { yPercent: -420, xPercent: 70, rotate: -6, scale: 0.6 });
+    gsap.set(refs.linkedinCard, { yPercent: -520, xPercent: -300, rotate: 6, scale: 0.6 });
+    gsap.set(refs.xCard, { yPercent: -450, xPercent: -400, rotate: 6, scale: 0.6 });
+    gsap.set(refs.devCard, { yPercent: -440, xPercent: 70, rotate: -6, scale: 0.6 });
+  };
+
+   const tl2 = gsap.timeline({ defaults: {ease: "power4.inOut", }});
+
+   const cardsAnimConfig = [
+    { ref: refs.picture, x: -240  },
+    { ref: refs.presentationCard, x: -140 },
+    { ref: refs.toolkitCard, x: -220 },
+    { ref: refs.hireMeCard, x: -20 },
+    { ref: refs.linkedinCard, x: -40 },
+    { ref: refs.xCard, x: -20 },
+    { ref: refs.devCard, x: -40 },
+  ];
+
+  cardsAnimConfig.forEach(({ ref, x }) => {
+  tl2.from(ref, {
+    x,
+    autoAlpha: 0,
+    duration: 1.2,
+  }, "<");
+});
 
   const mm = gsap.matchMedia();
 
@@ -36,41 +76,15 @@ export const createWhoIAmAnimation = (refs: {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: refs.container,
-        start: "top center",
-        end: "bottom 70%",
-        scrub: 1.5,
+        start: "top-=580 center",
+        end: "bottom 90%",
+        scrub: 1,
+        invalidateOnRefresh: true,
+        onRefreshInit: setInitialStates,
       },
     });
 
-    const allElements = [
-      refs.picture,
-      refs.presentationCard,
-      refs.toolkitCard,
-      refs.hireMeCard,
-      refs.linkedinCard,
-      refs.xCard,
-      refs.devCard,
-    ];
-
-    tl.set(allElements, { willChange: "transform" });
-
-    tl.from(refs.picture, { x: -520, y: -140, rotate: -6, scale: 0.92 }, 0.05);
-
-    tl.from(
-      refs.presentationCard,
-      { x: 660, y: -140, rotate: 4, scale: 0.92 },
-      0.1
-    );
-
-    tl.from(refs.toolkitCard, { x: 520, y: -220, rotate: -4 }, 0.12);
-
-    tl.from(refs.hireMeCard, { x: 260, y: 120, rotate: 6, scale: 0.92 }, 0.14);
-
-    tl.from(refs.linkedinCard, { x: -480, y: 40, scale: 0.9 }, 0.16);
-    tl.from(refs.xCard, { x: -480, y: 40, scale: 0.9 }, 0.18);
-    tl.from(refs.devCard, { x: 120, y: 260, scale: 0.9 }, 0.2);
-
-    tl.to(allElements, { scale: 1, rotate: 0, ease: "power2.inOut" }, 0.55);
+    tl.to(allElements, {yPercent: 0, xPercent: 0, rotate: 0, scale: 1, }, 0.01);
 
     tl.set(allElements, { willChange: "auto" });
 
@@ -78,5 +92,6 @@ export const createWhoIAmAnimation = (refs: {
   });
   return () => {
     mm.revert();
+    split.revert();
   };
 };

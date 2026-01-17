@@ -1,28 +1,36 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Lenis from "lenis";
 
 const useLenis = () => {
+  const lenisRef = useRef<Lenis | null>(null);
+
   useEffect(() => {
-    const lenis = new Lenis({
+    lenisRef.current = new Lenis({
       duration: 1.2,
-      easing: (t) => t * (2 - t),
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
       smoothWheel: true,
-      wheelMultiplier: 0.7,
+      wheelMultiplier: 1, 
+      touchMultiplier: 2,
+      infinite: false,
+      syncTouch: true, 
+      syncTouchLerp: 0.075,
     });
 
-    const animate = (time: number) => {
-      lenis.raf(time);
-      requestAnimationFrame(animate);
-    };
+    function raf(time: number) {
+      lenisRef.current?.raf(time);
+      requestAnimationFrame(raf);
+    }
 
-    requestAnimationFrame(animate);
+    requestAnimationFrame(raf);
 
     return () => {
-      lenis.destroy();
+      lenisRef.current?.destroy();
     };
   }, []);
+
+  return lenisRef;
 };
 
 export default useLenis;

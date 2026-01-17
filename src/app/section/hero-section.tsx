@@ -34,7 +34,6 @@ export default function HeroSection() {
 
       tl.eventCallback("onComplete", () => {
         setupPictureHover(elements.picture);
-        setupPictureHover(elements.button);
       });
     });
 
@@ -70,13 +69,13 @@ export default function HeroSection() {
         >
           Focused on performance, smooth animations, and clean interfaces.
         </p>
-        <a
+        <a className=" mt-6 md:mt-8 xl:mt-10 hover:scale-105 duration-700"
           href="https://www.linkedin.com/in/ulasonder/"
           target="_blank"
           aria-label="Visit my Linkedin"
           rel="noreferrer"
         >
-          <Button ref={refs.button} className=" mt-6 md:mt-8 xl:mt-10 ">
+          <Button ref={refs.button} >
             Hire Me
           </Button>
         </a>

@@ -48,7 +48,7 @@ export default function WhoIAm() {
   ];
 
   return (
-    <div className="overflow-x-hidden w-full">
+    <div className="w-full">
       <div className="container">
         <div ref={refs.container}>
           <h2 ref={refs.title} className="heading-2 text-center">
