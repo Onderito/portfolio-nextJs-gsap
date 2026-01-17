@@ -48,7 +48,6 @@ export const createHomeAnimation = (refs: {
       duration: 1.25,
       y: 40,
       stagger: 0.03,
-      threshold: 0.1,
       ease: "power3.out"
     },
     "-=0.2"

@@ -13,8 +13,10 @@ export const createMyProjectAnimation = (refs: {
 
   gsap.from(split.chars, {
     autoAlpha: 0,
-    y: 10,
-    stagger: 0.04,
+    duration : 1.25,
+    y: 40,
+    stagger: 0.03,
+    ease: "power3.out",
     filter: "blur(10px)",
     scrollTrigger: {
       trigger: refs.container,
@@ -29,38 +31,37 @@ export const createMyProjectAnimation = (refs: {
   const cards = refs.cards;
 
   mm.add("(min-width: 1280px)", () => {
+    gsap.set(cards, { willChange: "transform, filter" });
     // ici je parcours tout les éléments du tableau wrappers
     wrappers.forEach((wrapper, i) => {
       const card = cards[i]; // je récupère l'élément card correspondant à l'index i
       if (!wrapper || !card) return; // si l'un des éléments est null, je retourne rien.
 
-      let scale = 1;
-      let rotation = 0;
-
-      if (i !== cards.length - 1) {
-        scale = 0.9 + 0.025 * i;
-        rotation = -10;
-      }
+      const isLastCard = i === cards.length - 1; // on séléctionne le dernier élément du tableau cards 
+      const scale = isLastCard ? 1 : 0.9 + 0.025 * i; 
+      const rotation = isLastCard ? 0 : -10;
 
       gsap.to(card, {
         scale,
-        rotationY: rotation,
+        rotationY: rotation,     
         filter: i === cards.length - 1 ? "blur(0px)" : "blur(1.5px)",
         transformOrigin: "top center",
         ease: "none",
         scrollTrigger: {
           trigger: wrapper,
-          start: "top " + (60 + 10 * i),
+          start: `top ${60 + 10 * i}`,
           end: "bottom 550",
           endTrigger: refs.container,
-          scrub: true,
-          pin: wrapper,
-          pinSpacing: i === wrappers.length - 1 ? true : false,
+          scrub: 0.5,
+          pin: isLastCard ? false : wrapper, 
+          pinSpacing: false,
           invalidateOnRefresh: true,
         },
       });
     });
-    return () => {};
+    return () => {
+      gsap.set(cards, { willChange: "auto" });
+    };
   });
   return () => {
     split.revert();
