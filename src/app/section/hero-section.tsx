@@ -67,7 +67,7 @@ export default function HeroSection() {
           ref={refs.subtitle}
           className="body-text mt-2 md:mt-4 xl:mt-6 text-center"
         >
-          Focused on performance, smooth animations, and clean interfaces.
+          Focused on performance, smooth animations, <br className="md:hidden" /> and clean interfaces.
         </p>
         <a className=" mt-6 md:mt-8 xl:mt-10 hover:scale-105 duration-700"
           href="https://www.linkedin.com/in/ulasonder/"

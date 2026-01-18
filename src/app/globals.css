@@ -46,11 +46,16 @@
             leading-relaxed;
   }
   .container {
-    @apply container mx-auto px-4 py-10  sm:px-8 md:px-12 lg:px-16 xl:py-24 xl:px-16 2xl:px-24;
+    @apply container mx-auto px-4 py-10 sm:px-8 md:px-12 lg:px-12 xl:py-24 xl:px-20;
   }
-  .container-hero {
+
+  .webkit-clip {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+  }
+  /* .container-hero {
     @apply container mx-auto px-4 py-10  sm:px-8 md:px-12 lg:px-16 xl:py-0 xl:px-0 2xl:px-0;
-  }
+  } */
   .scale-animation {
     @apply transform transition-transform
          duration-700 ease-out

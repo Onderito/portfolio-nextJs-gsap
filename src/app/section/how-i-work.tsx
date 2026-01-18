@@ -73,7 +73,7 @@ export default function HowIWork() {
           >
             <div
               style={{ cornerShape: "squircle" }}
-              className=" bg-[#080808] h-[165px] rounded-2xl shadow-sm relative overflow-hidden flex justify-center items-center"
+              className=" bg-[#080808] h-[165px] rounded-2xl shadow-sm relative overflow-hidden  webkit-clip flex justify-center items-center"
             >
               {i === 0 ? (
                 <FirstIllustration />

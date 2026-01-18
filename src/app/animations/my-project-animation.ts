@@ -53,7 +53,7 @@ export const createMyProjectAnimation = (refs: {
           end: "bottom 550",
           endTrigger: refs.container,
           scrub: 0.5,
-          pin: isLastCard ? false : wrapper, 
+          pin: isLastCard ? false : wrapper,
           pinSpacing: false,
           invalidateOnRefresh: true,
         },

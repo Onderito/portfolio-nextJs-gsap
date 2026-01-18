@@ -78,7 +78,7 @@ export default function Footer() {
     <div
       ref={refs.container}
       style={{ cornerShape: "squircle" }}
-      className="bg-[#080808] p-4 xl:p-8 rounded-3xl relative overflow-hidden"
+      className="bg-[#080808] p-4 xl:p-8 rounded-3xl relative overflow-hidden  webkit-clip"
     >
       {/* WRAPPER: en desktop on met 2 colonnes (haut) */}
       <div className="flex flex-col gap-4 lg:flex-row md:justify-normal lg:gap-16 xl:gap-44  lg:items-start">

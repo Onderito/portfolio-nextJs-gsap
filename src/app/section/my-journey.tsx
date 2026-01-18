@@ -77,7 +77,7 @@ export default function MyJourney() {
               refs.cards.current[i] = el as HTMLDivElement;
             }}
             style={{ cornerShape: "squircle" }}
-            className={`flex flex-col  bg-[#212121] shadow-white-blur p-6 rounded-3xl overflow-hidden relative xl:w-full ${rotations[i]} `}
+            className={`flex flex-col  bg-[#212121] shadow-white-blur p-6 rounded-3xl overflow-hidden  webkit-clip relative xl:w-full ${rotations[i]} `}
             key={i}
           >
             <div className="relative z-10">

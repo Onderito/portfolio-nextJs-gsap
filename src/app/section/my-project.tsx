@@ -143,7 +143,7 @@ export default function MyProject() {
                   rel="noopener noreferrer"
                   href={p.url}
                 >
-                  <Button ref={null} className=" w-full lg:w-fit">
+                  <Button ref={null} className=" w-full lg:w-fit hover:scale-105 duration-700">
                     See the Experience
                   </Button>
                 </a>
