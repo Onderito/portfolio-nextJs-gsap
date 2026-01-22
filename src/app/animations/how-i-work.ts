@@ -13,12 +13,15 @@ export const createHowIWorkAnimation = (refs: {
     type: "words, chars",
     aria: "none",
   });
+  const splitSubTitle = SplitText.create(refs.subtitle, {
+    type: "words, chars",
+    aria: "none",
+  });
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: refs.container,
       start: "top bottom-=200",
       end: "top center",
-      scrub: 1,
     },
   });
   tl.from(split.chars, {
@@ -27,15 +30,18 @@ export const createHowIWorkAnimation = (refs: {
     y: 40,
     stagger: 0.03,
     ease: "power3.out",
-    filter: "blur(10px)",
+    filter: "blur(5px)",
   });
-  tl.from(refs.subtitle, 
+  tl.from(splitSubTitle.words,
     {
       autoAlpha: 0,
+      duration: 1.2,
       y: 40,
+      stagger: 0.03,
       ease: "power3.out",
+      filter: "blur(5px)",
     },
-    "-=0.9"
+    "<"
   );
 
   const mm = gsap.matchMedia();
@@ -43,23 +49,25 @@ export const createHowIWorkAnimation = (refs: {
   mm.add("(min-width: 1280px)", () => {
     const cards = refs.cards.filter(Boolean);
 
-    gsap.set(cards, { autoAlpha: 0, y: 250,  scale: 0.9, willChange: "transform, opacity" 
+    gsap.set(cards, { autoAlpha: 0, y: 80, rotation: 3,  scale: 0.9, willChange: "transform, opacity" 
     });
     gsap.to(cards, {
       autoAlpha: 1,
       y: 0,
       scale: 1,
-      stagger: 0.2,
-      
-      ease: "back.out(1.2)",
+      rotation: 0,
+      ease: "power4.out",
+      duration: 0.9,
+      stagger: {
+        each: 0.08,
+        ease: "power2.inOut"
+      },
       scrollTrigger: {
         trigger: refs.container,
         start: "top center",
-        end: "top 25%",
-        scrub: 1,
       },
       onComplete: () => {
-        gsap.set(cards, { willChange: "auto" }); // Cleanup perf
+        gsap.set(cards, { willChange: "auto" });
       }
     });
     return () => {};

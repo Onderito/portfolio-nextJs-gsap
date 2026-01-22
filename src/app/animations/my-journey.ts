@@ -10,31 +10,34 @@ export const createMyJourneyAnimation = (refs: {
 }) => {
   gsap.registerPlugin(ScrollTrigger);
   const split = SplitText.create(refs.title, { type: "words, chars" });
+  const splitSubTitle = SplitText.create(refs.subtitle, { type: "words, chars" });
   
 
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: refs.container,
-      start: "top bottom-=100",
+      start: "top bottom-=200",
       end: "top center",
-      scrub: true,
     },
   });
   tl.from(split.chars, {
     autoAlpha: 0,
-    duration : 1.25,
+    duration : 1.2,   
     y: 40,
     stagger: 0.03,
     ease: "power3.out",
-    filter: "blur(10px)",
+    filter: "blur(5px)",
   });
-  tl.from(refs.subtitle, 
+  tl.from(splitSubTitle.words, 
     {
       autoAlpha: 0,
+      duration: 1.2,
       y: 40,
+      stagger: 0.03,
       ease: "power3.out",
+      filter: "blur(5px)",
     },
-    "-=0.9"
+    "<"
   );
 
   const mm = gsap.matchMedia();
@@ -42,22 +45,25 @@ export const createMyJourneyAnimation = (refs: {
   mm.add("(min-width: 1280px)", () => {
     const cards = refs.cards.filter(Boolean); // sécurité
 
-    gsap.set(cards, { autoAlpha: 0, y: 40, scale: 0.8, filter: "blur(10px)" });
+    gsap.set(cards, { autoAlpha: 0, y: 80, scale: 0.9, willChange: "transform, opacity" });
 
     gsap.to(cards, {
       autoAlpha: 1,
       y:0,
-      filter: "blur(0px)",
-      duration: 1.25,
       scale: 1,
-      stagger: 0.2,
-      ease: "power3.out",
+      duration: 0.8,
+      ease: "power4.out",
+      stagger: {
+        each: 0.08,
+        ease: "power2.inOut"
+      },
       scrollTrigger: {
         trigger: refs.container,
-        start: "top-=100 center",
-        end: "top 25%",
-        scrub: 1,
+        start: "top center",
       },
+      onComplete: () => {
+        gsap.set(cards, { willChange: "auto"})
+      }
     });
     return () => {};
   });

@@ -9,7 +9,7 @@ export const createHomeAnimation = (refs: {
   button: HTMLElement;
   gradientImage: HTMLElement;
 }) => {
-  const tl = gsap.timeline({ defaults: { ease: "power1.out" } });
+  const tl = gsap.timeline({ defaults: { ease: "power2.Out" } });
 
   const split = SplitText.create(refs.title, { type: "words, chars" });
 
@@ -60,7 +60,7 @@ export const createHomeAnimation = (refs: {
       y: 40,
       ease: "power3.out"
     },
-    "-=0.9"
+    "-=1.2"
   );
   tl.from(
     refs.button,
@@ -71,7 +71,7 @@ export const createHomeAnimation = (refs: {
       scale: 1.1,
       ease: "power3.out"
     },
-    "-=0.7"
+    "-=0.9"
   );
 
   return tl;

@@ -19,14 +19,15 @@ export const createWhoIAmAnimation = (refs: {
 
   gsap.from(split.chars, {
     autoAlpha: 0,
-    y: 50,
-    stagger: 0.04,
-    filter: "blur(10px)",
+    y: 40,
+    duration: 0.9,
+    stagger: 0.02,
+    ease: "power3.out",
+    filter: "blur(5px)",
     scrollTrigger: {
       trigger: refs.container,
-      start: "top bottom",
-      end: "top center",
-      scrub: 1,
+      start: "top-=300 center",
+      markers: true,
     },
   });
 

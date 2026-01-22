@@ -13,16 +13,14 @@ export const createMyProjectAnimation = (refs: {
 
   gsap.from(split.chars, {
     autoAlpha: 0,
-    duration : 1.25,
+    duration : 0.9,
     y: 40,
-    stagger: 0.03,
+    stagger: 0.02,
     ease: "power3.out",
-    filter: "blur(10px)",
+    filter: "blur(5px)",
     scrollTrigger: {
       trigger: refs.container,
-      start: "top bottom-=200",
-      end: "top center",
-      scrub: 1,
+      start: "top-=100 center",
     },
   });
 
@@ -38,14 +36,14 @@ export const createMyProjectAnimation = (refs: {
       if (!wrapper || !card) return; // si l'un des éléments est null, je retourne rien.
 
       const isLastCard = i === cards.length - 1; // on séléctionne le dernier élément du tableau cards 
-      const scale = isLastCard ? 1 : 0.9 + 0.025 * i; 
+      const scale = isLastCard ? 1 : 0.9 + 0.010 * i; 
       const rotation = isLastCard ? 0 : -10;
 
       gsap.to(card, {
         scale,
         rotationY: rotation,     
         filter: i === cards.length - 1 ? "blur(0px)" : "blur(1.5px)",
-        transformOrigin: "top center",
+        transformOrigin: "top top",
         ease: "none",
         scrollTrigger: {
           trigger: wrapper,
