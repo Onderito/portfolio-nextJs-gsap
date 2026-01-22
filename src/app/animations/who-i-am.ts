@@ -27,7 +27,6 @@ export const createWhoIAmAnimation = (refs: {
     scrollTrigger: {
       trigger: refs.container,
       start: "top-=300 center",
-      markers: true,
     },
   });
 
