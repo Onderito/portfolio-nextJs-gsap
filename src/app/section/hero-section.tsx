@@ -2,7 +2,7 @@
 
 import Button from "../ui/button";
 import Image from "next/image";
-import gsap from "gsap";
+import { gsap } from "gsap/dist/gsap";
 import { useLayoutEffect, useRef } from "react";
 import {
   createHomeAnimation,
@@ -46,7 +46,7 @@ export default function HeroSection() {
         <Image
           ref={refs.picture}
           src="/blur-profile.webp"
-          alt="Ulas Blur Profile"
+          alt="Ulas Önder - Front-end Developer"
           width={500}
           height={500}
           priority

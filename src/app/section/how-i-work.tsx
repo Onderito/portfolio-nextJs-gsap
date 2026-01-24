@@ -6,7 +6,7 @@ import SecondIllustration from "../ui/second-illustration";
 import ThirdIllustration from "../ui/third-illustration";
 import FourthIllustration from "../ui/fourth-illustration";
 import { useLayoutEffect, useRef } from "react";
-import gsap from "gsap";
+import { gsap } from "gsap/dist/gsap";
 import { createHowIWorkAnimation } from "../animations/how-i-work";
 
 export default function HowIWork() {

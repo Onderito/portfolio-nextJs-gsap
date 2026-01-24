@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Github, Twitter, Linkedin } from "lucide-react";
-import gsap from "gsap";
+import { gsap } from "gsap/dist/gsap";
 import { useLayoutEffect, useRef } from "react";
 import { createFooterAnimation } from "../animations/footer";
 import { useEffect, useState } from "react";

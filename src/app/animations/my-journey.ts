@@ -1,6 +1,6 @@
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import SplitText from "gsap/SplitText";
+import { gsap } from "gsap/dist/gsap";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import SplitText from "gsap/dist/SplitText";
 
 export const createMyJourneyAnimation = (refs: {
   container: HTMLElement;
@@ -10,7 +10,7 @@ export const createMyJourneyAnimation = (refs: {
 }) => {
   gsap.registerPlugin(ScrollTrigger);
   const split = SplitText.create(refs.title, { type: "words, chars" });
-  const splitSubTitle = SplitText.create(refs.subtitle, { type: "words, chars" });
+  const splitSubTitle = SplitText.create(refs.subtitle, { type: "words, chars", aria: "none" });
   
 
   const tl = gsap.timeline({

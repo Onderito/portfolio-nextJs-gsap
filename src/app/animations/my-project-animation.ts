@@ -1,6 +1,6 @@
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import SplitText from "gsap/SplitText";
+import { gsap } from "gsap/dist/gsap";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import SplitText from "gsap/dist/SplitText";
 
 export const createMyProjectAnimation = (refs: {
   container: HTMLElement;
@@ -36,21 +36,17 @@ export const createMyProjectAnimation = (refs: {
       if (!wrapper || !card) return; // si l'un des éléments est null, je retourne rien.
 
       const isLastCard = i === cards.length - 1; // on séléctionne le dernier élément du tableau cards 
-      const scale = isLastCard ? 1 : 0.9 + 0.010 * i; 
-      const rotation = isLastCard ? 0 : -10;
 
       gsap.to(card, {
-        scale,
-        rotationY: rotation,     
-        filter: i === cards.length - 1 ? "blur(0px)" : "blur(1.5px)",
-        transformOrigin: "top top",
+        force3D: true,   
+        transformOrigin: "center center",
         ease: "none",
         scrollTrigger: {
           trigger: wrapper,
           start: `top ${60 + 10 * i}`,
-          end: "bottom 550",
+          end: "bottom 600",
           endTrigger: refs.container,
-          scrub: 0.5,
+          scrub: 1,
           pin: isLastCard ? false : wrapper,
           pinSpacing: false,
           invalidateOnRefresh: true,

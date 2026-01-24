@@ -4,7 +4,7 @@ import Image from "next/image";
 import Button from "../ui/button";
 import { Blocks, Sparkles, Pen } from "lucide-react";
 import { useLayoutEffect, useRef } from "react";
-import gsap from "gsap";
+import { gsap } from "gsap/dist/gsap";
 import { createMyProjectAnimation } from "../animations/my-project-animation";
 
 export default function MyProject() {
@@ -77,7 +77,7 @@ export default function MyProject() {
               refs.cards.current[index] = el as HTMLDivElement;
             }}
             style={{ cornerShape: "squircle" }}
-            className="bg-[#212121] p-2.5 rounded-3xl shadow-white-blur"
+            className="bg-[#212121] p-2.5 rounded-[26px] shadow-white-blur"
           >
             <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-8 h-full">
               <div className="relative group w-full">

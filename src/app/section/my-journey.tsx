@@ -3,7 +3,7 @@
 import { Pen, Zap, Rocket } from "lucide-react";
 import Image from "next/image";
 import { useLayoutEffect, useRef } from "react";
-import gsap from "gsap";
+import { gsap } from "gsap/dist/gsap";
 import { createMyJourneyAnimation } from "../animations/my-journey";
 
 export default function MyJourney() {

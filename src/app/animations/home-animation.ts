@@ -1,5 +1,5 @@
-import gsap from "gsap";
-import SplitText from "gsap/SplitText";
+import { gsap } from "gsap/dist/gsap";
+import SplitText from "gsap/dist/SplitText";
 
 export const createHomeAnimation = (refs: {
   picture: HTMLElement;

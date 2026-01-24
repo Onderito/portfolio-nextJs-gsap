@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Button from "../ui/button";
-import gsap from "gsap";
+import { gsap } from "gsap/dist/gsap";
 import { useLayoutEffect, useRef } from "react";
 import { createWhoIAmAnimation } from "../animations/who-i-am";
 
@@ -110,7 +110,7 @@ export default function WhoIAm() {
                             width={50}
                             height={50}
                             quality={100}
-                            unoptimized
+    
                           />
                         ) : (
                           item.text
@@ -186,7 +186,6 @@ export default function WhoIAm() {
                     <Image
                       src="/x-icon.webp"
                       quality={100}
-                      unoptimized
                       alt="X"
                       width={70}
                       height={70}
