@@ -4,6 +4,7 @@ import WhoIAm from "./section/who-i-am";
 import Footer from "./section/footer";
 import MyJourney from "./section/my-journey";
 import HowIWork from "./section/how-i-work";
+import { PricingSection } from "./section/pricing-section";
 
 export default function Home() {
   return (
@@ -22,6 +23,9 @@ export default function Home() {
       </div>
       <div className="container">
         <HowIWork />
+      </div>
+      <div className="container">
+        <PricingSection />
       </div>
       <div className="container">
         <Footer />

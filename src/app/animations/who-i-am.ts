@@ -1,6 +1,6 @@
 import { gsap } from "gsap/dist/gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import SplitText from "gsap/dist/SplitText";
+import { addSplitTextTitleAnimation } from "./Splittext/splittext";
 
 export const createWhoIAmAnimation = (refs: {
   container: HTMLElement;
@@ -15,19 +15,14 @@ export const createWhoIAmAnimation = (refs: {
 }) => {
   gsap.registerPlugin(ScrollTrigger);
 
-  const split = SplitText.create(refs.title, { type: "words, chars" });
-
-  gsap.from(split.chars, {
-    autoAlpha: 0,
-    y: 40,
-    duration: 0.9,
-    stagger: 0.02,
-    ease: "power3.out",
-    filter: "blur(5px)",
+  const tl = gsap.timeline({
     scrollTrigger: {
       trigger: refs.container,
       start: "top-=300 center",
     },
+  });
+  const split = addSplitTextTitleAnimation(tl, refs.title, {
+    tween: { duration: 0.9, stagger: 0.02 },
   });
 
   const allElements = [

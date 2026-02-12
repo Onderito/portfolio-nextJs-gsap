@@ -1,6 +1,6 @@
 import { gsap } from "gsap/dist/gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import SplitText from "gsap/dist/SplitText";
+import { addSplitTextTitleAnimation } from "./Splittext/splittext";
 
 export const createMyProjectAnimation = (refs: {
   container: HTMLElement;
@@ -9,19 +9,14 @@ export const createMyProjectAnimation = (refs: {
   cards: HTMLElement[];
 }) => {
   gsap.registerPlugin(ScrollTrigger);
-  const split = SplitText.create(refs.title, { type: "words, chars" });
-
-  gsap.from(split.chars, {
-    autoAlpha: 0,
-    duration : 0.9,
-    y: 40,
-    stagger: 0.02,
-    ease: "power3.out",
-    filter: "blur(5px)",
+  const tl = gsap.timeline({
     scrollTrigger: {
       trigger: refs.container,
       start: "top-=100 center",
     },
+  });
+  const split = addSplitTextTitleAnimation(tl, refs.title, {
+    tween: { duration: 0.9, stagger: 0.02 },
   });
 
   const mm = gsap.matchMedia();

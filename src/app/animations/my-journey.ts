@@ -1,6 +1,6 @@
 import { gsap } from "gsap/dist/gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import SplitText from "gsap/dist/SplitText";
+import { addSplitTextDescriptionAnimation, addSplitTextTitleAnimation } from "./Splittext/splittext";
 
 export const createMyJourneyAnimation = (refs: {
   container: HTMLElement;
@@ -9,10 +9,6 @@ export const createMyJourneyAnimation = (refs: {
   cards: HTMLElement[];
 }) => {
   gsap.registerPlugin(ScrollTrigger);
-  const split = SplitText.create(refs.title, { type: "words, chars" });
-  const splitSubTitle = SplitText.create(refs.subtitle, { type: "words, chars", aria: "none" });
-  
-
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: refs.container,
@@ -20,25 +16,8 @@ export const createMyJourneyAnimation = (refs: {
       end: "top center",
     },
   });
-  tl.from(split.chars, {
-    autoAlpha: 0,
-    duration : 1.2,   
-    y: 40,
-    stagger: 0.03,
-    ease: "power3.out",
-    filter: "blur(5px)",
-  });
-  tl.from(splitSubTitle.words, 
-    {
-      autoAlpha: 0,
-      duration: 1.2,
-      y: 40,
-      stagger: 0.03,
-      ease: "power3.out",
-      filter: "blur(5px)",
-    },
-    "<"
-  );
+  const split = addSplitTextTitleAnimation(tl, refs.title);
+  const splitSubTitle = addSplitTextDescriptionAnimation(tl, refs.subtitle);
 
   const mm = gsap.matchMedia();
 
@@ -69,6 +48,7 @@ export const createMyJourneyAnimation = (refs: {
   });
   return () => {
     split.revert();
+    splitSubTitle.revert();
     mm.revert();
   };
 };

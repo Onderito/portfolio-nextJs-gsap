@@ -110,7 +110,6 @@ export default function WhoIAm() {
                             width={50}
                             height={50}
                             quality={100}
-    
                           />
                         ) : (
                           item.text
@@ -131,11 +130,8 @@ export default function WhoIAm() {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <Button
-                        ref={null}
-                        className="px-10 transform hover:scale-105 duration-700 "
-                      >
-                        Hire Me
+                      <Button ref={null} className="px-10 scale-animation ">
+                        Let's Talk
                       </Button>
                     </a>
                   </div>

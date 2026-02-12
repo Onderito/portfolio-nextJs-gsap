@@ -67,17 +67,17 @@ export default function HeroSection() {
           ref={refs.subtitle}
           className="body-text mt-2 md:mt-4 xl:mt-6 text-center"
         >
-          Focused on performance, smooth animations, <br className="md:hidden" /> and clean interfaces.
+          Focused on performance, smooth animations,{" "}
+          <br className="md:hidden" /> and clean interfaces.
         </p>
-        <a className=" mt-6 md:mt-8 xl:mt-10 hover:scale-105 duration-700"
+        <a
+          className=" mt-6 md:mt-8 xl:mt-10 scale-animation"
           href="https://www.linkedin.com/in/ulasonder/"
           target="_blank"
           aria-label="Visit my Linkedin"
           rel="noreferrer"
         >
-          <Button ref={refs.button} >
-            Hire Me
-          </Button>
+          <Button ref={refs.button}>Let's Talk</Button>
         </a>
         <Image
           ref={refs.gradientImage}

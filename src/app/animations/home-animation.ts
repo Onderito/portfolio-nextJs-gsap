@@ -1,5 +1,5 @@
 import { gsap } from "gsap/dist/gsap";
-import SplitText from "gsap/dist/SplitText";
+import { addSplitTextTitleAnimation } from "./Splittext/splittext";
 
 export const createHomeAnimation = (refs: {
   picture: HTMLElement;
@@ -10,8 +10,6 @@ export const createHomeAnimation = (refs: {
   gradientImage: HTMLElement;
 }) => {
   const tl = gsap.timeline({ defaults: { ease: "power2.Out" } });
-
-  const split = SplitText.create(refs.title, { type: "words, chars" });
 
   tl.from(refs.gradientImage, {
     autoAlpha: 0,
@@ -41,17 +39,10 @@ export const createHomeAnimation = (refs: {
     },
     "<"
   );
-  tl.from(
-    split.chars,
-    {
-      autoAlpha: 0,
-      duration: 1.25,
-      y: 40,
-      stagger: 0.03,
-      ease: "power3.out"
-    },
-    "-=0.2"
-  );
+  const split = addSplitTextTitleAnimation(tl, refs.title, {
+    position: "-=0.2",
+    tween: { filter: "none", ease: "power3.out" },
+  });
   tl.from(
     refs.subtitle,
     {
@@ -73,6 +64,10 @@ export const createHomeAnimation = (refs: {
     },
     "-=0.9"
   );
+
+  tl.add(() => {
+    split.revert();
+  });
 
   return tl;
 };
