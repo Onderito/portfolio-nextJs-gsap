@@ -10,14 +10,21 @@ const Button = ({ children, onClick, className, ref }: ButtonProps) => {
     <button
       ref={ref}
       onClick={onClick}
-      className={`relative inline-flex items-center justify-center overflow-hidden webkit-clip rounded-[10px] bg-[#1A1A1A] text-white tracking-tight py-3 shadow-white-blur px-10 text-[16px] font-bold cursor-pointer ${
+      className={`relative inline-flex items-center justify-center overflow-hidden webkit-clip rounded-[16px] bg-linear-to-t from-[#1a1a1a] to-[#383838] py-3 px-10 font-semibold cursor-pointer ${
         className || ""
       }`}
     >
-      <span className="pointer-events-none absolute inset-0 flex items-center justify-center">
-        <span className="w-[140px] h-[52px] bg-white/30 rounded-full blur-[32px]" />
+      <div
+        aria-hidden="true"
+        className="absolute border-2 border-black border-solid inset-0 pointer-events-none rounded-[16px]"
+      />
+      <span
+        className="leading-normal text-[16px] text-center text-white tracking-[-0.8px]"
+        style={{ fontVariationSettings: "'SOFT' 0, 'WONK' 1" }}
+      >
+        {children}
       </span>
-      <span className="relative z-10">{children}</span>
+      <div className="absolute inset-0 pointer-events-none rounded-[inherit] shadow-[inset_0px_1px_2px_0px_rgba(255,255,255,0.5)]" />
     </button>
   );
 };

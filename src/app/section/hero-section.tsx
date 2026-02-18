@@ -58,7 +58,7 @@ export default function HeroSection() {
         </p>
         <h1
           ref={refs.title}
-          className="heading-1 text-center mt-6 md:mt-10 xl:mt-12"
+          className="heading-1 text-center mt-6 md:mt-10 xl:mt-12 overflow-hidden"
         >
           I design & build modern <br />
           <span className="text-neutral-400">web experiences</span>
@@ -67,17 +67,16 @@ export default function HeroSection() {
           ref={refs.subtitle}
           className="body-text mt-2 md:mt-4 xl:mt-6 text-center"
         >
-          Focused on performance, smooth animations, <br className="md:hidden" /> and clean interfaces.
+          Focused on performance, smooth animations,{" "}
+          <br className="md:hidden" /> and clean interfaces.
         </p>
-        <a className=" mt-6 md:mt-8 xl:mt-10 hover:scale-105 duration-700"
-          href="https://www.linkedin.com/in/ulasonder/"
-          target="_blank"
-          aria-label="Visit my Linkedin"
+        <a
+          className=" mt-6 md:mt-8 xl:mt-10 scale-animation"
+          href="https://calendly.com/ulas-onder/30min"
           rel="noreferrer"
+          target="_blank"
         >
-          <Button ref={refs.button} >
-            Hire Me
-          </Button>
+          <Button ref={refs.button}>Let's Talk</Button>
         </a>
         <Image
           ref={refs.gradientImage}
