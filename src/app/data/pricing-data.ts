@@ -17,7 +17,7 @@ export interface PricingTier {
 
 export const pricingTiers: PricingTier[] = [
   {
-    title: "Landing Page",
+    title: "One",
     duration: "1 week",
     description:
       "A high-impact single-page website designed to convert, impress, and launch fast.",
@@ -35,7 +35,25 @@ export const pricingTiers: PricingTier[] = [
     ],
   },
   {
-    title: "Multi Page Website",
+    title: "Rework",
+    duration: "1-2 weeks",
+    description:
+      "A modern refresh of your existing site to improve clarity, UX, and overall polish.",
+    price: "1200€",
+    ctaText: "Schedule a call",
+    featured: false,
+    accentColor: "#C4C4C4",
+    features: [
+      { text: "UX & UI refresh", highlighted: true },
+      { text: "Keep your existing content" },
+      { text: "Responsive fixes" },
+      { text: "Performance pass" },
+      { text: "SEO cleanup", highlighted: true },
+      { text: "Launch Included" },
+    ],
+  },
+  {
+    title: "Suite",
     duration: "2-3 weeks",
     description:
       "A complete multi-page website with cohesive design and advanced animations.",

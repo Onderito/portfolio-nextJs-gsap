@@ -21,7 +21,7 @@ type SplitTextOptions = {
 export function addSplitTextTitleAnimation(
   tl: gsap.core.Timeline,
   element: HTMLElement,
-  options: SplitTextOptions = {}
+  options: SplitTextOptions = {},
 ): SplitTextInstance {
   const split = SplitText.create(element, {
     type: options.split?.type ?? "words, chars",
@@ -31,15 +31,16 @@ export function addSplitTextTitleAnimation(
   tl.from(
     split.chars ?? [],
     {
+      force3D: true,
       autoAlpha: 0,
       duration: 1.25,
       y: 40,
       stagger: 0.03,
       ease: "power3.out",
-      filter: "blur(5px)",
+      filter: "blur(2px)",
       ...options.tween,
     },
-    options.position ?? "<"
+    options.position ?? "<",
   );
 
   return split;
@@ -48,7 +49,7 @@ export function addSplitTextTitleAnimation(
 export function addSplitTextDescriptionAnimation(
   tl: gsap.core.Timeline,
   element: HTMLElement,
-  options: SplitTextOptions = {}
+  options: SplitTextOptions = {},
 ): SplitTextInstance {
   const split = SplitText.create(element, {
     type: options.split?.type ?? "words",
@@ -58,15 +59,16 @@ export function addSplitTextDescriptionAnimation(
   tl.from(
     split.words ?? [],
     {
+      force3D: true,
       autoAlpha: 0,
       duration: 1.2,
       y: 40,
       stagger: 0.03,
       ease: "power3.out",
-      filter: "blur(5px)",
+      filter: "blur(2px)",
       ...options.tween,
     },
-    options.position ?? "<"
+    options.position ?? "<",
   );
 
   return split;

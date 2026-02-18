@@ -19,8 +19,8 @@ function PricingCard({
 
   return (
     <div
-      className={`relative w-full max-w-[520px] rounded-2xl border p-8 overflow-hidden  ${
-        tier.featured ? "border-[#0f0f0f] bg-[#1C1C1C]" : "border-[#363636]"
+      className={`relative mx-auto w-full rounded-2xl border p-4  xl:p-6 overflow-hidden  ${
+        tier.featured ? "border-[#363636] bg-[#1C1C1C]" : "border-[#363636]"
       }`}
     >
       {isSecond && (
@@ -37,7 +37,10 @@ function PricingCard({
         <h3 className="text-white heading-3 font-black leading-tight">
           {tier.title}
         </h3>
-        <span className="text-[#c4c4c4] text-[14px] shrink-0">
+        <span
+          style={{ cornerShape: "squircle" }}
+          className="text-[#c4c4c4] text-[14px] shrink-0 bg-white/5 rounded-full p-2 border-[0.5px] border-[#363636]"
+        >
           {tier.duration}
         </span>
       </div>
@@ -50,20 +53,26 @@ function PricingCard({
       <ul className="mt-10 flex flex-col gap-3">
         {features.map((feature, index) => (
           <li key={index} className="flex items-center gap-3 text-[16px]">
-            <BadgeCheck className="w-4 h-4 text-[#c4c4c4]" />
-            <span className="text-[#c4c4c4] font-light">{feature.text}</span>
+            <BadgeCheck className="w-4 h-4 text-[#d0d0d0]" />
+            <span className="text-[#d0d0d0] font-light">{feature.text}</span>
           </li>
         ))}
       </ul>
-      <Button ref={null} className="mt-12 w-full h-[58px] scale-animation">
-        {tier.ctaText}
-      </Button>
+      <a
+        href="https://calendly.com/ulas-onder/30min"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <Button ref={null} className="mt-12 w-full h-[58px] scale-animation">
+          {tier.ctaText}
+        </Button>
+      </a>
     </div>
   );
 }
 
 export function PricingSection() {
-  const tiersToShow = pricingTiers.slice(0, 2);
+  const tiersToShow = pricingTiers.slice(0, 3);
   const refs = {
     container: useRef<HTMLElement>(null),
     title: useRef<HTMLHeadingElement>(null),
@@ -90,18 +99,15 @@ export function PricingSection() {
       <h2 ref={refs.title} className="heading-2 text-white text-center">
         Let’s work together
       </h2>
-      <p
-        ref={refs.subtitle}
-        className="body-text text-center mt-2 md:mt-4 xl:mt-6 "
-      >
+      <p ref={refs.subtitle} className="body-text text-center mt-2">
         Choose the package that matches your goals.
       </p>
       <div
         ref={refs.cardsWrapper}
-        className="flex flex-col items-center gap-6 lg:flex-row lg:items-stretch lg:justify-center bg-[#1F1F1F] w-fit mx-auto p-4 rounded-3xl border border-[#2B2B2B] mt-10 xl:mt-14 "
+        className="grid grid-cols-1 gap-6 bg-[#1F1F1F] w-full mx-auto p-2 xl:p-4 rounded-3xl border border-[#2B2B2B] mt-10 xl:mt-14 lg:grid-cols-3"
       >
         {tiersToShow.map((tier, index) => (
-          <PricingCard key={tier.title} tier={tier} isSecond={index === 1} />
+          <PricingCard key={tier.title} tier={tier} isSecond={index === 2} />
         ))}
       </div>
     </section>

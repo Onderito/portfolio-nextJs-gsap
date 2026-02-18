@@ -15,7 +15,7 @@ export const createHomeAnimation = (refs: {
     autoAlpha: 0,
     duration: 0.8,
     y: 100,
-    scale: 4,
+    scale: 6,
   });
   tl.from(
     refs.picture,
@@ -26,7 +26,7 @@ export const createHomeAnimation = (refs: {
       rotate: 10,
       scale: 1.2,
     },
-    "0.5"
+    "0.3",
   );
   tl.from(
     refs.name,
@@ -35,13 +35,13 @@ export const createHomeAnimation = (refs: {
       y: 100,
       duration: 0.8,
       rotate: 10,
-      scale: 1.2, 
+      scale: 1.2,
     },
-    "<"
+    "<",
   );
   const split = addSplitTextTitleAnimation(tl, refs.title, {
     position: "-=0.2",
-    tween: { filter: "none", ease: "power3.out" },
+    tween: { filter: "none" },
   });
   tl.from(
     refs.subtitle,
@@ -49,9 +49,8 @@ export const createHomeAnimation = (refs: {
       autoAlpha: 0,
       duration: 0.8,
       y: 40,
-      ease: "power3.out"
     },
-    "-=1.2"
+    "-=1.2",
   );
   tl.from(
     refs.button,
@@ -60,9 +59,8 @@ export const createHomeAnimation = (refs: {
       duration: 0.8,
       y: 40,
       scale: 1.1,
-      ease: "power3.out"
     },
-    "-=0.9"
+    "-=0.9",
   );
 
   tl.add(() => {
@@ -71,7 +69,6 @@ export const createHomeAnimation = (refs: {
 
   return tl;
 };
-
 
 export const setupPictureHover = (element: HTMLElement) => {
   const handleMouseEnter = () => {

@@ -60,14 +60,9 @@ export default function MyJourney() {
       <h2 ref={refs.title} className="heading-2 text-center">
         My Journey
       </h2>
-      <p
-        ref={refs.subtitle}
-        className="body-text text-center mt-2 md:mt-4 xl:mt-6"
-      >
-        How I became obsessed with building beautiful web{" "}
-        <span className="relative inline-block">
-          experiences.
-        </span>
+      <p ref={refs.subtitle} className="body-text text-center mt-2">
+        How I became obsessed with building <br className="block md:hidden" />{" "}
+        beautiful web experiences.
       </p>
 
       <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 mt-10 xl:mt-14 gap-8">
@@ -105,7 +100,7 @@ export default function MyJourney() {
             </div>
             <Image
               src="/mini-color-gradient.svg"
-              alt=""
+              alt="color gradient"
               width={500}
               height={500}
               className={`absolute z-1 blur-3xl w-[750px] h-[648px]  ${positions[i]}`}

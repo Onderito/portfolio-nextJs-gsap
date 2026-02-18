@@ -58,7 +58,7 @@ export default function HeroSection() {
         </p>
         <h1
           ref={refs.title}
-          className="heading-1 text-center mt-6 md:mt-10 xl:mt-12"
+          className="heading-1 text-center mt-6 md:mt-10 xl:mt-12 overflow-hidden"
         >
           I design & build modern <br />
           <span className="text-neutral-400">web experiences</span>
@@ -72,10 +72,9 @@ export default function HeroSection() {
         </p>
         <a
           className=" mt-6 md:mt-8 xl:mt-10 scale-animation"
-          href="https://www.linkedin.com/in/ulasonder/"
-          target="_blank"
-          aria-label="Visit my Linkedin"
+          href="https://calendly.com/ulas-onder/30min"
           rel="noreferrer"
+          target="_blank"
         >
           <Button ref={refs.button}>Let's Talk</Button>
         </a>

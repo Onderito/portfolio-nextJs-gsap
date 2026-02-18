@@ -126,9 +126,9 @@ export default function WhoIAm() {
                 >
                   <div className="relative z-10">
                     <a
-                      href="https://www.linkedin.com/in/ulasonder/"
-                      target="_blank"
+                      href="https://calendly.com/ulas-onder/30min"
                       rel="noreferrer"
+                      target="_blank"
                     >
                       <Button ref={null} className="px-10 scale-animation ">
                         Let's Talk
@@ -200,7 +200,7 @@ export default function WhoIAm() {
                   style={{ cornerShape: "squircle" }}
                   className="relative overflow-hidden webkit-clip rounded-2xl xl:rounded-3xl bg-[#212121] p-6 shadow-white-blur flex items-center justify-center xl:col-span-1 h-[200px] xl:h-full"
                 >
-                  <h5 className="relative z-10  font-gloria text-3xl font-bold">
+                  <h5 className="relative z-10 font-gloria text-3xl font-bold">
                     ÖnderDev
                   </h5>
                   <Image

@@ -51,13 +51,13 @@ export default function MyProject() {
       stack: "Webflow",
       url: "https://clarity-d63997.webflow.io/",
     },
-    {
-      image: "/surf.webp",
-      title: "Sealocker - Find Your Next Wave",
-      desc: "Collaborative UX/UI and Frontend Development project carried out during my apprenticeship. I worked on interface implementation, component structure, and performance-oriented development while following a real production workflow. This experience allowed me to apply industry best practices and contribute to a professional, team-driven project.",
-      stack: "Webflow",
-      url: "https://www.sealocker.fr/",
-    },
+    // {
+    //   image: "/surf.webp",
+    //   title: "Sealocker - Find Your Next Wave",
+    //   desc: "Collaborative UX/UI and Frontend Development project carried out during my apprenticeship. I worked on interface implementation, component structure, and performance-oriented development while following a real production workflow. This experience allowed me to apply industry best practices and contribute to a professional, team-driven project.",
+    //   stack: "Webflow",
+    //   url: "https://www.sealocker.fr/",
+    // },
   ];
   return (
     <div ref={refs.container}>
