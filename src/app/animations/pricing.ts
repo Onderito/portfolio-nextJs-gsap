@@ -21,12 +21,14 @@ export const createPricingAnimation = (refs: {
     },
   });
 
-  const split = addSplitTextTitleAnimation(tl, refs.title);
-  const splitSubTitle = addSplitTextDescriptionAnimation(tl, refs.subtitle);
-  const state = { value: 0 };
+  const split = addSplitTextTitleAnimation(tl, refs.title, {
+    tween: { filter: "none" },
+  });
+  const splitSubTitle = addSplitTextDescriptionAnimation(tl, refs.subtitle, {
+    tween: { filter: "none" },
+  });
 
-  gsap.to(state, {});
-
+  tl.set(refs.cardsWrapper, { willChange: "transform, opacity" }, "<0.4");
   tl.from(
     refs.cardsWrapper,
     {
@@ -35,8 +37,9 @@ export const createPricingAnimation = (refs: {
       duration: 0.8,
       ease: "power3.out",
     },
-    "<0.4",
+    "<"
   );
+  tl.set(refs.cardsWrapper, { willChange: "auto" });
 
   return () => {
     split.revert();

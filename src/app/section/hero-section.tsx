@@ -60,15 +60,15 @@ export default function HeroSection() {
           ref={refs.title}
           className="heading-1 text-center mt-6 md:mt-10 xl:mt-12 overflow-hidden"
         >
-          I design & build modern <br />
-          <span className="text-neutral-400">web experiences</span>
+          Your next website <br />
+          <span className="text-neutral-400">built for growth.</span>
         </h1>
         <p
           ref={refs.subtitle}
           className="body-text mt-2 md:mt-4 xl:mt-6 text-center"
         >
-          Focused on performance, smooth animations,{" "}
-          <br className="md:hidden" /> and clean interfaces.
+          A fast, modern site that builds trust <br className="md:hidden" /> and
+          turns visitors into clients.
         </p>
         <a
           className=" mt-6 md:mt-8 xl:mt-10 scale-animation"
@@ -76,7 +76,7 @@ export default function HeroSection() {
           rel="noreferrer"
           target="_blank"
         >
-          <Button ref={refs.button}>Let's Talk</Button>
+          <Button ref={refs.button}>Let&apos;s Talk</Button>
         </a>
         <Image
           ref={refs.gradientImage}
