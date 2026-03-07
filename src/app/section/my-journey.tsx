@@ -70,7 +70,7 @@ export default function MyJourney() {
                   )}
                 </div>
               </div>
-              <p className="mt-11 text-[16px] leading-[1.12] tracking-[-0.16px] font-light text-[#c4c4c4]">
+              <p className="mt-11 text-[16px]  tracking-[-0.16px] font-light text-[#c4c4c4]">
                 {j.description}
               </p>
               <div className="mt-auto flex items-center gap-3 text-white/80">

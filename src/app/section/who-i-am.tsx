@@ -43,14 +43,6 @@ export default function WhoIAm() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const tools = [
-    { icon: "/webflow.webp", alt: "Webflow", bg: "bg-[#AAC6FA]" },
-    { icon: "/nextJs.webp", alt: "NextJs", bg: "bg-[#1A1A1A]" },
-    { text: "SEO", bg: "bg-[#1A1A1A]" },
-    { text: "GSAP", bg: "bg-[#1A1A1A]" },
-    { text: "UI&UX", bg: "bg-[#1A1A1A]" },
-  ];
-
   return (
     <div id="about" className="w-full scroll-mt-24">
       <div className="container">
@@ -77,9 +69,7 @@ export default function WhoIAm() {
                   ref={refs.presentationCard}
                   className="relative overflow-hidden rounded-2xl xl:rounded-3xl bg-[#212121] lg:h-[200px] p-6 shadow-white-blur xl:h-auto xl:col-span-3 "
                 >
-                  <h3 className="text-2xl font-bold">
-                    {messages.whoIAm.name}
-                  </h3>
+                  <h3 className="text-2xl font-bold">{messages.whoIAm.name}</h3>
                   <p className="mt-3 text-neutral-400 leading-relaxed xl:w-[90%]">
                     {messages.whoIAm.introBefore}{" "}
                     <span className="text-white">
@@ -93,33 +83,30 @@ export default function WhoIAm() {
                   ref={refs.toolkitCard}
                   className="relative overflow-hidden rounded-2xl xl:rounded-3xl bg-[#212121] p-6 shadow-white-blur xl:col-span-2"
                 >
-                  <h4 className="text-xl font-bold text-center">
-                    {messages.whoIAm.toolkitTitleStart}{" "}
-                    <span className="font-gloria text-neutral-400">
-                      {messages.whoIAm.toolkitTitleEmphasis}
-                    </span>
+                  <h4 className="text-lg font-bold">
+                    {messages.whoIAm.toolkitTitle}
                   </h4>
-                  <div className="mt-6 flex flex-wrap justify-center gap-4 xl:flex-nowrap md:h-[120px]">
-                    {tools.map((item, i) => (
-                      <span
+                  <p className="mt-1 max-w-sm text-[12px] leading-relaxed text-neutral-400">
+                    {messages.whoIAm.toolkitIntro}
+                  </p>
+                  <div className="mt-4 grid grid-cols-4 gap-2">
+                    {messages.whoIAm.toolkitItems.map((item, i) => (
+                      <div
                         key={i}
-                        className={`flex h-[70px] w-[70px] items-center justify-center rounded-2xl border border-[#404040] ${item.bg} bg-[#333333] text-base font-bold scale-animation hover:rotate-2 hover:border-2`}
+                        className="rounded-[12px] border border-white/8 bg-white/3 px-3 py-2.5"
                       >
-                        {item.icon ? (
-                          <Image
-                            src={item.icon}
-                            alt={item.alt!}
-                            width={50}
-                            height={50}
-                            quality={100}
-                          />
-                        ) : (
-                          item.text
-                        )}
-                      </span>
+                        <div className="text-[9px] font-medium uppercase tracking-[0.16em] text-neutral-500">
+                          {String(i + 1).padStart(2, "0")}
+                        </div>
+                        <p className="mt-1.5 text-[13px] font-medium tracking-[-0.02em] text-white leading-none">
+                          {item.label}
+                        </p>
+                        <p className="mt-1 text-[10px] leading-snug text-neutral-400">
+                          {item.desc}
+                        </p>
+                      </div>
                     ))}
                   </div>
-                  <div className="pointer-events-none absolute left-0 bottom-10 h-20 w-20 rounded-2xl bg-white blur-[100px]" />
                 </div>
                 <div
                   ref={refs.hireMeCard}
@@ -145,19 +132,10 @@ export default function WhoIAm() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <div
-                    className="relative overflow-hidden rounded-2xl xl:rounded-3xl bg-[#212121] p-6 shadow-white-blur flex items-center justify-center xl:col-span-1 h-[200px] xl:h-full cursor-pointer scale-animation"
-                  >
+                  <div className="relative overflow-hidden rounded-2xl xl:rounded-3xl bg-[#212121] p-6 shadow-white-blur flex items-center justify-center xl:col-span-1 h-[200px] xl:h-full cursor-pointer scale-animation">
                     <Image
                       src="/linkedin.svg"
                       alt={messages.whoIAm.linkedinAlt}
-                      width={70}
-                      height={70}
-                    />
-                    <Image
-                      className="absolute w-full bottom-[-150px] md:bottom-[-350px] lg:bottom-[-500px] right-20 xl:-top-20 "
-                      src="/double-circle.svg"
-                      alt=""
                       width={70}
                       height={70}
                     />
@@ -169,20 +147,11 @@ export default function WhoIAm() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <div
-                    className="relative overflow-hidden rounded-2xl xl:rounded-3xl bg-[#212121] p-6 shadow-white-blur flex items-center justify-center xl:col-span-1 h-[200px] xl:h-full cursor-pointer scale-animation "
-                  >
+                  <div className="relative overflow-hidden rounded-2xl xl:rounded-3xl bg-[#212121] p-6 shadow-white-blur flex items-center justify-center xl:col-span-1 h-[200px] xl:h-full cursor-pointer scale-animation ">
                     <Image
                       src="/x-icon.webp"
                       quality={100}
                       alt={messages.whoIAm.xAlt}
-                      width={70}
-                      height={70}
-                    />
-                    <Image
-                      className="absolute w-full top-[-150px] md:top-[-350px] lg:top-[-500px] left-20 xl:-top-20"
-                      src="/double-circle.svg"
-                      alt=""
                       width={70}
                       height={70}
                     />

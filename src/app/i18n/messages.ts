@@ -21,8 +21,12 @@ export type Messages = {
     introBefore: string;
     highlight: string;
     introAfter: string;
-    toolkitTitleStart: string;
-    toolkitTitleEmphasis: string;
+    toolkitTitle: string;
+    toolkitIntro: string;
+    toolkitItems: Array<{
+      label: string;
+      desc: string;
+    }>;
     cta: string;
     linkedinAlt: string;
     xAlt: string;
@@ -123,8 +127,27 @@ const messages: Record<Locale, Messages> = {
       highlight: "landing pages orientées conversion",
       introAfter:
         "qui se chargent en moins d’une seconde. Design stratégique, code propre et animations subtiles — pour transformer vos visiteurs en clients.",
-      toolkitTitleStart: "Stack",
-      toolkitTitleEmphasis: "haute performance",
+      toolkitTitle: "Expertises",
+      toolkitIntro:
+        "Clarté, rythme et performance au service du projet.",
+      toolkitItems: [
+        {
+          label: "Design",
+          desc: "Interfaces claires et soignées.",
+        },
+        {
+          label: "Motion",
+          desc: "Animations fluides et utiles.",
+        },
+        {
+          label: "Performance",
+          desc: "Site rapide et agréable.",
+        },
+        {
+          label: "SEO",
+          desc: "Base saine pour la visibilité.",
+        },
+      ],
       cta: "Réserver un appel",
       linkedinAlt: "LinkedIn",
       xAlt: "X",
@@ -132,7 +155,7 @@ const messages: Record<Locale, Messages> = {
     },
     projects: {
       titleStart: "Projets",
-      titleEmphasis: "choisis",
+      titleEmphasis: "sur lesquels j’ai travaillé",
       roleLabel: "Rôle",
       roleValue: "Design & Développement",
       frameworkLabel: "Framework",
@@ -339,16 +362,35 @@ const messages: Record<Locale, Messages> = {
       highlight: "Landing Pages",
       introAfter:
         "that load in under one second. I focus on strategic design and clean code to maximize your revenue.",
-      toolkitTitleStart: "High-Performance",
-      toolkitTitleEmphasis: "Toolkit",
+      toolkitTitle: "Expertise",
+      toolkitIntro:
+        "Clarity, rhythm and performance in service of the project.",
+      toolkitItems: [
+        {
+          label: "Design",
+          desc: "Clear and refined interfaces.",
+        },
+        {
+          label: "Motion",
+          desc: "Fluid and purposeful motion.",
+        },
+        {
+          label: "Performance",
+          desc: "Fast and smooth experience.",
+        },
+        {
+          label: "SEO",
+          desc: "Clean base for visibility.",
+        },
+      ],
       cta: "Let’s Talk",
       linkedinAlt: "LinkedIn",
       xAlt: "X",
       devMark: "ÖnderDev",
     },
     projects: {
-      titleStart: "Selected",
-      titleEmphasis: "Projects",
+      titleStart: "Projects",
+      titleEmphasis: "I’ve worked on",
       roleLabel: "Role",
       roleValue: "Design & Development",
       frameworkLabel: "Framework",
