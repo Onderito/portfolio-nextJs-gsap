@@ -6,8 +6,11 @@ import { Blocks, Sparkles, Pen } from "lucide-react";
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap/dist/gsap";
 import { createMyProjectAnimation } from "../animations/my-project-animation";
+import { useMessages } from "../i18n/use-messages";
 
 export default function MyProject() {
+  const messages = useMessages();
+
   const refs = {
     container: useRef<HTMLDivElement>(null),
     title: useRef<HTMLHeadingElement>(null),
@@ -29,40 +32,14 @@ export default function MyProject() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const projects = [
-    {
-      image: "/private-driver.webp",
-      title: "Vip Limo Nice - Private driver services",
-      desc: "Full UX/UI Design and Frontend Development. I focused on designing the visual hierarchy to maximize the Call-to-Action. The site was built using Next.js for high performance and GSAP for engaging, fluid animations, ensuring a premium user experience.",
-      stack: "Next.js",
-      url: "https://viplimonice.com/",
-    },
-    {
-      image: "/calmly.webp",
-      title: "Calmly - Find Your Inner Peace",
-      desc: "Full UX/UI Design and Frontend Development. Calmy is a minimalist landing page built with Next.js, where the focus was on clarity, calm visual hierarchy, and subtle GSAP animations to reinforce the app’s zen identity. The goal was to deliver a smooth, lightweight, and immersive user experience.",
-      stack: "Next.js",
-      url: "https://calmly-app-zeta.vercel.app/",
-    },
-    {
-      image: "/clarity.webp",
-      title: "Clarity - Focus on What Matters",
-      desc: "UX/UI Design and Webflow Frontend Development. Clarity is a clean and efficient landing page, created using Webflow with custom GSAP animations to bring life to the interface. The objective was to maintain a sharp visual hierarchy while keeping the layout intuitive, modern, and highly conversion-oriented.",
-      stack: "Webflow",
-      url: "https://clarity-d63997.webflow.io/",
-    },
-    // {
-    //   image: "/surf.webp",
-    //   title: "Sealocker - Find Your Next Wave",
-    //   desc: "Collaborative UX/UI and Frontend Development project carried out during my apprenticeship. I worked on interface implementation, component structure, and performance-oriented development while following a real production workflow. This experience allowed me to apply industry best practices and contribute to a professional, team-driven project.",
-    //   stack: "Webflow",
-    //   url: "https://www.sealocker.fr/",
-    // },
-  ];
+  const projects = messages.projects.items;
   return (
-    <div ref={refs.container}>
+    <div id="projects" ref={refs.container} className="scroll-mt-24">
       <h2 ref={refs.title} className="heading-2 text-center">
-        Projects <span className="text-neutral-400 ">I’ve worked on</span>
+        {messages.projects.titleStart}{" "}
+        <span className="text-neutral-400 ">
+          {messages.projects.titleEmphasis}
+        </span>
       </h2>
       {projects.map((p, index) => (
         <div
@@ -76,17 +53,14 @@ export default function MyProject() {
             ref={(el) => {
               refs.cards.current[index] = el as HTMLDivElement;
             }}
-            style={{ cornerShape: "squircle" }}
             className="bg-[#212121] p-2.5 rounded-[26px] shadow-white-blur"
           >
             <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-8 h-full">
               <div className="relative group w-full">
                 <div
-                  style={{ cornerShape: "squircle" }}
                   className="relative aspect-4/3 sm:aspect-4/3 h-full w-full overflow-hidden rounded-2xl glass-border bg-neutral-900 shadow-2xl shadow-black/50"
                 >
                   <Image
-                    style={{ cornerShape: "squircle" }}
                     src={p.image}
                     alt={p.title}
                     fill
@@ -107,15 +81,15 @@ export default function MyProject() {
                 <div className="mt-6 xl:mt-10 py-5 sm:py-6 border-t border-white/5 grid grid-cols-2 sm:flex sm:flex-wrap gap-y-6 gap-x-8">
                   <div className="space-y-1.5 col-span-2 sm:col-span-1">
                     <p className="text-[10px] sm:text-xs font-medium text-neutral-400 uppercase tracking-wider">
-                      Role
+                      {messages.projects.roleLabel}
                     </p>
                     <p className="text-sm sm:text-base text-neutral-200 font-medium">
-                      Design & Development
+                      {messages.projects.roleValue}
                     </p>
                   </div>
                   <div className="space-y-1.5">
                     <p className="text-[10px] sm:text-xs font-medium text-neutral-400 uppercase tracking-wider">
-                      Framework
+                      {messages.projects.frameworkLabel}
                     </p>
                     <div className="flex items-center gap-2 text-sm sm:text-base text-neutral-200 font-medium">
                       {index === 0 || index === 1 ? (
@@ -128,7 +102,7 @@ export default function MyProject() {
                   </div>
                   <div className="space-y-1.5">
                     <p className="text-[10px] sm:text-xs font-medium text-neutral-400 uppercase tracking-wider">
-                      Animation
+                      {messages.projects.animationLabel}
                     </p>
                     <div className="flex items-center gap-2 text-sm sm:text-base text-neutral-200 font-medium">
                       <Sparkles className="text-neutral-400 w-3.5 h-3.5" />
@@ -147,7 +121,7 @@ export default function MyProject() {
                     ref={null}
                     className=" w-full lg:w-fit scale-animation"
                   >
-                    See the Experience
+                    {messages.projects.cta}
                   </Button>
                 </a>
               </div>

@@ -39,7 +39,7 @@ export const createHomeAnimation = (refs: {
     },
     "<",
   );
-  const split = addSplitTextTitleAnimation(tl, refs.title, {
+  addSplitTextTitleAnimation(tl, refs.title, {
     position: "-=0.2",
     tween: { filter: "none" },
   });
@@ -62,10 +62,6 @@ export const createHomeAnimation = (refs: {
     },
     "-=0.9",
   );
-
-  tl.add(() => {
-    split.revert();
-  });
 
   return tl;
 };

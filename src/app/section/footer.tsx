@@ -1,13 +1,16 @@
 "use client";
-
-import Image from "next/image";
 import { Github, Twitter, Linkedin } from "lucide-react";
 import { gsap } from "gsap/dist/gsap";
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createFooterAnimation } from "../animations/footer";
-import { useEffect, useState } from "react";
+import { useLocale, useMessages } from "../i18n/use-messages";
+import LanguageSwitch from "../ui/language-switch";
+import AuroraOverlay from "../ui/aurora-overlay";
 
 export default function Footer() {
+  const messages = useMessages();
+  const locale = useLocale();
+
   const [time, setTime] = useState("");
 
   useEffect(() => {
@@ -40,48 +43,32 @@ export default function Footer() {
     return () => ctx.revert();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const navs = [
-    {
-      name: "Home",
-    },
-    {
-      name: "Who I am",
-    },
-    {
-      name: "Projects I’ve worked on",
-    },
-    {
-      name: "My Journey",
-    },
-    {
-      name: "How I Work",
-    },
-  ];
+  const navs = messages.footer.navs;
   const socialsMedia = [
     {
       icon: Twitter,
       link: "https://x.com/UnderDev0",
-      label: "Visit my Twitter",
+      label: messages.footer.twitterLabel,
     },
     {
       icon: Linkedin,
       link: "https://www.linkedin.com/in/ulasonder/",
-      label: "Visit my Linkedin",
+      label: messages.footer.linkedinLabel,
     },
     {
       icon: Github,
       link: "https://github.com/Onderito",
-      label: "Visit my Github",
+      label: messages.footer.githubLabel,
     },
   ];
   return (
     <div
       ref={refs.container}
-      style={{ cornerShape: "squircle" }}
       className="bg-[#080808] p-4 xl:p-8 rounded-3xl relative overflow-hidden  webkit-clip"
     >
+      <AuroraOverlay className="opacity-60" />
       {/* WRAPPER: en desktop on met 2 colonnes (haut) */}
-      <div className="flex flex-col gap-4 lg:flex-row md:justify-normal lg:gap-16 xl:gap-44  lg:items-start">
+      <div className="relative z-10 flex flex-col gap-4 lg:flex-row md:justify-normal lg:gap-16 xl:gap-44  lg:items-start">
         {/* Colonne gauche : identité + texte + réseaux */}
         <div className="flex flex-col gap-4">
           <div className="flex gap-2 items-center">
@@ -93,8 +80,7 @@ export default function Footer() {
 
           <div className="flex flex-col gap-4">
             <p className="text-lg text-neutral-400 max-w-sm mt-4 xl:mt-2 font-light ">
-              Crafting fluid web experiences with Next.js, Tailwind, and GSAP.
-              Focused on interaction design and performance
+              {messages.footer.tagline}
             </p>
 
             <div className="flex gap-4 xl:mt-4">
@@ -105,7 +91,6 @@ export default function Footer() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={s.label}
-                  style={{ cornerShape: "squircle" }}
                   className="p-2 rounded-lg bg-white/5 border border-white/5 text-neutral-400 hover:text-white hover:bg-white/10 transition-colors flex items-center justify-center shadow-white-blur"
                 >
                   <s.icon className="w-5 h-5" />
@@ -115,63 +100,57 @@ export default function Footer() {
           </div>
         </div>
         <ul className="font-regular mt-4 lg:mt-1 flex flex-col gap-4">
-          <li>SiteMap</li>
+          <li>{messages.footer.sitemap}</li>
           {navs.map((nav, i) => (
             <li
               key={i}
               className="lg:mt-4 text-neutral-400 text-sm w-fit hover:text-white "
             >
-              {nav.name}
+              {nav}
             </li>
           ))}
         </ul>
         <ul className="font-regular mt-4 lg:mt-1 flex flex-col gap-4">
-          <li>Contact</li>
+          <li>{messages.footer.contact}</li>
           <li className="text-neutral-400 lg:mt-4 text-sm hover:text-white">
             ulas.onder@outlook.fr
           </li>
         </ul>
       </div>
-      <div className="flex flex-col gap-2 lg:gap-4 lg:flex-row lg:justify-between lg:items-center mt-10 border-t-[0.5px] border-[#292929] pt-10 ">
+      <div className="relative z-10 flex flex-col gap-2 lg:gap-4 lg:flex-row lg:justify-between lg:items-center mt-10 border-t-[0.5px] border-[#292929] pt-10 ">
         <div className="flex flex-col justify-center items-center gap-2 lg:gap-4 lg:flex-row lg:justify-start text-neutral-400 text-sm font-light">
           <p className=" hover:text-white">
-            © 2025 Ulas Önder. All rights reserved
+            {messages.footer.rights}
           </p>
           <a
-            href="/privacy-policy"
+            href={`/${locale}/privacy-policy`}
             target="_blank"
             rel="noreferrer"
-            aria-label="Privacy Policy"
+            aria-label={messages.footer.privacy}
           >
-            <p className="cursor-pointer hover:text-white">Privacy Policy</p>
+            <p className="cursor-pointer hover:text-white">
+              {messages.footer.privacy}
+            </p>
           </a>
           <a
-            href="/terms-of-service"
+            href={`/${locale}/terms-of-service`}
             target="_blank"
             rel="noreferrer"
-            aria-label="Terms of Service"
+            aria-label={messages.footer.terms}
           >
-            <p className="cursor-pointer hover:text-white">Terms of Service</p>
+            <p className="cursor-pointer hover:text-white">
+              {messages.footer.terms}
+            </p>
           </a>
         </div>
-        <div className=" mt-2 lg:mt-0 p-1.5 rounded-[10px] bg-[#151515] shadow-white-blur flex w-fit mx-auto lg:mx-0 items-center gap-2 px-4">
-          <div className="w-2 h-2 rounded-full bg-green-500"></div>
-          <span
-            style={{ cornerShape: "squircle" }}
-            className=" font-extralight text-sm "
-          >
-            {time}
-          </span>
+        <div className="flex items-center gap-3 mx-auto lg:mx-0 mt-2 lg:mt-0">
+          <LanguageSwitch />
+          <div className="p-1.5 rounded-[10px] bg-[#151515] shadow-white-blur flex w-fit items-center gap-2 px-4">
+            <div className="w-2 h-2 rounded-full bg-green-500"></div>
+            <span className=" font-extralight text-sm ">{time}</span>
+          </div>
         </div>
       </div>
-      <Image
-        className="hidden xl:block absolute -top-20 -right-20 blur-[150px] "
-        src="/star.svg"
-        alt="Star"
-        width={200}
-        height={200}
-        priority
-      />
     </div>
   );
 }

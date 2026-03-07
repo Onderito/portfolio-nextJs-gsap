@@ -1,12 +1,13 @@
 "use client";
 
-import { pricingTiers, type PricingTier } from "@/app/data/pricing-data";
+import { getPricingTiers, type PricingTier } from "@/app/data/pricing-data";
 import Button from "../ui/button";
-import Image from "next/image";
 import { BadgeCheck } from "lucide-react";
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap/dist/gsap";
 import { createPricingAnimation } from "../animations/pricing";
+import { useLocale, useMessages } from "../i18n/use-messages";
+import AuroraOverlay from "../ui/aurora-overlay";
 
 function PricingCard({
   tier,
@@ -19,38 +20,29 @@ function PricingCard({
 
   return (
     <div
-      className={`relative mx-auto w-full rounded-2xl border p-4  xl:p-6 overflow-hidden  ${
+      className={`relative mx-auto w-full rounded-2xl border p-4 xl:p-6 overflow-hidden webkit-clip ${
         tier.featured ? "border-[#363636] bg-[#1C1C1C]" : "border-[#363636]"
       }`}
     >
-      {isSecond && (
-        <Image
-          src="/color-gradient.svg"
-          alt=""
-          width={1200}
-          height={1200}
-          className="absolute blur-3xl inset-x-0 -bottom-30"
-        />
-      )}
+      {isSecond ? <AuroraOverlay className="opacity-95" /> : null}
 
-      <div className="flex items-center justify-between gap-6">
+      <div className="relative z-10 flex items-center justify-between gap-6">
         <h3 className="text-white heading-3 font-black leading-tight">
           {tier.title}
         </h3>
         <span
-          style={{ cornerShape: "squircle" }}
           className="text-[#c4c4c4] text-[14px] shrink-0 bg-white/5 rounded-full p-2 border-[0.5px] border-[#363636]"
         >
           {tier.duration}
         </span>
       </div>
-      <p className="mt-4 text-[#d0d0d0] text-[16px] leading-[21px]">
+      <p className="relative z-10 mt-4 text-[#d0d0d0] text-[16px] leading-[21px] min-h-[63px]">
         {tier.description}
       </p>
-      <div className="flex items-end mt-10">
+      <div className="relative z-10 flex items-end mt-10">
         <p className="text-[48px] font-black text-white">{tier.price}</p>
       </div>
-      <ul className="mt-10 flex flex-col gap-3">
+      <ul className="relative z-10 mt-10 flex flex-col gap-3">
         {features.map((feature, index) => (
           <li key={index} className="flex items-center gap-3 text-[16px]">
             <BadgeCheck className="w-4 h-4 text-[#d0d0d0]" />
@@ -58,21 +50,25 @@ function PricingCard({
           </li>
         ))}
       </ul>
-      <a
-        href="https://calendly.com/ulas-onder/30min"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <Button ref={null} className="mt-12 w-full h-[58px] scale-animation">
-          {tier.ctaText}
-        </Button>
-      </a>
+      <div className="relative z-10 mt-12">
+        <a
+          href="https://calendly.com/ulas-onder/30min"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <Button ref={null} className="w-full h-[58px] scale-animation">
+            {tier.ctaText}
+          </Button>
+        </a>
+      </div>
     </div>
   );
 }
 
 export function PricingSection() {
-  const tiersToShow = pricingTiers.slice(0, 3);
+  const messages = useMessages();
+  const locale = useLocale();
+  const tiersToShow = getPricingTiers(locale).slice(0, 3);
   const refs = {
     container: useRef<HTMLElement>(null),
     title: useRef<HTMLHeadingElement>(null),
@@ -95,12 +91,16 @@ export function PricingSection() {
   }, []);
 
   return (
-    <section ref={refs.container} className="w-full">
+    <section
+      id="pricing"
+      ref={refs.container}
+      className="w-full scroll-mt-24"
+    >
       <h2 ref={refs.title} className="heading-2 text-white text-center">
-        Let’s work together
+        {messages.pricing.title}
       </h2>
       <p ref={refs.subtitle} className="body-text text-center mt-2">
-        Choose the package that matches your goals.
+        {messages.pricing.subtitle}
       </p>
       <div
         ref={refs.cardsWrapper}

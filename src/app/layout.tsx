@@ -14,9 +14,33 @@ const gloria = Gloria_Hallelujah({
   variable: "--font-gloria",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+
 export const metadata: Metadata = {
-  title: "ondermotion-dev",
-  description: "my portfolio site",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Ulas Önder — Front-end Developer & Designer",
+    template: "%s",
+  },
+  description:
+    "High-end websites for unique projects. Fast, refined and conversion-focused experiences built with Next.js, Tailwind and GSAP.",
+  openGraph: {
+    title: "Ulas Önder — Front-end Developer & Designer",
+    description:
+      "High-end websites for unique projects. Fast, refined and conversion-focused experiences built with Next.js, Tailwind and GSAP.",
+    type: "website",
+    url: "/",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ulas Önder — Front-end Developer & Designer",
+    description:
+      "High-end websites for unique projects. Fast, refined and conversion-focused experiences built with Next.js, Tailwind and GSAP.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -25,7 +49,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${gloria.variable}`}>
+    <html lang="fr" className={`${inter.variable} ${gloria.variable}`}>
       <body>
         <main>
           <ClientWrapper>{children}</ClientWrapper>

@@ -8,8 +8,11 @@ import {
   createHomeAnimation,
   setupPictureHover,
 } from "../animations/home-animation";
+import { useMessages } from "../i18n/use-messages";
 
 export default function HeroSection() {
+  const messages = useMessages();
+
   const refs = {
     picture: useRef<HTMLImageElement>(null),
     name: useRef<HTMLParagraphElement>(null),
@@ -41,34 +44,39 @@ export default function HeroSection() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <div className="h-screen flex justify-center items-center">
+    <div
+      id="home"
+      className="h-screen flex justify-center items-center scroll-mt-24"
+    >
       <div className="flex flex-col items-center justify-center relative z-50">
         <Image
           ref={refs.picture}
           src="/blur-profile.webp"
-          alt="Ulas Önder - Front-end Developer"
+          alt={messages.hero.profileAlt}
           width={500}
           height={500}
           priority
           quality={80}
           className="object-cover w-30 h-30 rounded-2xl rotate-2 border-2 border-white border-glass"
         />
-        <p ref={refs.name} className="mt-4 font-gloria">
-          Hi I’m Ulas
-        </p>
+        {messages.hero.greeting ? (
+          <p ref={refs.name} className="mt-4 font-gloria">
+            {messages.hero.greeting}
+          </p>
+        ) : null}
         <h1
           ref={refs.title}
           className="heading-1 text-center mt-6 md:mt-10 xl:mt-12 overflow-hidden"
         >
-          Your next website <br />
-          <span className="text-neutral-400">built for growth.</span>
+          {messages.hero.titleLine1} <br />
+          <span className="text-neutral-400">{messages.hero.titleEmphasis}</span>
         </h1>
         <p
           ref={refs.subtitle}
           className="body-text mt-2 md:mt-4 xl:mt-6 text-center"
         >
-          A fast, modern site that builds trust <br className="md:hidden" /> and
-          turns visitors into clients.
+          {messages.hero.subtitleLine1} <br className="md:hidden" />{" "}
+          {messages.hero.subtitleLine2}
         </p>
         <a
           className=" mt-6 md:mt-8 xl:mt-10 scale-animation"
@@ -76,7 +84,7 @@ export default function HeroSection() {
           rel="noreferrer"
           target="_blank"
         >
-          <Button ref={refs.button}>Let&apos;s Talk</Button>
+          <Button ref={refs.button}>{messages.hero.cta}</Button>
         </a>
         <Image
           ref={refs.gradientImage}

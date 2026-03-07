@@ -1,12 +1,15 @@
 "use client";
 
 import { Pen, Zap, Rocket } from "lucide-react";
-import Image from "next/image";
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap/dist/gsap";
 import { createMyJourneyAnimation } from "../animations/my-journey";
+import { useMessages } from "../i18n/use-messages";
+import AuroraOverlay from "../ui/aurora-overlay";
 
 export default function MyJourney() {
+  const messages = useMessages();
+
   const refs = {
     container: useRef<HTMLDivElement>(null),
     title: useRef<HTMLHeadingElement>(null),
@@ -28,41 +31,18 @@ export default function MyJourney() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const myJourney = [
-    {
-      title: "2023 – First lines of code",
-      icon: "/thunder.svg",
-      description:
-        "I wrote my first lines of code and instantly got hooked. HTML, CSS, JS — everything felt new, challenging, and exciting.",
-      button: "Getting Started",
-    },
-    {
-      title: "2024 — Discovering UI / UX",
-      icon: "/pen.svg",
-      description:
-        "I started diving deep into UI & UX. Structure, colors, spacing — everything suddenly made sense. I wanted to build interfaces that feel good, not just work.",
-      button: "Levelling Up",
-    },
-    {
-      title: "2025 — Learning  GSAP",
-      icon: "/rocket.svg",
-      description:
-        "I explored motion design and fell in love with it. Timelines, easing, micro-interactions — GSAP opened a whole new world of creative possibilities.",
-      button: "Going Deeper",
-    },
-  ];
+  const myJourney = messages.journey.items;
 
-  const positions = ["-top-50", "right-20 -top-70", "left-20 -top-70"];
   const rotations = ["rotate-2", "-rotate-2", "rotate-2"];
 
   return (
-    <div ref={refs.container}>
+    <div id="journey" ref={refs.container} className="scroll-mt-24">
       <h2 ref={refs.title} className="heading-2 text-center">
-        My Journey
+        {messages.journey.title}
       </h2>
       <p ref={refs.subtitle} className="body-text text-center mt-2">
-        How I became obsessed with building <br className="block md:hidden" />{" "}
-        beautiful web experiences.
+        {messages.journey.subtitleLine1} <br className="block md:hidden" />{" "}
+        {messages.journey.subtitleLine2}
       </p>
 
       <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 mt-10 xl:mt-14 gap-8">
@@ -71,40 +51,36 @@ export default function MyJourney() {
             ref={(el) => {
               refs.cards.current[i] = el as HTMLDivElement;
             }}
-            style={{ cornerShape: "squircle" }}
-            className={`flex flex-col  bg-[#212121] shadow-white-blur p-6 rounded-3xl overflow-hidden  webkit-clip relative xl:w-full ${rotations[i]} `}
+            className={`relative flex flex-col overflow-hidden webkit-clip rounded-[24px] bg-[#1f1f1f] p-6 xl:w-[386px] xl:h-[350px] xl:mx-auto ${rotations[i]}`}
             key={i}
           >
-            <div className="relative z-10">
-              <div className="flex flex-row justify-between items-center">
-                <h3 className="heading-4">{j.title}</h3>
-                <div className=" rounded-full w-10 h-10 flex items-center justify-center shrink-0 bg-white/5 text-zinc-300 ring-1 ring-inset ring-white/10">
+            <AuroraOverlay />
+            <div className="relative z-10 flex h-full flex-col">
+              <div className="flex flex-row items-start justify-between gap-6">
+                <h3 className="text-[20px] font-semibold leading-none tracking-[-0.2px] text-white">
+                  {j.title}
+                </h3>
+                <div className="shrink-0 text-white">
                   {i === 0 ? (
-                    <Zap className="w-3.5 h-3.5 xl:w-5 xl:h-5" />
+                    <Zap className="h-5 w-5" strokeWidth={1.75} />
                   ) : i === 1 ? (
-                    <Pen className="w-3.5 h-3.5 xl:w-5 xl:h-5" />
+                    <Pen className="h-5 w-5" strokeWidth={1.75} />
                   ) : (
-                    <Rocket className="w-3.5 h-3.5 xl:w-5 xl:h-5" />
+                    <Rocket className="h-5 w-5" strokeWidth={1.75} />
                   )}
                 </div>
               </div>
-              <p className="card-text mt-4 md:mt-4 xl:mt-6 text-neutral-400">
+              <p className="mt-11 text-[16px] leading-[1.12] tracking-[-0.16px] font-light text-[#c4c4c4]">
                 {j.description}
               </p>
-              <p
-                style={{ cornerShape: "squircle" }}
-                className=" mt-6 xl:mt-10 border-[0.5px] border-white/10 bg-white/5 text-zinc-300 backdrop-blur-sm rounded-full shadow-white-blur w-fit p-2 text-[14px] xl:text-[16px]"
-              >
-                {j.button}
-              </p>
+              <div className="mt-auto flex items-center gap-3 text-white/80">
+                <span className="h-px w-8 bg-white/20" />
+                <p className="text-[12px] font-medium uppercase tracking-[0.16em]">
+                  {j.badge}
+                </p>
+              </div>
             </div>
-            <Image
-              src="/mini-color-gradient.svg"
-              alt="color gradient"
-              width={500}
-              height={500}
-              className={`absolute z-1 blur-3xl w-[750px] h-[648px]  ${positions[i]}`}
-            />
+            <div className="pointer-events-none absolute inset-0 rounded-[inherit] shadow-[inset_0px_0px_1px_0px_rgba(255,255,255,0.5)]" />
           </div>
         ))}
       </div>
