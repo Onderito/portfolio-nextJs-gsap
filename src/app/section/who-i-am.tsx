@@ -89,7 +89,7 @@ export default function WhoIAm() {
                   <p className="mt-1 max-w-sm text-[12px] leading-relaxed text-neutral-400">
                     {messages.whoIAm.toolkitIntro}
                   </p>
-                  <div className="mt-4 grid grid-cols-4 gap-2">
+                  <div className="mt-4 grid grid-cols-2 lg:grid-cols-4 gap-2">
                     {messages.whoIAm.toolkitItems.map((item, i) => (
                       <div
                         key={i}
