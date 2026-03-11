@@ -33,7 +33,7 @@ export function addSplitTextTitleAnimation(
     {
       force3D: true,
       autoAlpha: 0,
-      duration: 1.25,
+      duration: 0.9,
       y: 40,
       stagger: 0.03,
       ease: "power3.out",

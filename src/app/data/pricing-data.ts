@@ -24,7 +24,7 @@ const pricingTiersByLocale: Record<Locale, PricingTier[]> = {
       duration: "1 semaine",
       description:
         "Une landing page à fort impact, pensée pour convertir et être mise en ligne rapidement.",
-      price: "700€",
+      price: "900€",
       ctaText: "Réserver un appel",
       featured: false,
       accentColor: "#9FB3D9",
@@ -39,7 +39,7 @@ const pricingTiersByLocale: Record<Locale, PricingTier[]> = {
     },
     {
       title: "Refonte",
-      duration: "1–2 semaines",
+      duration: "1 semaine",
       description:
         "Modernisation de votre site existant pour améliorer la clarté, l’UX et la crédibilité.",
       price: "1200€",
@@ -80,7 +80,7 @@ const pricingTiersByLocale: Record<Locale, PricingTier[]> = {
       duration: "1 week",
       description:
         "A high-impact single-page website designed to convert, impress, and launch fast.",
-      price: "700€",
+      price: "900€",
       ctaText: "Schedule a call",
       featured: false,
       accentColor: "#9FB3D9",
@@ -95,7 +95,7 @@ const pricingTiersByLocale: Record<Locale, PricingTier[]> = {
     },
     {
       title: "Rework",
-      duration: "1-2 weeks",
+      duration: "1 week",
       description:
         "A modern refresh of your existing site to improve clarity, UX, and overall polish.",
       price: "1200€",

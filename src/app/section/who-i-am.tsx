@@ -93,7 +93,7 @@ export default function WhoIAm() {
                     {messages.whoIAm.toolkitItems.map((item, i) => (
                       <div
                         key={i}
-                        className="rounded-[12px] border border-white/8 bg-white/3 px-3 py-2.5"
+                        className="rounded-[12px] border border-white/8 bg-white/3 px-3 py-2.5 scale-rotate-animation"
                       >
                         <div className="text-[9px] font-medium uppercase tracking-[0.16em] text-neutral-500">
                           {String(i + 1).padStart(2, "0")}

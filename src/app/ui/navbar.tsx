@@ -3,10 +3,26 @@
 import Link from "next/link";
 import { useLocale, useMessages } from "../i18n/use-messages";
 import LanguageSwitch from "./language-switch";
+import { gsap } from "gsap/dist/gsap";
+import { useLayoutEffect, useRef } from "react";
+import { createNavBarAnimation } from "../animations/home-animation";
 
 const sectionIds = ["home", "about", "projects", "pricing"] as const;
 
 export default function Navbar() {
+  const refs = {
+    container: useRef<HTMLDivElement>(null),
+  };
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      createNavBarAnimation({
+        container: refs.container.current!,
+      });
+    }, refs.container);
+
+    return () => ctx.revert();
+  }, []);
   const locale = useLocale();
   const messages = useMessages();
 
@@ -25,7 +41,10 @@ export default function Navbar() {
     .filter((item) => Boolean(item.label));
 
   return (
-    <div className="fixed top-4 left-1/2 -translate-x-1/2 z-[60] w-[calc(100%-2rem)] max-w-3xl">
+    <div
+      ref={refs.container}
+      className="fixed top-4 left-1/2 -translate-x-1/2 z-60 w-[calc(100%-2rem)] max-w-3xl"
+    >
       <nav
         className="webkit-clip rounded-2xl bg-[#0f0f0f]/70 border border-white/10 backdrop-blur-md shadow-white-blur px-3 py-2"
         aria-label="Primary"

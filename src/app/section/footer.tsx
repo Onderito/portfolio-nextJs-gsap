@@ -119,9 +119,7 @@ export default function Footer() {
       </div>
       <div className="relative z-10 flex flex-col gap-2 lg:gap-4 lg:flex-row lg:justify-between lg:items-center mt-10 border-t-[0.5px] border-[#292929] pt-10 ">
         <div className="flex flex-col justify-center items-center gap-2 lg:gap-4 lg:flex-row lg:justify-start text-neutral-400 text-sm font-light">
-          <p className=" hover:text-white">
-            {messages.footer.rights}
-          </p>
+          <p className=" hover:text-white">{messages.footer.rights}</p>
           <a
             href={`/${locale}/privacy-policy`}
             target="_blank"
@@ -145,7 +143,7 @@ export default function Footer() {
         </div>
         <div className="flex items-center gap-3 mx-auto lg:mx-0 mt-2 lg:mt-0">
           <LanguageSwitch />
-          <div className="p-1.5 rounded-[10px] bg-[#151515] shadow-white-blur flex w-fit items-center gap-2 px-4">
+          <div className="p-2.5 rounded-[10px] bg-[#151515] shadow-white-blur flex w-fit items-center gap-2 px-2">
             <div className="w-2 h-2 rounded-full bg-green-500"></div>
             <span className=" font-extralight text-sm ">{time}</span>
           </div>

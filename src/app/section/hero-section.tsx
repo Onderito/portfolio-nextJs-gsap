@@ -15,7 +15,6 @@ export default function HeroSection() {
 
   const refs = {
     picture: useRef<HTMLImageElement>(null),
-    name: useRef<HTMLParagraphElement>(null),
     title: useRef<HTMLHeadingElement>(null),
     subtitle: useRef<HTMLParagraphElement>(null),
     button: useRef<HTMLButtonElement>(null),
@@ -26,7 +25,6 @@ export default function HeroSection() {
     const ctx = gsap.context(() => {
       const elements = {
         picture: refs.picture.current!,
-        name: refs.name.current!,
         title: refs.title.current!,
         subtitle: refs.subtitle.current!,
         button: refs.button.current!,
@@ -59,17 +57,15 @@ export default function HeroSection() {
           quality={80}
           className="object-cover w-30 h-30 rounded-2xl rotate-2 border-2 border-white border-glass"
         />
-        {messages.hero.greeting ? (
-          <p ref={refs.name} className="mt-4 font-gloria">
-            {messages.hero.greeting}
-          </p>
-        ) : null}
+
         <h1
           ref={refs.title}
           className="heading-1 text-center mt-6 md:mt-10 xl:mt-12 overflow-hidden"
         >
           {messages.hero.titleLine1} <br />
-          <span className="text-neutral-400">{messages.hero.titleEmphasis}</span>
+          <span className="text-neutral-400">
+            {messages.hero.titleEmphasis}
+          </span>
         </h1>
         <p
           ref={refs.subtitle}

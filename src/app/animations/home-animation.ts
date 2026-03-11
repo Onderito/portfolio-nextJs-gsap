@@ -3,7 +3,6 @@ import { addSplitTextTitleAnimation } from "./Splittext/splittext";
 
 export const createHomeAnimation = (refs: {
   picture: HTMLElement;
-  name: HTMLElement;
   title: HTMLElement;
   subtitle: HTMLElement;
   button: HTMLElement;
@@ -26,21 +25,10 @@ export const createHomeAnimation = (refs: {
       rotate: 10,
       scale: 1.2,
     },
-    "0.3",
-  );
-  tl.from(
-    refs.name,
-    {
-      autoAlpha: 0,
-      y: 100,
-      duration: 0.8,
-      rotate: 10,
-      scale: 1.2,
-    },
-    "<",
+    "0.15", // cette anim commence après 300ms après la précédente.
   );
   addSplitTextTitleAnimation(tl, refs.title, {
-    position: "-=0.2",
+    position: "-=0.4",
     tween: { filter: "none" },
   });
   tl.from(
@@ -50,7 +38,7 @@ export const createHomeAnimation = (refs: {
       duration: 0.8,
       y: 40,
     },
-    "-=1.2",
+    "-=0.5",
   );
   tl.from(
     refs.button,
@@ -69,7 +57,7 @@ export const createHomeAnimation = (refs: {
 export const setupPictureHover = (element: HTMLElement) => {
   const handleMouseEnter = () => {
     gsap.to(element, {
-      duration: 0.8,
+      duration: 0.15,
       y: -25,
       scale: 1.1,
     });
@@ -77,7 +65,7 @@ export const setupPictureHover = (element: HTMLElement) => {
 
   const handleMouseLeave = () => {
     gsap.to(element, {
-      duration: 0.8,
+      duration: 0.15,
       y: 0,
       scale: 1,
     });
@@ -90,4 +78,15 @@ export const setupPictureHover = (element: HTMLElement) => {
     element.removeEventListener("mouseenter", handleMouseEnter);
     element.removeEventListener("mouseleave", handleMouseLeave);
   };
+};
+
+export const createNavBarAnimation = (refs: { container: HTMLElement }) => {
+  const tl = gsap.timeline({ defaults: { ease: "power2.Out" } });
+
+  tl.from(refs.container, {
+    autoAlpha: 0,
+    y: -50,
+    duration: 0.8,
+    delay: 2,
+  });
 };

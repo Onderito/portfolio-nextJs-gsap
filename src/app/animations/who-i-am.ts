@@ -34,8 +34,13 @@ export const createWhoIAmAnimation = (refs: {
     refs.xCard,
     refs.devCard,
   ];
+
   const setInitialStates = () => {
-    gsap.set(allElements, { willChange: "transform" });
+    gsap.set(allElements, {
+      willChange: "transform, opacity",
+      autoAlpha: 0,
+      transformOrigin: "center center",
+    });
     gsap.set(refs.picture, {
       yPercent: -180,
       xPercent: -50,
@@ -80,31 +85,48 @@ export const createWhoIAmAnimation = (refs: {
     });
   };
 
-  const tl2 = gsap.timeline({ defaults: { ease: "power4.inOut" } });
-
   const cardsAnimConfig = [
-    { ref: refs.picture, x: -240 },
-    { ref: refs.presentationCard, x: -140 },
-    { ref: refs.toolkitCard, x: -220 },
-    { ref: refs.hireMeCard, x: -20 },
-    { ref: refs.linkedinCard, x: -40 },
-    { ref: refs.xCard, x: -20 },
-    { ref: refs.devCard, x: -40 },
+    { ref: refs.picture, scale: 0.8 },
+    { ref: refs.presentationCard, scale: 0.8 },
+    { ref: refs.toolkitCard, scale: 0.8 },
+    { ref: refs.hireMeCard, scale: 0.8 },
+    { ref: refs.linkedinCard, scale: 0.8 },
+    { ref: refs.xCard, scale: 0.8 },
+    { ref: refs.devCard, scale: 0.8 },
   ];
 
-  cardsAnimConfig.forEach(({ ref, x }) => {
-    tl2.from(
-      ref,
-      {
-        x,
-        autoAlpha: 0,
-        duration: 1.2,
-      },
-      "<",
-    );
-  });
-
   const mm = gsap.matchMedia();
+
+  mm.add("(max-width: 1279px)", () => {
+    const tl = gsap.timeline({
+      defaults: { ease: "power4.out" },
+      scrollTrigger: {
+        trigger: refs.container,
+        start: "top bottom-=120",
+      },
+    });
+
+    cardsAnimConfig.forEach(({ ref, scale }) => {
+      tl.fromTo(
+        ref,
+        {
+          scale,
+          autoAlpha: 0,
+          transformOrigin: "center center",
+        },
+        {
+          scale: 1,
+          autoAlpha: 1,
+          duration: 0.9,
+        },
+        "<",
+      );
+    });
+
+    tl.set(allElements, { willChange: "auto" });
+
+    return tl;
+  });
 
   mm.add("(min-width: 1280px)", () => {
     const tl = gsap.timeline({
@@ -118,7 +140,11 @@ export const createWhoIAmAnimation = (refs: {
       },
     });
 
-    tl.to(allElements, { yPercent: 0, xPercent: 0, rotate: 0, scale: 1 }, 0.01);
+    tl.to(
+      allElements,
+      { autoAlpha: 1, yPercent: 0, xPercent: 0, rotate: 0, scale: 1 },
+      0.01,
+    );
 
     tl.set(allElements, { willChange: "auto" });
 

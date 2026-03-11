@@ -58,8 +58,13 @@
   } */
   .scale-animation {
     @apply transform transition-transform
-         duration-700 ease-out
+         duration-300 ease-out
          opacity-90 hover:opacity-100 hover:scale-105;
+  }
+  .scale-rotate-animation {
+    @apply transform transition-transform
+         duration-300 ease-out
+         opacity-90 hover:opacity-100 hover:scale-105 hover:-translate-x-0.5;
   }
 }
 
