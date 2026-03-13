@@ -1,6 +1,9 @@
 import { gsap } from "gsap/dist/gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import { addSplitTextDescriptionAnimation, addSplitTextTitleAnimation } from "./Splittext/splittext";
+import {
+  addSplitTextDescriptionAnimation,
+  addSplitTextTitleAnimation,
+} from "./Splittext/splittext";
 
 export const createHowIWorkAnimation = (refs: {
   container: HTMLElement;
@@ -26,18 +29,23 @@ export const createHowIWorkAnimation = (refs: {
   mm.add("(min-width: 1280px)", () => {
     const cards = refs.cards.filter(Boolean);
 
-    gsap.set(cards, { autoAlpha: 0, y: 80, rotation: 3,  scale: 0.9, willChange: "transform, opacity" 
+    gsap.set(cards, {
+      autoAlpha: 0,
+      y: 80,
+      rotation: 3,
+      scale: 0.9,
+      willChange: "transform, opacity",
     });
     gsap.to(cards, {
       autoAlpha: 1,
       y: 0,
       scale: 1,
       rotation: 0,
-      ease: "power4.out",
+      ease: "power2.out",
       duration: 0.9,
       stagger: {
-        each: 0.08,
-        ease: "power2.inOut"
+        each: 0.04,
+        ease: "power2.Out",
       },
       scrollTrigger: {
         trigger: refs.container,
@@ -45,7 +53,7 @@ export const createHowIWorkAnimation = (refs: {
       },
       onComplete: () => {
         gsap.set(cards, { willChange: "auto" });
-      }
+      },
     });
     return () => {};
   });

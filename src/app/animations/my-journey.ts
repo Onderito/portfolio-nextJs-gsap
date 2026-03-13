@@ -1,6 +1,9 @@
 import { gsap } from "gsap/dist/gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import { addSplitTextDescriptionAnimation, addSplitTextTitleAnimation } from "./Splittext/splittext";
+import {
+  addSplitTextDescriptionAnimation,
+  addSplitTextTitleAnimation,
+} from "./Splittext/splittext";
 
 export const createMyJourneyAnimation = (refs: {
   container: HTMLElement;
@@ -24,25 +27,30 @@ export const createMyJourneyAnimation = (refs: {
   mm.add("(min-width: 1280px)", () => {
     const cards = refs.cards.filter(Boolean); // sécurité
 
-    gsap.set(cards, { autoAlpha: 0, y: 80, scale: 0.9, willChange: "transform, opacity" });
+    gsap.set(cards, {
+      autoAlpha: 0,
+      y: 80,
+      scale: 0.7,
+      willChange: "transform, opacity",
+    });
 
     gsap.to(cards, {
       autoAlpha: 1,
-      y:0,
+      y: 0,
       scale: 1,
       duration: 0.8,
-      ease: "power4.out",
+      ease: "power2.out",
       stagger: {
-        each: 0.08,
-        ease: "power2.inOut"
+        each: 0.04,
+        ease: "power2.Out",
       },
       scrollTrigger: {
         trigger: refs.container,
         start: "top center",
       },
       onComplete: () => {
-        gsap.set(cards, { willChange: "auto"})
-      }
+        gsap.set(cards, { willChange: "auto" });
+      },
     });
     return () => {};
   });

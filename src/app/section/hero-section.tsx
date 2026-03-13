@@ -19,6 +19,7 @@ export default function HeroSection() {
     subtitle: useRef<HTMLParagraphElement>(null),
     button: useRef<HTMLButtonElement>(null),
     gradientImage: useRef<HTMLImageElement>(null),
+    zone: useRef<HTMLDivElement>(null),
   };
 
   useLayoutEffect(() => {
@@ -29,12 +30,15 @@ export default function HeroSection() {
         subtitle: refs.subtitle.current!,
         button: refs.button.current!,
         gradientImage: refs.gradientImage.current!,
+        zone: refs.zone.current,
       };
 
       const tl = createHomeAnimation(elements);
 
       tl.eventCallback("onComplete", () => {
-        setupPictureHover(elements.picture);
+        if (refs.zone.current && refs.picture.current) {
+          setupPictureHover(refs.zone.current, refs.picture.current);
+        }
       });
     });
 
@@ -47,16 +51,18 @@ export default function HeroSection() {
       className="h-screen flex justify-center items-center scroll-mt-24"
     >
       <div className="flex flex-col items-center justify-center relative z-50">
-        <Image
-          ref={refs.picture}
-          src="/blur-profile.webp"
-          alt={messages.hero.profileAlt}
-          width={500}
-          height={500}
-          priority
-          quality={80}
-          className="object-cover w-30 h-30 rounded-2xl rotate-2 border-2 border-white border-glass"
-        />
+        <div ref={refs.zone}>
+          <Image
+            ref={refs.picture}
+            src="/blur-profile.webp"
+            alt={messages.hero.profileAlt}
+            width={500}
+            height={500}
+            priority
+            quality={80}
+            className="hover-target object-cover w-30 h-30 rounded-2xl border-2 border-white border-glass"
+          />
+        </div>
 
         <h1
           ref={refs.title}

@@ -8,24 +8,25 @@ export const createHomeAnimation = (refs: {
   button: HTMLElement;
   gradientImage: HTMLElement;
 }) => {
-  const tl = gsap.timeline({ defaults: { ease: "power2.Out" } });
+  const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
 
   tl.from(refs.gradientImage, {
     autoAlpha: 0,
     duration: 0.8,
-    y: 100,
-    scale: 6,
+    y: -200,
+    scale: 0.8,
+    ease: "power2.out",
   });
   tl.from(
     refs.picture,
     {
       autoAlpha: 0,
-      y: 100,
+      y: 20,
       duration: 0.8,
       rotate: 10,
       scale: 1.2,
     },
-    "0.15", // cette anim commence après 300ms après la précédente.
+    "0.15",
   );
   addSplitTextTitleAnimation(tl, refs.title, {
     position: "-=0.4",
@@ -54,34 +55,29 @@ export const createHomeAnimation = (refs: {
   return tl;
 };
 
-export const setupPictureHover = (element: HTMLElement) => {
-  const handleMouseEnter = () => {
-    gsap.to(element, {
-      duration: 0.15,
-      y: -25,
-      scale: 1.1,
+export const setupPictureHover = (zone: HTMLElement, target: HTMLElement) => {
+  zone.addEventListener("mouseenter", () => {
+    gsap.to(target, {
+      y: -20,
+      x: 20,
+      rotate: 10,
+      ease: "power2.out",
+      duration: 0.3,
     });
-  };
-
-  const handleMouseLeave = () => {
-    gsap.to(element, {
-      duration: 0.15,
+  });
+  zone.addEventListener("mouseleave", () => {
+    gsap.to(target, {
       y: 0,
-      scale: 1,
+      x: 0,
+      rotate: 0,
+      ease: "power2.in",
+      duration: 0.3,
     });
-  };
-
-  element.addEventListener("mouseenter", handleMouseEnter);
-  element.addEventListener("mouseleave", handleMouseLeave);
-
-  return () => {
-    element.removeEventListener("mouseenter", handleMouseEnter);
-    element.removeEventListener("mouseleave", handleMouseLeave);
-  };
+  });
 };
 
 export const createNavBarAnimation = (refs: { container: HTMLElement }) => {
-  const tl = gsap.timeline({ defaults: { ease: "power2.Out" } });
+  const tl = gsap.timeline({ defaults: { ease: "back.out(1.5)" } });
 
   tl.from(refs.container, {
     autoAlpha: 0,

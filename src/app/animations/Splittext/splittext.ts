@@ -29,14 +29,14 @@ export function addSplitTextTitleAnimation(
   }) as unknown as SplitTextInstance;
 
   tl.from(
-    split.chars ?? [],
+    split.words ?? [],
     {
       force3D: true,
       autoAlpha: 0,
       duration: 0.9,
-      y: 40,
+      y: 20,
       stagger: 0.03,
-      ease: "power3.out",
+      ease: "power2.out",
       filter: "blur(2px)",
       ...options.tween,
     },
@@ -61,10 +61,10 @@ export function addSplitTextDescriptionAnimation(
     {
       force3D: true,
       autoAlpha: 0,
-      duration: 1.2,
-      y: 40,
+      duration: 0.9,
+      y: 20,
       stagger: 0.03,
-      ease: "power3.out",
+      ease: "power2.out",
       filter: "blur(2px)",
       ...options.tween,
     },

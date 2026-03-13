@@ -11,7 +11,7 @@ export const createFooterAnimation = (refs: { container: HTMLElement }) => {
       autoAlpha: 0,
       y: 50,
       duration: 1,
-      ease: "power1.out",
+      ease: "power2.out",
       scrollTrigger: {
         trigger: refs.container,
         start: "top bottom-=200",
