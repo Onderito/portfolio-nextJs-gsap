@@ -83,6 +83,6 @@ export const createNavBarAnimation = (refs: { container: HTMLElement }) => {
     autoAlpha: 0,
     y: -50,
     duration: 0.8,
-    delay: 2,
+    delay: 1.5,
   });
 };
