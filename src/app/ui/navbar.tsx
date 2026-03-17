@@ -5,7 +5,7 @@ import { useLocale, useMessages } from "../i18n/use-messages";
 import LanguageSwitch from "./language-switch";
 import { gsap } from "gsap/dist/gsap";
 import { useLayoutEffect, useRef } from "react";
-import { createNavBarAnimation } from "../animations/home-animation";
+// import { createNavBarAnimation } from "../animations/home-animation";
 
 const sectionIds = ["home", "about", "projects", "pricing"] as const;
 
@@ -14,15 +14,15 @@ export default function Navbar() {
     container: useRef<HTMLDivElement>(null),
   };
 
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      createNavBarAnimation({
-        container: refs.container.current!,
-      });
-    }, refs.container);
+  // useLayoutEffect(() => {
+  //   const ctx = gsap.context(() => {
+  //     createNavBarAnimation({
+  //       container: refs.container.current!,
+  //     });
+  //   }, refs.container);
 
-    return () => ctx.revert();
-  }, []);
+  //   return () => ctx.revert();
+  // }, []);
   const locale = useLocale();
   const messages = useMessages();
 
@@ -42,7 +42,7 @@ export default function Navbar() {
 
   return (
     <div
-      ref={refs.container}
+      // ref={refs.container}
       className="fixed top-4 left-1/2 -translate-x-1/2 z-60 w-[calc(100%-2rem)] max-w-3xl"
     >
       <nav

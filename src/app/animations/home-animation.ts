@@ -13,23 +13,22 @@ export const createHomeAnimation = (refs: {
   tl.from(refs.gradientImage, {
     autoAlpha: 0,
     duration: 0.8,
-    y: -200,
-    scale: 0.8,
+    scale: 2,
     ease: "power2.out",
   });
   tl.from(
     refs.picture,
     {
       autoAlpha: 0,
-      y: 20,
+      y: 80,
       duration: 0.8,
       rotate: 10,
       scale: 1.2,
     },
-    "0.15",
+    "<",
   );
   addSplitTextTitleAnimation(tl, refs.title, {
-    position: "-=0.4",
+    position: "<0.6",
     tween: { filter: "none" },
   });
   tl.from(
@@ -37,19 +36,20 @@ export const createHomeAnimation = (refs: {
     {
       autoAlpha: 0,
       duration: 0.8,
-      y: 40,
+      y: 20,
+      scale: 0.9,
     },
-    "-=0.5",
+    "<0.6",
   );
   tl.from(
     refs.button,
     {
       autoAlpha: 0,
       duration: 0.8,
-      y: 40,
-      scale: 1.1,
+      y: 20,
+      scale: 0.9,
     },
-    "-=0.9",
+    "<",
   );
 
   return tl;
@@ -76,13 +76,13 @@ export const setupPictureHover = (zone: HTMLElement, target: HTMLElement) => {
   });
 };
 
-export const createNavBarAnimation = (refs: { container: HTMLElement }) => {
-  const tl = gsap.timeline({ defaults: { ease: "back.out(1.5)" } });
+// export const createNavBarAnimation = (refs: { container: HTMLElement }) => {
+//   const tl = gsap.timeline({ defaults: { ease: "back.out(1.5)" } });
 
-  tl.from(refs.container, {
-    autoAlpha: 0,
-    y: -50,
-    duration: 0.8,
-    delay: 1.5,
-  });
-};
+//   tl.from(refs.container, {
+//     autoAlpha: 0,
+//     y: -50,
+//     duration: 0.8,
+//     delay: 1.5,
+//   });
+// };

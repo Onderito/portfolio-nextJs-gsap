@@ -33,7 +33,7 @@ export function addSplitTextTitleAnimation(
     {
       force3D: true,
       autoAlpha: 0,
-      duration: 1.2,
+      duration: 0.8,
       y: 20,
       stagger: 0.05,
       ease: "power2.out",
@@ -61,7 +61,7 @@ export function addSplitTextDescriptionAnimation(
     {
       force3D: true,
       autoAlpha: 0,
-      duration: 1.2,
+      duration: 0.8,
       y: 20,
       stagger: 0.05,
       ease: "power2.out",
