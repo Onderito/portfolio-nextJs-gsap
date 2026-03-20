@@ -123,10 +123,10 @@ const messages: Record<Locale, Messages> = {
       title: "Qui je suis",
       pictureAlt: "Portrait de Ulas",
       name: "Ulas Önder",
-      introBefore: "Développeur front-end & designer. Je conçois des",
-      highlight: "landing pages orientées conversion",
+      introBefore: "Design Engineer",
+      highlight: "J’imagine, design et code des expériences web performantes —",
       introAfter:
-        "qui se chargent en moins d’une seconde. Design stratégique, code propre et animations subtiles — pour transformer vos visiteurs en clients.",
+        "pensées pour capter l’attention, raconter une histoire et convertir.",
       toolkitTitle: "Expertises",
       toolkitIntro: "Clarté, rythme et performance au service du projet.",
       toolkitItems: [
@@ -356,11 +356,9 @@ const messages: Record<Locale, Messages> = {
       title: "Who I Am",
       pictureAlt: "Ulas Profile",
       name: "Ulas Önder",
-      introBefore:
-        "Front-end Developer and Designer. My specialty is building high converting",
-      highlight: "Landing Pages",
-      introAfter:
-        "that load in under one second. I focus on strategic design and clean code to maximize your revenue.",
+      introBefore: "Design Engineer.",
+      highlight: "I imagine, design, and build high-performing web experiences",
+      introAfter: "— crafted to capture attention, tell a story, and convert.",
       toolkitTitle: "Expertise",
       toolkitIntro:
         "Clarity, rhythm and performance in service of the project.",

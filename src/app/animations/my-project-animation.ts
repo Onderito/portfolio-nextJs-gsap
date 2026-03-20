@@ -30,15 +30,15 @@ export const createMyProjectAnimation = (refs: {
       const card = cards[i]; // je récupère l'élément card correspondant à l'index i
       if (!wrapper || !card) return; // si l'un des éléments est null, je retourne rien.
 
-      const isLastCard = i === cards.length - 1; // on séléctionne le dernier élément du tableau cards 
+      const isLastCard = i === cards.length - 1; // on séléctionne le dernier élément du tableau cards
 
       gsap.to(card, {
-        force3D: true,   
+        force3D: true,
         transformOrigin: "center center",
         ease: "none",
         scrollTrigger: {
           trigger: wrapper,
-          start: `top ${60 + 10 * i}`,
+          start: `top ${90 + 0 * i}`,
           end: "bottom 600",
           endTrigger: refs.container,
           scrub: 1,

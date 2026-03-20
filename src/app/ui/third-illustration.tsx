@@ -50,7 +50,7 @@ export default function ThirdIllustration() {
       tl.fromTo(
         card.current,
         { autoAlpha: 0, y: 10, filter: "blur(10px)" },
-        { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.8 }
+        { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.8 },
       );
 
       tl.to(path, { strokeDashoffset: 0, duration: 1.1 }, "<");
@@ -70,14 +70,14 @@ export default function ThirdIllustration() {
             whiteDot.setAttribute("cy", String(p.y));
           },
         },
-        "<"
+        "<",
       );
 
       if (redDot.current) {
         tl.to(
           redDot.current,
           { autoAlpha: 1, scale: 1, duration: 0.8, ease: "back.out(2.2)" },
-          "-=0.9"
+          "-=0.9",
         );
       }
 
@@ -90,18 +90,18 @@ export default function ThirdIllustration() {
           repeat: 1,
           ease: "sine.inOut",
         },
-        "+=0.1"
+        "+=0.1",
       );
       tl.to(
         card.current,
         { y: -2, duration: 0.6, yoyo: true, repeat: 1, ease: "sine.inOut" },
-        "<"
+        "<",
       );
 
       tl.to(
         [whiteDot, redDot.current].filter(Boolean),
         { autoAlpha: 0, duration: 0.8 },
-        "+=0.35"
+        "+=0.35",
       );
       tl.to(card.current, { autoAlpha: 0, duration: 0.8 }, "<");
       tl.set(obj, { t: 0 });
@@ -114,7 +114,7 @@ export default function ThirdIllustration() {
   return (
     <div
       ref={root}
-      className="relative w-full h-full border-white/5 bg-white/2 flex items-center justify-center z-50"
+      className="relative w-full h-full flex items-center justify-center z-50"
     >
       <div className="absolute inset-0 bg-linear-to-t to-transparent z-50"></div>
 
