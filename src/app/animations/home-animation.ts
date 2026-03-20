@@ -29,7 +29,6 @@ export const createHomeAnimation = (refs: {
   );
   addSplitTextTitleAnimation(tl, refs.title, {
     position: "<0.6",
-    tween: { filter: "none" },
   });
   tl.from(
     refs.subtitle,

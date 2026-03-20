@@ -66,7 +66,7 @@ export default function HeroSection() {
 
         <h1
           ref={refs.title}
-          className="heading-1 text-center mt-6 md:mt-10 xl:mt-12 overflow-hidden"
+          className="heading-1 text-center mt-6 md:mt-10 xl:mt-12"
         >
           {messages.hero.titleLine1} <br />
           <span className="text-neutral-400">

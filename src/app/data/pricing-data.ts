@@ -25,7 +25,7 @@ const pricingTiersByLocale: Record<Locale, PricingTier[]> = {
       description:
         "Une landing page à fort impact, pensée pour convertir et être mise en ligne rapidement.",
       price: "900€",
-      ctaText: "Réserver un appel",
+      ctaText: "Réserve ton appel",
       featured: false,
       accentColor: "#9FB3D9",
       features: [
@@ -43,7 +43,7 @@ const pricingTiersByLocale: Record<Locale, PricingTier[]> = {
       description:
         "Modernisation de votre site existant pour améliorer la clarté, l’UX et la crédibilité.",
       price: "1200€",
-      ctaText: "Réserver un appel",
+      ctaText: "Réserve ton appel",
       featured: false,
       accentColor: "#C4C4C4",
       features: [
@@ -61,7 +61,7 @@ const pricingTiersByLocale: Record<Locale, PricingTier[]> = {
       description:
         "Un site multi-pages complet, design cohérent et animations avancées incluses.",
       price: "1800€",
-      ctaText: "Réserver un appel",
+      ctaText: "Réserve ton appel",
       featured: true,
       accentColor: "#E0C27A",
       features: [
@@ -81,7 +81,7 @@ const pricingTiersByLocale: Record<Locale, PricingTier[]> = {
       description:
         "A high-impact single-page website designed to convert, impress, and launch fast.",
       price: "900€",
-      ctaText: "Schedule a call",
+      ctaText: "Schedule your call",
       featured: false,
       accentColor: "#9FB3D9",
       features: [
@@ -99,7 +99,7 @@ const pricingTiersByLocale: Record<Locale, PricingTier[]> = {
       description:
         "A modern refresh of your existing site to improve clarity, UX, and overall polish.",
       price: "1200€",
-      ctaText: "Schedule a call",
+      ctaText: "Schedule your call",
       featured: false,
       accentColor: "#C4C4C4",
       features: [
@@ -117,7 +117,7 @@ const pricingTiersByLocale: Record<Locale, PricingTier[]> = {
       description:
         "A complete multi-page website with cohesive design and advanced animations.",
       price: "1800€",
-      ctaText: "Schedule a call",
+      ctaText: "Schedule your call",
       featured: true,
       accentColor: "#E0C27A",
       features: [

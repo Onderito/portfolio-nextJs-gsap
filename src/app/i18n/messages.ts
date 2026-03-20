@@ -116,7 +116,7 @@ const messages: Record<Locale, Messages> = {
       titleEmphasis: "pour des projets uniques.",
       subtitleLine1: "Des sites rapides, soignés et pensés",
       subtitleLine2: "pour mettre en valeur des projets ambitieux.",
-      cta: "Réserver un appel",
+      cta: "Réserve ton appel",
       profileAlt: "Ulas Önder — Développeur Front-end",
     },
     whoIAm: {
@@ -128,8 +128,7 @@ const messages: Record<Locale, Messages> = {
       introAfter:
         "qui se chargent en moins d’une seconde. Design stratégique, code propre et animations subtiles — pour transformer vos visiteurs en clients.",
       toolkitTitle: "Expertises",
-      toolkitIntro:
-        "Clarté, rythme et performance au service du projet.",
+      toolkitIntro: "Clarté, rythme et performance au service du projet.",
       toolkitItems: [
         {
           label: "Design",
@@ -148,7 +147,7 @@ const messages: Record<Locale, Messages> = {
           desc: "Base saine pour la visibilité.",
         },
       ],
-      cta: "Réserver un appel",
+      cta: "Réserve ton appel",
       linkedinAlt: "LinkedIn",
       xAlt: "X",
       devMark: "ÖnderDev",
