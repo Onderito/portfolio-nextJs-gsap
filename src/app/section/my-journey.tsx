@@ -45,19 +45,19 @@ export default function MyJourney() {
         {messages.journey.subtitleLine2}
       </p>
 
-      <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 mt-10 xl:mt-14 gap-8">
+      <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 mt-10 xl:mt-12 gap-8 xl:gap-6">
         {myJourney.map((j, i) => (
           <div
             ref={(el) => {
               refs.cards.current[i] = el as HTMLDivElement;
             }}
-            className={`relative flex flex-col overflow-hidden webkit-clip rounded-[24px] bg-[#1f1f1f] p-6 xl:w-[386px] xl:h-[350px] xl:mx-auto ${rotations[i]}`}
+            className={`relative flex flex-col overflow-hidden webkit-clip rounded-[24px] bg-[#1f1f1f] p-6 xl:p-5 xl:w-[360px] xl:h-[320px] xl:mx-auto ${rotations[i]}`}
             key={i}
           >
             <AuroraOverlay />
             <div className="relative z-10 flex h-full flex-col">
               <div className="flex flex-row items-start justify-between gap-6">
-                <h3 className="text-[20px] font-semibold leading-none tracking-[-0.2px] text-white">
+                <h3 className="text-[20px] xl:text-[18px] font-semibold leading-none tracking-[-0.2px] text-white">
                   {j.title}
                 </h3>
                 <div className="shrink-0 text-white">
@@ -70,12 +70,12 @@ export default function MyJourney() {
                   )}
                 </div>
               </div>
-              <p className="mt-11 text-[16px]  tracking-[-0.16px] font-light text-[#c4c4c4]">
+              <p className="mt-11 xl:mt-8 text-[16px] xl:text-[15px] tracking-[-0.16px] font-light text-[#c4c4c4]">
                 {j.description}
               </p>
-              <div className="mt-auto flex items-center gap-3 text-white/80">
+              <div className="mt-8 md:mt-auto flex items-center gap-3 xl:gap-2.5 text-white/80">
                 <span className="h-px w-8 bg-white/20" />
-                <p className="text-[12px] font-medium uppercase tracking-[0.16em]">
+                <p className="text-[12px] xl:text-[11px] font-medium uppercase tracking-[0.16em]">
                   {j.badge}
                 </p>
               </div>

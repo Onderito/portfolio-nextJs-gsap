@@ -38,7 +38,7 @@ export const createMyProjectAnimation = (refs: {
         ease: "none",
         scrollTrigger: {
           trigger: wrapper,
-          start: `top ${90 + 0 * i}`,
+          start: `top ${80 + 5 * i}`,
           end: "bottom 600",
           endTrigger: refs.container,
           scrub: 1,

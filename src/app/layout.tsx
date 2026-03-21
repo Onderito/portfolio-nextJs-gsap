@@ -19,13 +19,13 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Ulas Önder — Front-end Developer & Designer",
+    default: "Ulas Önder, Front-end Developer & Designer",
     template: "%s",
   },
   description:
     "High-end websites for unique projects. Fast, refined and conversion-focused experiences built with Next.js, Tailwind and GSAP.",
   openGraph: {
-    title: "Ulas Önder — Front-end Developer & Designer",
+    title: "Ulas Önder, Front-end Developer & Designer",
     description:
       "High-end websites for unique projects. Fast, refined and conversion-focused experiences built with Next.js, Tailwind and GSAP.",
     type: "website",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ulas Önder — Front-end Developer & Designer",
+    title: "Ulas Önder, Front-end Developer & Designer",
     description:
       "High-end websites for unique projects. Fast, refined and conversion-focused experiences built with Next.js, Tailwind and GSAP.",
   },

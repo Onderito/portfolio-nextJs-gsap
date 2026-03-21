@@ -107,7 +107,7 @@ export type Messages = {
 const messages: Record<Locale, Messages> = {
   fr: {
     meta: {
-      title: "Ulas Önder — Développeur Front-end & Designer",
+      title: "Ulas Önder, Développeur Front-end & Designer",
       description:
         "Je conçois et développe des sites web rapides, modernes et orientés conversion (Next.js, Tailwind, GSAP).",
     },
@@ -117,14 +117,14 @@ const messages: Record<Locale, Messages> = {
       subtitleLine1: "Des sites rapides, soignés et pensés",
       subtitleLine2: "pour mettre en valeur des projets ambitieux.",
       cta: "Réserve ton appel",
-      profileAlt: "Ulas Önder — Développeur Front-end",
+      profileAlt: "Ulas Önder, Développeur Front-end",
     },
     whoIAm: {
       title: "Qui je suis",
       pictureAlt: "Portrait de Ulas",
       name: "Ulas Önder",
       introBefore: "Design Engineer",
-      highlight: "J’imagine, design et code des expériences web performantes —",
+      highlight: "J’imagine, design et code des expériences web performantes,",
       introAfter:
         "pensées pour capter l’attention, raconter une histoire et convertir.",
       toolkitTitle: "Expertises",
@@ -163,21 +163,21 @@ const messages: Record<Locale, Messages> = {
       items: [
         {
           image: "/private-driver.webp",
-          title: "Vip Limo Nice — Chauffeur privé",
+          title: "Vip Limo Nice, Chauffeur privé",
           desc: "Design UX/UI complet et développement front-end. J’ai travaillé la hiérarchie visuelle pour maximiser le Call-to-Action. Le site a été construit avec Next.js pour la performance et GSAP pour des animations fluides, afin d’offrir une expérience premium.",
           stack: "Next.js",
           url: "https://viplimonice.com/",
         },
         {
           image: "/calmly.webp",
-          title: "Calmly — Trouvez votre paix intérieure",
+          title: "Calmly, Trouvez votre paix intérieure",
           desc: "Design UX/UI complet et développement front-end. Calmly est une landing page minimaliste construite avec Next.js, centrée sur la clarté, une hiérarchie visuelle apaisante et des animations GSAP subtiles pour renforcer l’identité zen de l’app. Objectif : une expérience fluide, légère et immersive.",
           stack: "Next.js",
           url: "https://calmly-app-zeta.vercel.app/",
         },
         {
           image: "/clarity.webp",
-          title: "Clarity — Focus sur l’essentiel",
+          title: "Clarity, Focus sur l’essentiel",
           desc: "Design UX/UI et développement front-end Webflow. Clarity est une landing page propre et efficace, créée sur Webflow avec des animations GSAP sur mesure pour donner vie à l’interface. L’objectif : une hiérarchie nette, un layout intuitif, moderne et orienté conversion.",
           stack: "Webflow",
           url: "https://clarity-d63997.webflow.io/",
@@ -190,22 +190,22 @@ const messages: Record<Locale, Messages> = {
       subtitleLine2: "d’expériences web soignées.",
       items: [
         {
-          title: "2023 — Premières lignes de code",
+          title: "2023, Premières lignes de code",
           description:
-            "J’ai écrit mes premières lignes de code et j’ai tout de suite accroché. HTML, CSS, JS — tout semblait nouveau, stimulant et excitant.",
-          badge: "01 — Les débuts",
+            "J’ai écrit mes premières lignes de code et j’ai tout de suite accroché. HTML, CSS, JS, tout semblait nouveau, stimulant et excitant.",
+          badge: "01 Les débuts",
         },
         {
-          title: "2024 — UI / UX",
+          title: "2024, UI / UX",
           description:
-            "Je me suis plongé dans l’UI & l’UX. Structure, couleurs, espacements — tout a commencé à prendre sens. Je voulais créer des interfaces agréables, pas seulement fonctionnelles.",
-          badge: "02 — Le déclic",
+            "Je me suis plongé dans l’UI & l’UX. Structure, couleurs, espacements, tout a commencé à prendre sens. Je voulais créer des interfaces agréables, pas seulement fonctionnelles.",
+          badge: "02 Le déclic",
         },
         {
-          title: "2025 — Apprendre GSAP",
+          title: "2025, Apprendre GSAP",
           description:
-            "J’ai exploré le motion design et je suis tombé amoureux. Timelines, easing, micro-interactions — GSAP a ouvert un nouveau monde de possibilités créatives.",
-          badge: "03 — Le mouvement",
+            "J’ai exploré le motion design et je suis tombé amoureux. Timelines, easing, micro-interactions, GSAP a ouvert un nouveau monde de possibilités créatives.",
+          badge: "03 Le mouvement",
         },
       ],
     },
@@ -242,7 +242,7 @@ const messages: Record<Locale, Messages> = {
     },
     footer: {
       tagline:
-        "Je conçois des expériences web fluides avec Next.js, Tailwind et GSAP — interaction, performance, conversion.",
+        "Je conçois des expériences web fluides avec Next.js, Tailwind et GSAP, interaction, performance, conversion.",
       sitemap: "Plan du site",
       navs: [
         "Accueil",
@@ -340,7 +340,7 @@ const messages: Record<Locale, Messages> = {
   },
   en: {
     meta: {
-      title: "Ulas Önder — Front-end Developer & Designer",
+      title: "Ulas Önder, Front-end Developer & Designer",
       description:
         "I design and build fast, modern, conversion-focused websites (Next.js, Tailwind, GSAP).",
     },
@@ -350,7 +350,7 @@ const messages: Record<Locale, Messages> = {
       subtitleLine1: "Fast, refined websites designed",
       subtitleLine2: "to elevate ambitious projects.",
       cta: "Let’s Talk",
-      profileAlt: "Ulas Önder — Front-end Developer",
+      profileAlt: "Ulas Önder, Front-end Developer",
     },
     whoIAm: {
       title: "Who I Am",
@@ -358,7 +358,7 @@ const messages: Record<Locale, Messages> = {
       name: "Ulas Önder",
       introBefore: "Design Engineer.",
       highlight: "I imagine, design, and build high-performing web experiences",
-      introAfter: "— crafted to capture attention, tell a story, and convert.",
+      introAfter: "crafted to capture attention, tell a story, and convert.",
       toolkitTitle: "Expertise",
       toolkitIntro:
         "Clarity, rhythm and performance in service of the project.",
@@ -425,20 +425,20 @@ const messages: Record<Locale, Messages> = {
         {
           title: "2023 – First lines of code",
           description:
-            "I wrote my first lines of code and instantly got hooked. HTML, CSS, JS — everything felt new, challenging, and exciting.",
-          badge: "01 — The Beginning",
+            "I wrote my first lines of code and instantly got hooked. HTML, CSS, JS, everything felt new, challenging, and exciting.",
+          badge: "01 The Beginning",
         },
         {
-          title: "2024 — Discovering UI / UX",
+          title: "2024, Discovering UI / UX",
           description:
-            "I started diving deep into UI & UX. Structure, colors, spacing — everything suddenly made sense. I wanted to build interfaces that feel good, not just work.",
-          badge: "02 — The Shift",
+            "I started diving deep into UI & UX. Structure, colors, spacing, everything suddenly made sense. I wanted to build interfaces that feel good, not just work.",
+          badge: "02 The Shift",
         },
         {
-          title: "2025 — Learning  GSAP",
+          title: "2025, Learning GSAP",
           description:
-            "I explored motion design and fell in love with it. Timelines, easing, micro-interactions — GSAP opened a whole new world of creative possibilities.",
-          badge: "03 — Motion",
+            "I explored motion design and fell in love with it. Timelines, easing, micro-interactions, GSAP opened a whole new world of creative possibilities.",
+          badge: "03 Motion",
         },
       ],
     },
