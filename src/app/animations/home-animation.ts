@@ -20,9 +20,11 @@ export const createHomeAnimation = (refs: {
     refs.picture,
     {
       autoAlpha: 0,
-      y: 80,
-      duration: 0.8,
+      y: 90,
+      filter: "blur(5px)",
+      duration: 1.5,
       rotate: 10,
+      ease: "elastic.out(1, 0.5)",
       scale: 1.2,
     },
     "<",
@@ -38,7 +40,7 @@ export const createHomeAnimation = (refs: {
       y: 20,
       scale: 0.9,
     },
-    "<0.6",
+    "<1.2",
   );
   tl.from(
     refs.button,
