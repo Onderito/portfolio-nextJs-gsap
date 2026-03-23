@@ -123,7 +123,7 @@ const messages: Record<Locale, Messages> = {
       title: "Qui je suis",
       pictureAlt: "Portrait de Ulas",
       name: "Ulas Önder",
-      introBefore: "Design Engineer",
+      introBefore: "Design Engineer.",
       highlight: "J’imagine, design et code des expériences web performantes,",
       introAfter:
         "pensées pour capter l’attention, raconter une histoire et convertir.",
